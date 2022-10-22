@@ -108,9 +108,7 @@ struct MainView: View {
             }
         }
     }
-}
-
-extension MainView {
+    
     struct ContentSizePreferenceKey: PreferenceKey {
         typealias Value = CGSize
 
@@ -140,12 +138,21 @@ extension MainView {
     }
 }
 
+extension MainView {
+   
+}
+
 struct ContentView_Previews: PreviewProvider {
+    static var gameClient = GameClient()
+    static var gameScene = GameScene(size: CGSize(width: 320, height: 200))
+
     static var scene = SKScene(size: CGSize(width: 300*64, height: 200*64))
     
     static var previews: some View {
         MainView()
-        .environmentObject(SKSceneObservable(scene: scene))
+//        .environmentObject(SKSceneObservable(scene: scene))
+            .environmentObject(gameScene)
+        .environmentObject(gameClient)
         .previewInterfaceOrientation(.landscapeRight)
     }
 }
