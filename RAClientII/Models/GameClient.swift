@@ -17,9 +17,14 @@ public enum ActionReliability: Codable {
 // Predictive Object
 class GameClient: ObservableObject, ActionRegisterable, BeatNotifier {
     //, TimeDescribing {
-
     static var gameScene: GameScene!
     static var gameClient: GameClient!
+
+    static func makeGameClient() -> GameClient {
+        let results = GameClient()
+        GameClient.gameClient = results
+        return results
+    }
 
     // Authoritative Source for these Properties
     @Published var player: Character!
@@ -57,7 +62,7 @@ class GameClient: ObservableObject, ActionRegisterable, BeatNotifier {
     }
     
     init() {
-//        self.venue = Venue()
+        self.venue = Venue()
 //        self.characters = Character.Characters()
         heartbeat = Heartbeat(beatNotifier: self)
     }

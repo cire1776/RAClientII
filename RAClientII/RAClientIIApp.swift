@@ -73,6 +73,7 @@ struct RAClientIIApp: App {
                     group.addTask {
                         print("*", terminator: "")
                         for try await status in connection.responseStream {
+                            GameClient.gameClient.venue = Venue(fromStatus: status)
                             print("@", terminator: "")
                             print(status)
                         }
@@ -89,6 +90,7 @@ struct RAClientIIApp: App {
                         
                         let status = await connection.status
                         print(status)
+                        
                         try await Task.sleep(nanoseconds: 10_000_000_000)
                     }
                     
@@ -102,7 +104,7 @@ struct RAClientIIApp: App {
         }
     }
     
-    var gameClient = GameClient()
+    var gameClient = GameClient.makeGameClient()
     var gameScene = GameScene(size: CGSize(width: 320, height: 200))
 
     var body: some Scene {

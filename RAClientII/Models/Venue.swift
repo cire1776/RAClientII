@@ -37,7 +37,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         return [:]
     }
     
-    init() {
+    public init() {
         self.id = UUID().uuidString
         self.playerCharacter = "Unnamed Character"
         self.name = "Unnamed Venue"
@@ -45,10 +45,18 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.region = Hexagon.Region()
     }
     
-    convenience init(named name: String, description: String) {
+    public convenience init(named name: String, description: String) {
         self.init()
         self.name = name
         self.description = description
+    }
+    
+    public convenience init(fromStatus status: RABackend_GameStatus) {
+        self.init()
+        
+        self.id = status.venueData.id.id
+        self.name = status.venueData.name
+        self.description = status.venueData.description_p
     }
     
     public func copy(with zone: NSZone? = nil) -> Any {
