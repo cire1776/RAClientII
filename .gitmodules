@@ -1,0 +1,3 @@
+[submodule "RAClientII/RAShared"]
+	path = RAClientII/RAShared
+	url = https://github.com/cire1776/RAShared.git
