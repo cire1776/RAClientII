@@ -7,7 +7,8 @@
 
 import Foundation
 
-public struct FacilityList: DataList, Codable {
+public struct FacilityList: NoncodableDataList {
+    
     public typealias T = Facility
     
     public var items = [T.ID : T]()
@@ -25,7 +26,7 @@ public extension Constants {
 
 public enum Facilities {}
 
-public class Facility: NSObject, Identifiable, Codable, Interactable {
+public class Facility: NSObject, Identifiable, Interactable {
     public typealias ID = String
     
     public class Builder {
