@@ -79,10 +79,13 @@ class Game: TickHolder, BeatNotifier {
     
     var savingEvent: (String, UInt) = ("",0)
     
-    init() {
+    override init() async {
         self.initialTick = 2_500
         
         self.playerID = "cire"
+        
+        
+        await super.init()
         
         triggerLazy(loadEverything: true)
     }
