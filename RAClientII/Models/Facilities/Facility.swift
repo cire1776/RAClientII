@@ -43,7 +43,8 @@ public class Facility: NSObject, Identifiable, Interactable {
     
     public var buffs = [BuffSpecifier.ID : BuffSpecifier]()
     
-    public var totalSkillBuffs = [Skill : Int]()
+//    public var totalSkillBuffs = [Skill : Int]()
+    
         
     public init(kind: Kind) {
         self.id = UUID().uuidString
