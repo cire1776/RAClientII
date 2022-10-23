@@ -38,9 +38,11 @@
 		637F1B152901F647008642A4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B132901F647008642A4 /* Item.swift */; };
 		637F1B182901F794008642A4 /* UIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B172901F794008642A4 /* UIDelegate.swift */; };
 		637F1B1A2901FA21008642A4 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B192901FA21008642A4 /* Facility.swift */; };
+		639236A529048ED800973DDF /* UInt64 + WordTImes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236A429048ED800973DDF /* UInt64 + WordTImes.swift */; };
+		639236A729048F7100973DDF /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236A629048F7100973DDF /* CommandQueue.swift */; };
+		639236A9290491B300973DDF /* Protobuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236A8290491B300973DDF /* Protobuff.swift */; };
 		639236B0290542BF00973DDF /* RABackend.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236AE290542BF00973DDF /* RABackend.pb.swift */; };
 		639236B1290542BF00973DDF /* RABackend.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236AF290542BF00973DDF /* RABackend.grpc.swift */; };
-		639236B32905464C00973DDF /* UInt64 + WordTImes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236B22905464C00973DDF /* UInt64 + WordTImes.swift */; };
 		63988695290209570007D8C0 /* MenuTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63988694290209570007D8C0 /* MenuTree.swift */; };
 		63988697290209DC0007D8C0 /* HexagonMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63988696290209DB0007D8C0 /* HexagonMap.swift */; };
 		6398869B29020A950007D8C0 /* MenuRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398869829020A950007D8C0 /* MenuRenderer.swift */; };
@@ -126,9 +128,11 @@
 		637F1B132901F647008642A4 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		637F1B172901F794008642A4 /* UIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDelegate.swift; sourceTree = "<group>"; };
 		637F1B192901FA21008642A4 /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
+		639236A429048ED800973DDF /* UInt64 + WordTImes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UInt64 + WordTImes.swift"; sourceTree = "<group>"; };
+		639236A629048F7100973DDF /* CommandQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommandQueue.swift; path = RAClientII/RAShared/CommandQueue.swift; sourceTree = SOURCE_ROOT; };
+		639236A8290491B300973DDF /* Protobuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protobuff.swift; sourceTree = "<group>"; };
 		639236AE290542BF00973DDF /* RABackend.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.pb.swift; sourceTree = "<group>"; };
 		639236AF290542BF00973DDF /* RABackend.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.grpc.swift; sourceTree = "<group>"; };
-		639236B22905464C00973DDF /* UInt64 + WordTImes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UInt64 + WordTImes.swift"; path = "../../../../RABackend/RAShared/Extensions/UInt64 + WordTImes.swift"; sourceTree = "<group>"; };
 		63988694290209570007D8C0 /* MenuTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTree.swift; sourceTree = "<group>"; };
 		63988696290209DB0007D8C0 /* HexagonMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexagonMap.swift; sourceTree = "<group>"; };
 		6398869829020A950007D8C0 /* MenuRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRenderer.swift; sourceTree = "<group>"; };
@@ -326,6 +330,7 @@
 				63DFA8ED2902D23800C26F0E /* CGVector.swift */,
 				63DFA8F12902D2E300C26F0E /* SKNode.swift */,
 				63DFA8EF2902D2D800C26F0E /* SKNode+toImage.swift */,
+				639236A8290491B300973DDF /* Protobuff.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -424,6 +429,7 @@
 				639236AF290542BF00973DDF /* RABackend.grpc.swift */,
 				639236AE290542BF00973DDF /* RABackend.pb.swift */,
 				63DFA90B2904067600C26F0E /* Locality.swift */,
+				639236A629048F7100973DDF /* CommandQueue.swift */,
 				63DFA90C2904067600C26F0E /* BuffSpecifier.swift */,
 				63DFA90D2904067600C26F0E /* Waypoint.swift */,
 				63DFA90E2904067600C26F0E /* Heartbeat.swift */,
@@ -447,7 +453,7 @@
 			children = (
 				63DFA9142904067600C26F0E /* CGSize.swift */,
 				63DFA9152904067600C26F0E /* Int.swift */,
-				639236B22905464C00973DDF /* UInt64 + WordTImes.swift */,
+				639236A429048ED800973DDF /* UInt64 + WordTImes.swift */,
 				63DFA9162904067600C26F0E /* CGPoint.swift */,
 				63DFA9182904067600C26F0E /* Double.swift */,
 			);
@@ -572,8 +578,8 @@
 				6398869F29020B010007D8C0 /* UIImage.swift in Sources */,
 				639886DB2902B6E90007D8C0 /* ItemHolding.swift in Sources */,
 				637F1B152901F647008642A4 /* Item.swift in Sources */,
+				639236A529048ED800973DDF /* UInt64 + WordTImes.swift in Sources */,
 				63DFA8EC2902D14200C26F0E /* Faceable.swift in Sources */,
-				639236B32905464C00973DDF /* UInt64 + WordTImes.swift in Sources */,
 				639886D02902B1B40007D8C0 /* Quest.swift in Sources */,
 				639886B62902AA8F0007D8C0 /* Game.swift in Sources */,
 				637F1A6029018152008642A4 /* VenueMap.swift in Sources */,
@@ -591,6 +597,7 @@
 				63DFA92C2904067600C26F0E /* ItemType.swift in Sources */,
 				63DFA92E2904067600C26F0E /* CGSize.swift in Sources */,
 				637F1A802901ADF2008642A4 /* MarkerAdornable.swift in Sources */,
+				639236A729048F7100973DDF /* CommandQueue.swift in Sources */,
 				637F1AA82901D12A008642A4 /* Terrain.swift in Sources */,
 				637F1B0D2901F48C008642A4 /* DroppedItem.swift in Sources */,
 				639236B1290542BF00973DDF /* RABackend.grpc.swift in Sources */,
@@ -605,6 +612,7 @@
 				639886A1290215440007D8C0 /* EntityHolder.swift in Sources */,
 				63DFA90929031A5400C26F0E /* Command.swift in Sources */,
 				637F1AFD2901E054008642A4 /* HexagonMapNode.swift in Sources */,
+				639236A9290491B300973DDF /* Protobuff.swift in Sources */,
 				637F1A66290187BA008642A4 /* ServerProxy.swift in Sources */,
 				637F1AAC2901D23B008642A4 /* Characters.swift in Sources */,
 				63DFA93D2904067600C26F0E /* ItemTypesData.swift in Sources */,
