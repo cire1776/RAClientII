@@ -53,6 +53,9 @@ public enum ClientCommand: Codable {
 }
 
 
+var queue = CommandQueue<ClientCommand, ClientCommand>() {
+    print($0 as Any)
+}
 
 @main
 struct RAClientIIApp: App {
@@ -77,6 +80,7 @@ struct RAClientIIApp: App {
                 myself.gamePortalClient = RABackend_GamePortalAsyncClient(channel: channel)
                 print("GRPC connection initialized")
                 
+
                 try! await withThrowingTaskGroup(of: Void.self) { group in
                     let options = CallOptions(customMetadata: HPACKHeaders([("venueID", "primera"), ("activeCharacterID","cire")]))
                     let connection = myself.gamePortalClient.makeConnectCall(callOptions: options)
@@ -92,22 +96,46 @@ struct RAClientIIApp: App {
                     }
                     
                     group.addTask {
-                        print("sending Command")
-                        var command = RABackend_GameCommand()
-                        command.command = .connect
-                        command.stringParam = "Second Connection"
-
-                        try! await connection.requestStream.send(command)
-                        
-                        let status = await connection.status
-                        print(status)
-                        
-                        try await Task.sleep(nanoseconds: 10_000_000_000)
+                        while true {
+                            let clientCommand = await queue.pop
+                            
+                            guard let clientCommand = clientCommand else {
+                                try! await Task.sleep(nanoseconds: 10_000)
+                                continue
+                            }
+                            
+                            let gameCommand = RABackend_GameCommand(clientCommand: clientCommand.0)
+                            
+                            print("sending Command:", clientCommand)
+                            
+                            try! await connection.requestStream.send(gameCommand)
+                            
+                            let status = await connection.status
+                            print(status)
+                            
+                            try await Task.sleep(nanoseconds: 10_000_000_000)
+                        }
                     }
                     
+                    group.addTask {
+                        let commands: [ClientCommand] = [
+                            .connect,
+                            .report,
+                            .face(facing: 4)
+                        ]
+                        
+                        for command in commands {
+                            if case let .wait(duration) = command {
+                                try! await Task.sleep(nanoseconds: 1_000_000_000 * duration)
+                                continue
+                            }
+                            
+                            await queue.push((command, command))
+                            try! await Task.sleep(nanoseconds: 1_000_000_000)
+                        }
+                    }
                     try await group.waitForAll()
                 }
-                
                 print("ending connection")
             }
         } catch {
@@ -117,12 +145,33 @@ struct RAClientIIApp: App {
     
     var gameClient = GameClient.makeGameClient()
     var gameScene = GameScene(size: CGSize(width: 320, height: 200))
-
+    
     var body: some Scene {
         WindowGroup {
             MainView()
             .environmentObject(gameClient)
             .environmentObject(gameScene)
+            .task {
+                GameClient.gameClient = gameClient
+                gameScene.gameClient = gameClient
+                GameClient.gameScene = gameScene
+                await startup()
+            }
         }
+    }
+    
+    func startup() async -> Game {
+        let game = await Game()
+        Game.game = game
+       
+        // needs to be before other initialization so that ticks and scheduling is available.
+        game.heartbeat = Heartbeat(beatNotifier: game)
+        try! game.heartbeat.start()
+        
+        game.oneTimeSetup()
+//        game.characterSetup()
+        gameClient.start()
+        
+        return game
     }
 }
