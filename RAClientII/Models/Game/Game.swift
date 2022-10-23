@@ -84,6 +84,7 @@ class Game: TickHolder, BeatNotifier {
         
         self.playerID = "cire"
         
+        restoreItemTypes()
         
         await super.init()
         
