@@ -143,7 +143,7 @@ class HexagonMapNode: SKNode, EntityHolder {
         case .prairie:
             // pear: 209    226    49
             // olive: 128    128    0
-            // appke green: 141    182    0
+            // apple green: 141    182    0
             // straw: 228    217    111
             color = SKColor(red: 228/255, green: 217/255, blue: 111/255, alpha: 1.0)
         case .desert:
