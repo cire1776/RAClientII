@@ -79,6 +79,8 @@ class GameClient: ObservableObject, ActionRegisterable, BeatNotifier {
         }
         
         allSubscriptions.insert(subscriber)
+        
+        GameClient.gameScene.initialize()
     }
     
     func beat() async {
