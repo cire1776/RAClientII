@@ -45,6 +45,7 @@ public class Facility: NSObject, Identifiable, Interactable {
     
 //    public var totalSkillBuffs = [Skill : Int]()
     
+    public var customProperties = [String : String]()
         
     public init(kind: Kind) {
         self.id = UUID().uuidString
