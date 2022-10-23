@@ -35,11 +35,12 @@
 		637F1B022901E139008642A4 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B012901E139008642A4 /* Venue.swift */; };
 		637F1B082901EC20008642A4 /* PhysicalVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B072901EC20008642A4 /* PhysicalVenue.swift */; };
 		637F1B0D2901F48C008642A4 /* DroppedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B0C2901F48C008642A4 /* DroppedItem.swift */; };
-		637F1B102901F4F7008642A4 /* RABackend.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B0E2901F4F7008642A4 /* RABackend.grpc.swift */; };
-		637F1B112901F4F7008642A4 /* RABackend.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B0F2901F4F7008642A4 /* RABackend.pb.swift */; };
 		637F1B152901F647008642A4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B132901F647008642A4 /* Item.swift */; };
 		637F1B182901F794008642A4 /* UIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B172901F794008642A4 /* UIDelegate.swift */; };
 		637F1B1A2901FA21008642A4 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B192901FA21008642A4 /* Facility.swift */; };
+		639236B0290542BF00973DDF /* RABackend.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236AE290542BF00973DDF /* RABackend.pb.swift */; };
+		639236B1290542BF00973DDF /* RABackend.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236AF290542BF00973DDF /* RABackend.grpc.swift */; };
+		639236B32905464C00973DDF /* UInt64 + WordTImes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236B22905464C00973DDF /* UInt64 + WordTImes.swift */; };
 		63988695290209570007D8C0 /* MenuTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63988694290209570007D8C0 /* MenuTree.swift */; };
 		63988697290209DC0007D8C0 /* HexagonMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63988696290209DB0007D8C0 /* HexagonMap.swift */; };
 		6398869B29020A950007D8C0 /* MenuRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398869829020A950007D8C0 /* MenuRenderer.swift */; };
@@ -92,7 +93,6 @@
 		63DFA9392904067600C26F0E /* Equipping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA91F2904067600C26F0E /* Equipping.swift */; };
 		63DFA93A2904067600C26F0E /* TickAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA9202904067600C26F0E /* TickAction.swift */; };
 		63DFA93B2904067600C26F0E /* TickHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA9212904067600C26F0E /* TickHolder.swift */; };
-		63DFA93C2904067600C26F0E /* UInt64 + WordTImes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA9222904067600C26F0E /* UInt64 + WordTImes.swift */; };
 		63DFA93D2904067600C26F0E /* ItemTypesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA9242904067600C26F0E /* ItemTypesData.swift */; };
 		63DFA93E2904067600C26F0E /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA9252904067600C26F0E /* Skill.swift */; };
 		63EF5C2A2904111500DECC44 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA9152904067600C26F0E /* Int.swift */; };
@@ -123,11 +123,12 @@
 		637F1B012901E139008642A4 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		637F1B072901EC20008642A4 /* PhysicalVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicalVenue.swift; sourceTree = "<group>"; };
 		637F1B0C2901F48C008642A4 /* DroppedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroppedItem.swift; sourceTree = "<group>"; };
-		637F1B0E2901F4F7008642A4 /* RABackend.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RABackend.grpc.swift; path = ../../RABackend/Common/RABackend.grpc.swift; sourceTree = "<group>"; };
-		637F1B0F2901F4F7008642A4 /* RABackend.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RABackend.pb.swift; path = ../../RABackend/Common/RABackend.pb.swift; sourceTree = "<group>"; };
 		637F1B132901F647008642A4 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		637F1B172901F794008642A4 /* UIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDelegate.swift; sourceTree = "<group>"; };
 		637F1B192901FA21008642A4 /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
+		639236AE290542BF00973DDF /* RABackend.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.pb.swift; sourceTree = "<group>"; };
+		639236AF290542BF00973DDF /* RABackend.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.grpc.swift; sourceTree = "<group>"; };
+		639236B22905464C00973DDF /* UInt64 + WordTImes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UInt64 + WordTImes.swift"; path = "../../../../RABackend/RAShared/Extensions/UInt64 + WordTImes.swift"; sourceTree = "<group>"; };
 		63988694290209570007D8C0 /* MenuTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTree.swift; sourceTree = "<group>"; };
 		63988696290209DB0007D8C0 /* HexagonMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexagonMap.swift; sourceTree = "<group>"; };
 		6398869829020A950007D8C0 /* MenuRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRenderer.swift; sourceTree = "<group>"; };
@@ -181,7 +182,6 @@
 		63DFA91F2904067600C26F0E /* Equipping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equipping.swift; sourceTree = "<group>"; };
 		63DFA9202904067600C26F0E /* TickAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickAction.swift; sourceTree = "<group>"; };
 		63DFA9212904067600C26F0E /* TickHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickHolder.swift; sourceTree = "<group>"; };
-		63DFA9222904067600C26F0E /* UInt64 + WordTImes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UInt64 + WordTImes.swift"; path = "../UInt64 + WordTImes.swift"; sourceTree = "<group>"; };
 		63DFA9242904067600C26F0E /* ItemTypesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTypesData.swift; sourceTree = "<group>"; };
 		63DFA9252904067600C26F0E /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,8 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				63DFA90A2904067600C26F0E /* RAShared */,
-				637F1B0E2901F4F7008642A4 /* RABackend.grpc.swift */,
-				637F1B0F2901F4F7008642A4 /* RABackend.pb.swift */,
 				63DFA90129030E9100C26F0E /* Extenstions of Shared */,
 				637F1AFE2901E08D008642A4 /* Extensions */,
 				637F1A64290187A0008642A4 /* Support & Helpers */,
@@ -423,6 +421,8 @@
 			children = (
 				63DFA9232904067600C26F0E /* Data */,
 				63DFA9132904067600C26F0E /* Extensions */,
+				639236AF290542BF00973DDF /* RABackend.grpc.swift */,
+				639236AE290542BF00973DDF /* RABackend.pb.swift */,
 				63DFA90B2904067600C26F0E /* Locality.swift */,
 				63DFA90C2904067600C26F0E /* BuffSpecifier.swift */,
 				63DFA90D2904067600C26F0E /* Waypoint.swift */,
@@ -447,7 +447,7 @@
 			children = (
 				63DFA9142904067600C26F0E /* CGSize.swift */,
 				63DFA9152904067600C26F0E /* Int.swift */,
-				63DFA9222904067600C26F0E /* UInt64 + WordTImes.swift */,
+				639236B22905464C00973DDF /* UInt64 + WordTImes.swift */,
 				63DFA9162904067600C26F0E /* CGPoint.swift */,
 				63DFA9182904067600C26F0E /* Double.swift */,
 			);
@@ -547,7 +547,6 @@
 			files = (
 				63DFA92A2904067600C26F0E /* Attributes.swift in Sources */,
 				63DFA90329030ECD00C26F0E /* Locality + Client-side.swift in Sources */,
-				637F1B102901F4F7008642A4 /* RABackend.grpc.swift in Sources */,
 				637F1AA62901CF24008642A4 /* Region.swift in Sources */,
 				639886CF2902B1B40007D8C0 /* SwitchDialogue.swift in Sources */,
 				639886CC2902B1B40007D8C0 /* DaylinWoodcuttingQuest.swift in Sources */,
@@ -574,7 +573,7 @@
 				639886DB2902B6E90007D8C0 /* ItemHolding.swift in Sources */,
 				637F1B152901F647008642A4 /* Item.swift in Sources */,
 				63DFA8EC2902D14200C26F0E /* Faceable.swift in Sources */,
-				63DFA93C2904067600C26F0E /* UInt64 + WordTImes.swift in Sources */,
+				639236B32905464C00973DDF /* UInt64 + WordTImes.swift in Sources */,
 				639886D02902B1B40007D8C0 /* Quest.swift in Sources */,
 				639886B62902AA8F0007D8C0 /* Game.swift in Sources */,
 				637F1A6029018152008642A4 /* VenueMap.swift in Sources */,
@@ -585,15 +584,16 @@
 				639886D12902B1B40007D8C0 /* DialogueNode.swift in Sources */,
 				63DFA9272904067600C26F0E /* BuffSpecifier.swift in Sources */,
 				637F1AFB2901DFF8008642A4 /* CharacterNode.swift in Sources */,
-				637F1B112901F4F7008642A4 /* RABackend.pb.swift in Sources */,
 				63DFA93A2904067600C26F0E /* TickAction.swift in Sources */,
 				63DFA9392904067600C26F0E /* Equipping.swift in Sources */,
 				639886A9290217030007D8C0 /* MappedHexagon.swift in Sources */,
+				639236B0290542BF00973DDF /* RABackend.pb.swift in Sources */,
 				63DFA92C2904067600C26F0E /* ItemType.swift in Sources */,
 				63DFA92E2904067600C26F0E /* CGSize.swift in Sources */,
 				637F1A802901ADF2008642A4 /* MarkerAdornable.swift in Sources */,
 				637F1AA82901D12A008642A4 /* Terrain.swift in Sources */,
 				637F1B0D2901F48C008642A4 /* DroppedItem.swift in Sources */,
+				639236B1290542BF00973DDF /* RABackend.grpc.swift in Sources */,
 				63DFA8E72902CFD600C26F0E /* Moveable.swift in Sources */,
 				63DFA9362904067600C26F0E /* Topology.swift in Sources */,
 				63DFA90529031A0400C26F0E /* UIDelegate + Movement.swift in Sources */,
