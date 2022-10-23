@@ -28,25 +28,6 @@ public enum Facilities {}
 
 public class Facility: NSObject, Identifiable, Interactable {
     public typealias ID = String
-    
-    public class Builder {
-        public required init(specifier: String) {}
-        
-        public func build(id: Facility.ID, at position: VenuePosition) -> Facility {
-            fatalError("Not implemented in subclass.")
-        }
-        
-        public func build(at position: [VenuePosition]) -> [Facility] {
-            fatalError("Not implemented in subclass.")
-        }
-    }
-    
-    static var factories: [Facility.Kind : Facility.Builder.Type] = [:
-//        .tree:       Facilities.Tree.Builder.self,
-        //        .sawMill:    Facilities.SawMill.Builder.self,
-        //        .rubblePile: Facilities.RubblePile.Builder.self
-    ]
-    
     public enum Kind: String, Codable, Equatable, Hashable {
         case tree, fruitTree
         case sawMill
