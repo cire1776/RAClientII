@@ -61,9 +61,3 @@ extension RABackend_Size {
         CGSize(width: self.width, height: self.height)
     }
 }
-
-extension RABackend_Facility {
-//    var toFacility: some Facility {
-//        JSONDecoder().decode(Facility.self, from: self.data)
-//    }
-}
