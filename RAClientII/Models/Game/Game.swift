@@ -200,6 +200,17 @@ class Game: TickHolder, BeatNotifier {
 //        try container.encode(newSchedule, forKey: Game.CodingKeys.tickScheduler)
     }
     
+    
+    func oneTimeSetup() {
+        self.venue!.name = Game.venues.values.first?.name ?? "unknown"
+        self.venue!.playerCharacter = "cire"
+        
+        self.venue!.setupDroppedItems()
+//        self.server!.update(droppedItems: self.venue!.droppedItems)
+        
+        self.changed = true
+    }
+    
     func tick(_ tick: UInt64) {
 //        guard let actions = tickScheduler.removeValue(forKey: tick) else { return }
 //        
