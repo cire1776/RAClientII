@@ -64,7 +64,22 @@ public class Facility: NSObject, Identifiable, Interactable {
         
         super.init()
     }
-    
+
+    public init(from source: RABackend_Facility) {
+        self.id = source.id.id
+        self.position = VenuePosition(position: source.position)
+        self.type = .facility
+
+        if let kind = Kind(rawValue:source.kind) {
+            self.kind = kind
+        } else {
+            self.kind = .tree
+            print("### unknown kind string.")
+        }
+        
+        super.init()
+    }
+
     public func isEqualTo(other: Facility) -> Bool {
         self.id == other.id &&
         self.position == other.position &&
