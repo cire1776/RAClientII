@@ -107,6 +107,40 @@ struct MainView: View {
                 }
             }
         }
+//        .task {
+//            GameClient.gameClient = gameClient
+//            
+//            GameClient.gameScene = scene
+//            scene.gameClient = gameClient
+//            
+//            let game: Game
+//            
+//            do {
+//                game = try await GameLoader().load(server: server as! MockServer)
+//                
+//                initializeGameClock(game: game)
+//                GameSaver.scheduleSave(game: game)
+//            } catch {
+//                print("**** Unable to load data:",error)
+//                game = Game(server: server)
+//                
+//                Game.game = game
+//                server.game = game
+//               
+//                // needs to be before other initialization so that ticks and scheduling is available.
+//                game.gameClock = Game.GameClock(game: game, initialTick: game.initialTick)
+//                initializeGameClock(game: game)
+//                
+//                game.oneTimeSetup()
+//                game.characterSetup()
+//            }
+//                            
+//            gameClient.start()
+//            
+//            if game.changed {
+//                try! game.save()
+//            }
+//        }
     }
     
     struct ContentSizePreferenceKey: PreferenceKey {
