@@ -12,7 +12,7 @@ import OrderedCollections
 let sharedGame = Game.game!
 #endif
 
-class Game {
+class Game: TickHolder, BeatNotifier {
     static var game: Game!
 //    static var environment: Game.Environment!
     static var venues: [Venue.ID : Venue] = [:]
@@ -59,16 +59,13 @@ class Game {
 //    var currentOperation: Game.Operation? = nil
 //    var cancelOperationAfterPerform = false
     
-//    var gameClock: GameClock!
+    var heartbeat: Heartbeat!
     
-    let initialTick: UInt
+    let initialTick: UInt64
     
-    var currentTick: UInt {
-//        gameClock.tick
-        1
-    }
+    var currentTick: UInt64 { self.tick }
     
-//    var tickScheduler = [UInt : [String: Schedulable]]()
+//    var tickScheduler = [UInt64 : [String: Schedulable]]()
     
     var playerID: Character.ID
     
@@ -102,7 +99,11 @@ class Game {
             return ModelType.Unknown()
         }
     }
-
+    
+    func beat() async {
+        await advanceTick()
+    }
+    
     private func triggerLazy(loadEverything: Bool = false) {
 //        Endorsement.setupRegisteredEndorsements()
 //        Game.environment = Game.Environment()
@@ -194,7 +195,7 @@ class Game {
 //        try container.encode(newSchedule, forKey: Game.CodingKeys.tickScheduler)
     }
     
-    func tick(_ tick: UInt) {
+    func tick(_ tick: UInt64) {
 //        guard let actions = tickScheduler.removeValue(forKey: tick) else { return }
 //        
 //        for action in actions.values {
