@@ -28,17 +28,17 @@ class Game: TickHolder, BeatNotifier {
     
     static var characters = Character.Characters()
     
-    fileprivate static var gameURL: URL {
-        let folderURL = try? FileManager.default.url(
-            for: .documentDirectory,
-            in: .userDomainMask,
-            appropriateFor: nil,
-            create: false
-        )
-        
-        return folderURL!.appendingPathComponent("game.json")
-    }
-    
+//    fileprivate static var gameURL: URL {
+//        let folderURL = try? FileManager.default.url(
+//            for: .documentDirectory,
+//            in: .userDomainMask,
+//            appropriateFor: nil,
+//            create: false
+//        )
+//
+//        return folderURL!.appendingPathComponent("game.json")
+//    }
+//
     static var itemTypes = [ItemType.ID : ItemType]()
     
     static func add(_ itemTypes: [ItemType]) {
