@@ -185,7 +185,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
 //        .environmentObject(SKSceneObservable(scene: scene))
-            .environmentObject(gameScene)
+        .environmentObject(gameScene)
         .environmentObject(gameClient)
         .previewInterfaceOrientation(.landscapeRight)
     }
