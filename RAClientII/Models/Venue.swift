@@ -42,7 +42,6 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     }
     
     public init() {
-        self.id = UUID().uuidString
         self.id = "placeholder ID"
         self.playerCharacter = "Unnamed Character"
         self.name = "Unnamed Venue"
