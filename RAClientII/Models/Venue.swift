@@ -65,6 +65,18 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.id = status.venueData.id.id
         self.name = status.venueData.name
         self.description = status.venueData.description_p
+        self.orientation = status.venueData.orientation.toOrientation
+        self.bounds = status.venueData.bounds.toCGSize
+        self.playerCharacter = status.activeCharacter.id.id
+        self.charactersPresent = Set(status.charactersPresentList.map {
+            $0.characterID.id
+        })
+        self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
+            let facility = Facility(from: backendFacility)
+            var facilities = accum
+            facilities[facility.id] = facility
+            return facilities
+        }
     }
     
     public func copy(with zone: NSZone? = nil) -> Any {
