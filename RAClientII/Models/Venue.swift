@@ -46,7 +46,17 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.playerCharacter = "Unnamed Character"
         self.name = "Unnamed Venue"
         self.description = "Undescribed Place"
-        self.region = Hexagon.Region()
+        self.region = Hexagon.Region(hexes: [
+            Geography.TerrainSpecifier(.grassland, .plain),
+            Geography.TerrainSpecifier(.grassland, .plain),
+            Geography.TerrainSpecifier(.grassland, .plain),
+            Geography.TerrainSpecifier(.grassland, .plain),
+            Geography.TerrainSpecifier(.grassland, .plain),
+            Geography.TerrainSpecifier(.grassland, .plain),
+            Geography.TerrainSpecifier(.grassland, .plain),
+            Geography.TerrainSpecifier(.grassland, .plain),
+            Geography.TerrainSpecifier(.grassland, .plain),
+        ], orientation: .point, width: 3)
         
         self.id = createID
     }
