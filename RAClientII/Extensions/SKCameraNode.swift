@@ -10,7 +10,7 @@ import SpriteKit
 extension SKCameraNode {
     static func setup(scene: GameScene) {
         let camera = SKCameraNode()
-        camera.setScale(0.05)
+        camera.setScale(2)
         camera.physicsBody = SKPhysicsBody()
         camera.physicsBody?.velocity = .zero
         camera.physicsBody?.linearDamping = 13.0
