@@ -171,11 +171,12 @@ class Game: TickHolder, BeatNotifier {
 //                }
 //            }
 //        }
+        try super.init(from: decoder)
         
         triggerLazy()
     }
     
-    func encode(to encoder: Encoder) throws {
+    override func encode(to encoder: Encoder) throws {
         var container: KeyedEncodingContainer<Game.CodingKeys> = encoder.container(keyedBy: Game.CodingKeys.self)
         
         try container.encode(self.venueID, forKey: Game.CodingKeys.venueID)
