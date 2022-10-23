@@ -37,16 +37,24 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         return [:]
     }
     
+    var createID: String {
+        return self.name.lowercased()
+    }
+    
     public init() {
         self.id = UUID().uuidString
+        self.id = "placeholder ID"
         self.playerCharacter = "Unnamed Character"
         self.name = "Unnamed Venue"
         self.description = "Undescribed Place"
         self.region = Hexagon.Region()
+        
+        self.id = createID
     }
     
     public convenience init(named name: String, description: String) {
         self.init()
+        self.id = createID
         self.name = name
         self.description = description
     }
