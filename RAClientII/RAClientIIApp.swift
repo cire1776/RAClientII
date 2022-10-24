@@ -95,9 +95,12 @@ struct RAClientIIApp: App {
                     group.addTask {
                         print("*", terminator: "")
                         for try await status in connection.responseStream {
-                            GameClient.gameClient.venue = Venue(fromStatus: status)
-                            print("@", terminator: "")
+                            await MainActor.run {
+                                GameClient.gameClient.venue = Venue(fromStatus: status)
+                                print("@", terminator: "")
+                            }
                             print(status)
+
                         }
                         print("#end", terminator: "")
                     }
