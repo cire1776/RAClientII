@@ -154,29 +154,42 @@ struct RAClientIIApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-            .environmentObject(gameClient)
-            .environmentObject(gameScene)
             .task {
                 GameClient.gameClient = gameClient
                 gameScene.gameClient = gameClient
                 GameClient.gameScene = gameScene
+                
                 await startup()
+                
+                gameClient.start()
             }
+            .environmentObject(gameClient)
+            .environmentObject(gameScene)
+
         }
     }
     
     func startup() async -> Game {
+//        game.characterSetup()
         let game = await Game()
         Game.game = game
-       
+        
         // needs to be before other initialization so that ticks and scheduling is available.
         game.heartbeat = Heartbeat(beatNotifier: game)
         try! game.heartbeat.start()
+        Game.game.oneTimeSetup()
         
-        game.oneTimeSetup()
-//        game.characterSetup()
-        gameClient.start()
+        //        self.characters = Character.Characters()
+        game.heartbeat = Heartbeat(beatNotifier: game)
         
-        return game
+        await MainActor.run {
+            gameClient.venue = game.venue
+        }
+        await gameScene.setupScene()
+        
+        await GameClient.gameScene.initialize()
+        gameClient.venue.recordAllCharacters()
+        
+        return Game.game
     }
 }

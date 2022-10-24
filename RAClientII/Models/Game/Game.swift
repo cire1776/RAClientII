@@ -15,10 +15,8 @@ let sharedGame = Game.game!
 class Game: TickHolder, BeatNotifier {
     static var game: Game!
 //    static var environment: Game.Environment!
-    static var venues: [Venue.ID : Venue] = [:]
-    
-    static var startingVenues: [()] = [
-        add(venue: Venue(named: "Primera", description: "The first place"))
+    static var venues: [Venue.ID : Venue] = [
+        "primera": Venue(named: "Primera", description: "The first place"),
     ]
     
     static func add(venue: Venue) {
@@ -115,10 +113,17 @@ class Game: TickHolder, BeatNotifier {
         // lazy evaluations,
         
         if loadEverything {
-            print("starting venues:", Game.startingVenues.count)
+            print("starting venues:", Game.venues.count)
+            
 //            _ = Facilities.setupOperations
             
             self.venueID = Game.venues.values.first?.id ?? "unknown"
+            
+            Task {
+                await MainActor.run {
+                    GameClient.gameClient.venue = self.venue
+                }
+            }
         }
         
         print("starting quests:", Quest.addedQuests.count)
@@ -173,7 +178,7 @@ class Game: TickHolder, BeatNotifier {
 //        }
         try super.init(from: decoder)
         
-        triggerLazy()
+//        triggerLazy()
     }
     
     override func encode(to encoder: Encoder) throws {
@@ -202,7 +207,7 @@ class Game: TickHolder, BeatNotifier {
     
     
     func oneTimeSetup() {
-        self.venue!.name = Game.venues.values.first?.name ?? "unknown"
+//        self.venue!.name = Game.venues.values.first?.name ?? "unknown"
         self.venue!.playerCharacter = "cire"
         
         self.venue!.setupDroppedItems()

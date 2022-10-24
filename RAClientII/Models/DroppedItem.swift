@@ -47,6 +47,19 @@ public class DroppedItem: NSObject, NSCopying, Codable, Identifiable, Interactab
         
         self.position = VenuePosition(hex:position.hex, x: newX, y: newY)
     }
+
+    public init(from source: RABackend_DroppedItem) {
+        let itemID = source.item.itemID.id
+
+        self.id = itemID
+        self.position = VenuePosition(position: source.position)
+        self.type = .droppedItem
+        
+        let item = sharedGame[.item, itemID] as! Item
+        self.item = item
+        
+        super.init()
+    }
     
     public func copy(with zone: NSZone? = nil) -> Any {
         DroppedItem(self.item, at: self.position)

@@ -78,9 +78,7 @@ class GameScene : SKScene, ObservableObject, MarkerAdornable {
     }
     
     func initialize() {
-        self.setupScene()
-        
-        uiDelegate.setup(view: self.view!)
+         uiDelegate.setup(view: self.view!)
         
         HexagonMapNode.setup(scene: self, radius: 100)
 
@@ -110,7 +108,6 @@ class GameScene : SKScene, ObservableObject, MarkerAdornable {
     }
     
     func setupScene() {
-        self.orientation = self.gameClient.venue.orientation
         self.region = self.gameClient.venue.region
 
         self.scaleMode = .aspectFill

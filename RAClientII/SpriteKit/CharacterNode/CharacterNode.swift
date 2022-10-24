@@ -21,7 +21,10 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
         }
         
         for characterID in insertions {
-            let characterData = scene.characters[characterID]!
+            guard let characterData = try? (scene.venue![.character, characterID] as! Character) else {
+                print("*** unable to find character: \(characterID)")
+                continue
+            }
             
             let playerType: Character.Class = characterData.id == scene.venue.playerCharacter ?
                     .player :

@@ -61,26 +61,21 @@ class GameClient: ObservableObject, ActionRegisterable, BeatNotifier {
         }
     }
     
-    init() {
-        self.venue = Venue()
-//        self.characters = Character.Characters()
-        heartbeat = Heartbeat(beatNotifier: self)
-    }
+    init() {}
     
     func start() {
-        let subscriber = self.$ready
-                                   .receive(on: DispatchQueue.main)
-                                   .sink { ready in
-            if ready {
-                print("game ready.")
-                GameClient.gameScene.initialize()
+//        let subscriber = self.$ready
+//                         .receive(on: DispatchQueue.main)
+//                         .sink { ready in
+//            if ready {
+//                print("game ready.")
+////                GameClient.gameScene.initialize()
 //                self.venue.recordAllCharacters()
-            }
-        }
+//            }
+//        }
         
-        allSubscriptions.insert(subscriber)
+//        allSubscriptions.insert(subscriber)
         
-        GameClient.gameScene.initialize()
     }
     
     func beat() async {

@@ -92,4 +92,13 @@ public extension Character {
             super.init()
         }
     }
+    
+    convenience init(source characterData: RABackend_CharacterData) throws {
+        guard let venue = Game.game.venue,
+              venue.id == characterData.venue.id
+        else { throw ModelType.Unknown() }
+        
+        self.init(id: characterData.characterID.id, displayName: characterData.displayName, type: .character, venue: venue, locality: Locality(from: characterData.locality))
+        self.type = .character
+    }
 }
