@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */; };
 		637F1A4B29015EBA008642A4 /* RAClientIIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1A4A29015EBA008642A4 /* RAClientIIApp.swift */; };
 		637F1A4F29015EBC008642A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 637F1A4E29015EBC008642A4 /* Assets.xcassets */; };
 		637F1A5329015EBC008642A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 637F1A5229015EBC008642A4 /* Preview Assets.xcassets */; };
@@ -101,6 +102,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + RABackend_Size.swift"; sourceTree = "<group>"; };
 		637F1A4729015EBA008642A4 /* RAClientII.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAClientII.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		637F1A4A29015EBA008642A4 /* RAClientIIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAClientIIApp.swift; sourceTree = "<group>"; };
 		637F1A4E29015EBC008642A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				63DFA8F12902D2E300C26F0E /* SKNode.swift */,
 				63DFA8EF2902D2D800C26F0E /* SKNode+toImage.swift */,
 				639236A8290491B300973DDF /* Protobuff.swift */,
+				636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				63DFA92B2904067600C26F0E /* Hexagon.swift in Sources */,
 				637F1B022901E139008642A4 /* Venue.swift in Sources */,
 				63DFA8F22902D2E300C26F0E /* SKNode.swift in Sources */,
+				636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */,
 				63988695290209570007D8C0 /* MenuTree.swift in Sources */,
 				63DFA93B2904067600C26F0E /* TickHolder.swift in Sources */,
 				63DFA8F02902D2D800C26F0E /* SKNode+toImage.swift in Sources */,
