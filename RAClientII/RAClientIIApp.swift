@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 import GRPC
 import NIO
+import NIOCore
 import SwiftProtobuf
 import NIOHPACK
 
