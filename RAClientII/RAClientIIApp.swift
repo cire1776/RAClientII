@@ -92,7 +92,7 @@ struct RAClientIIApp: App {
                     
                     let options = CallOptions(customMetadata: HPACKHeaders([("venueID", "primera"), ("activeCharacterID","cire")]),timeLimit: TimeLimit.deadline(NIODeadline.now() + .minutes(15)))
                     let connection = myself.gamePortalClient.makeConnectCall(callOptions: options)
-                    
+                     
                     group.addTask {
                         print("*", terminator: "")
                         for try await status in connection.responseStream {
