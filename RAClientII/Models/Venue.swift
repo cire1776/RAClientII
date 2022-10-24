@@ -64,8 +64,8 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     
     public convenience init(named name: String, description: String) {
         self.init()
-        self.id = createID
         self.name = name
+        self.id = createID
         self.description = description
     }
     
