@@ -24,6 +24,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     
     var playerCharacter: Character.ID
     @Published var charactersPresent = Set<Character.ID>()
+    @Published var characters = [Character.ID : Character]()
     
     @Published var facilities = [Facility.ID : Facility]()
     var facilitiesMap = GKQuadtree(boundingQuad: GKQuad(quadMin: vector_float2(x: -10_000, y: -10_000), quadMax: vector_float2(x: 10_000, y: 10_000)), minimumCellSize: 40)
