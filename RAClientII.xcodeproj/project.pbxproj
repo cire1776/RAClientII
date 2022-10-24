@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		636EDC2D2906A6B700BF2213 /* SharedProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */; };
+		636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2E2906B25700BF2213 /* ProtoBuff.swift */; };
 		636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */; };
 		637F1A4B29015EBA008642A4 /* RAClientIIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1A4A29015EBA008642A4 /* RAClientIIApp.swift */; };
 		637F1A4F29015EBC008642A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 637F1A4E29015EBC008642A4 /* Assets.xcassets */; };
@@ -41,7 +43,6 @@
 		637F1B1A2901FA21008642A4 /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1B192901FA21008642A4 /* Facility.swift */; };
 		639236A529048ED800973DDF /* UInt64 + WordTImes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236A429048ED800973DDF /* UInt64 + WordTImes.swift */; };
 		639236A729048F7100973DDF /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236A629048F7100973DDF /* CommandQueue.swift */; };
-		639236A9290491B300973DDF /* Protobuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236A8290491B300973DDF /* Protobuff.swift */; };
 		639236B0290542BF00973DDF /* RABackend.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236AE290542BF00973DDF /* RABackend.pb.swift */; };
 		639236B1290542BF00973DDF /* RABackend.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236AF290542BF00973DDF /* RABackend.grpc.swift */; };
 		63988695290209570007D8C0 /* MenuTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63988694290209570007D8C0 /* MenuTree.swift */; };
@@ -102,6 +103,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedProtoBuff.swift; path = RAClientII/RAShared/SharedProtoBuff.swift; sourceTree = SOURCE_ROOT; };
+		636EDC2E2906B25700BF2213 /* ProtoBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoBuff.swift; sourceTree = "<group>"; };
 		636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + RABackend_Size.swift"; sourceTree = "<group>"; };
 		637F1A4729015EBA008642A4 /* RAClientII.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAClientII.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		637F1A4A29015EBA008642A4 /* RAClientIIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAClientIIApp.swift; sourceTree = "<group>"; };
@@ -132,7 +135,6 @@
 		637F1B192901FA21008642A4 /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		639236A429048ED800973DDF /* UInt64 + WordTImes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UInt64 + WordTImes.swift"; sourceTree = "<group>"; };
 		639236A629048F7100973DDF /* CommandQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommandQueue.swift; path = RAClientII/RAShared/CommandQueue.swift; sourceTree = SOURCE_ROOT; };
-		639236A8290491B300973DDF /* Protobuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protobuff.swift; sourceTree = "<group>"; };
 		639236AE290542BF00973DDF /* RABackend.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.pb.swift; sourceTree = "<group>"; };
 		639236AF290542BF00973DDF /* RABackend.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.grpc.swift; sourceTree = "<group>"; };
 		63988694290209570007D8C0 /* MenuTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTree.swift; sourceTree = "<group>"; };
@@ -332,7 +334,7 @@
 				63DFA8ED2902D23800C26F0E /* CGVector.swift */,
 				63DFA8F12902D2E300C26F0E /* SKNode.swift */,
 				63DFA8EF2902D2D800C26F0E /* SKNode+toImage.swift */,
-				639236A8290491B300973DDF /* Protobuff.swift */,
+				636EDC2E2906B25700BF2213 /* ProtoBuff.swift */,
 				636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */,
 			);
 			path = Extensions;
@@ -431,6 +433,7 @@
 				63DFA9132904067600C26F0E /* Extensions */,
 				639236AF290542BF00973DDF /* RABackend.grpc.swift */,
 				639236AE290542BF00973DDF /* RABackend.pb.swift */,
+				636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */,
 				63DFA90B2904067600C26F0E /* Locality.swift */,
 				639236A629048F7100973DDF /* CommandQueue.swift */,
 				63DFA90C2904067600C26F0E /* BuffSpecifier.swift */,
@@ -584,6 +587,7 @@
 				637F1B152901F647008642A4 /* Item.swift in Sources */,
 				639236A529048ED800973DDF /* UInt64 + WordTImes.swift in Sources */,
 				63DFA8EC2902D14200C26F0E /* Faceable.swift in Sources */,
+				636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */,
 				639886D02902B1B40007D8C0 /* Quest.swift in Sources */,
 				639886B62902AA8F0007D8C0 /* Game.swift in Sources */,
 				637F1A6029018152008642A4 /* VenueMap.swift in Sources */,
@@ -616,13 +620,13 @@
 				639886A1290215440007D8C0 /* EntityHolder.swift in Sources */,
 				63DFA90929031A5400C26F0E /* Command.swift in Sources */,
 				637F1AFD2901E054008642A4 /* HexagonMapNode.swift in Sources */,
-				639236A9290491B300973DDF /* Protobuff.swift in Sources */,
 				637F1A66290187BA008642A4 /* ServerProxy.swift in Sources */,
 				637F1AAC2901D23B008642A4 /* Characters.swift in Sources */,
 				63DFA93D2904067600C26F0E /* ItemTypesData.swift in Sources */,
 				63DFA8E52902CFB200C26F0E /* FaceableNode.swift in Sources */,
 				639886D22902B1B40007D8C0 /* Dialogue.swift in Sources */,
 				63DFA9352904067600C26F0E /* ModelType.swift in Sources */,
+				636EDC2D2906A6B700BF2213 /* SharedProtoBuff.swift in Sources */,
 				63DFA8EE2902D23800C26F0E /* CGVector.swift in Sources */,
 				639886CB2902B1B40007D8C0 /* Index.swift in Sources */,
 				63DFA9322904067600C26F0E /* Double.swift in Sources */,
