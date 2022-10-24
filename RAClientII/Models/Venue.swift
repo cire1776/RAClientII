@@ -87,6 +87,14 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
             facilities[facility.id] = facility
             return facilities
         }
+        
+        self.droppedItems = status.droppedItems.reduce([DroppedItem.ID : DroppedItem]()) { accum, backendDroppedItem in
+            let droppedItem = DroppedItem(from: backendDroppedItem)
+            var droppedItems = accum
+            droppedItems[droppedItem.id] = droppedItem
+            return droppedItems
+        }
+    }
     
     public func update(fromStatus status: RABackend_GameStatus) {
         self.name = status.venueData.name
