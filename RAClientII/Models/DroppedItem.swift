@@ -20,11 +20,12 @@ public enum InteractableType: Codable {
 }
 
 public class DroppedItem: NSObject, NSCopying, Codable, Identifiable, Interactable {
+    public typealias ID = String
     static func == (lhs: DroppedItem, rhs: DroppedItem) -> Bool {
         lhs.position == rhs.position
     }
     
-    let id: String
+    public let id: ID
     
     var type: InteractableType = .droppedItem
     
