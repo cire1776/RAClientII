@@ -110,7 +110,7 @@ struct RAClientIIApp: App {
                             let clientCommand = await queue.pop
                             
                             guard let clientCommand = clientCommand else {
-                                try! await Task.sleep(nanoseconds: 10_000)
+                                try! await Task.sleep(nanoseconds: 5_000)
                                 continue
                             }
                             
@@ -122,8 +122,6 @@ struct RAClientIIApp: App {
                             
                             let status = await connection.status
                             print(status)
-                            
-                            try await Task.sleep(nanoseconds: 10_000_000_000)
                         }
                     }
                     
