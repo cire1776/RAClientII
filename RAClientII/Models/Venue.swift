@@ -75,7 +75,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.name = status.venueData.name
         self.description = status.venueData.description_p
         self.orientation = status.venueData.orientation.toOrientation
-        self.bounds = status.venueData.bounds.toCGSize
+        self.bounds = CGSize(status.venueData.bounds)
         self.playerCharacter = status.activeCharacter.id.id
         self.charactersPresent = Set(status.charactersPresentList.map {
             $0.characterID.id
