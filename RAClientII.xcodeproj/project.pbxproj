@@ -320,8 +320,8 @@
 		637F1AF72901DFF8008642A4 /* CharacterNode */ = {
 			isa = PBXGroup;
 			children = (
-				637F1AF82901DFF8008642A4 /* CharacterNode + Moveable.swift */,
 				637F1AF92901DFF8008642A4 /* CharacterNode.swift */,
+				637F1AF82901DFF8008642A4 /* CharacterNode + Moveable.swift */,
 			);
 			path = CharacterNode;
 			sourceTree = "<group>";
