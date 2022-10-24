@@ -90,7 +90,7 @@ struct RAClientIIApp: App {
 
                 try! await withThrowingTaskGroup(of: Void.self) { group in
                     
-                    let options = CallOptions(customMetadata: HPACKHeaders([("venueID", "primera"), ("activeCharacterID","cire")]),timeLimit: TimeLimit.timeout(.minutes(15)))
+                    let options = CallOptions(customMetadata: HPACKHeaders([("venueID", "primera"), ("activeCharacterID","cire")]),timeLimit: TimeLimit.deadline(NIODeadline.now() + .minutes(15)))
                     let connection = myself.gamePortalClient.makeConnectCall(callOptions: options)
                     
                     group.addTask {
