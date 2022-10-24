@@ -117,12 +117,7 @@ struct RAClientIIApp: App {
                             
                             let gameCommand = RABackend_GameCommand(clientCommand: clientCommand.0)
                             
-                            print("sending Command:", clientCommand)
-                            
                             try! await connection.requestStream.send(gameCommand)
-                            
-                            let status = await connection.status
-                            print(status)
                         }
                     }
                     
