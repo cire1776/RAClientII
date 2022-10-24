@@ -141,8 +141,7 @@ struct RAClientIIApp: App {
                                 continue
                             }
                             
-                            await queue.push((command, command))
-                            try! await Task.sleep(nanoseconds: 1_000_000_000)
+                            await queue.push((command,nil))
                         }
                     }
                     try await group.waitForAll()
