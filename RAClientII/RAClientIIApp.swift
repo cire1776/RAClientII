@@ -129,8 +129,10 @@ struct RAClientIIApp: App {
                     group.addTask {
                         let commands: [ClientCommand] = [
                             .connect,
-                            .report,
-                            .face(facing: 4)
+                            .wait(10),
+                            .face(facing: 4),
+                            .addWaypoint(destination: VenuePosition(hex: (1,1), x: 0, y: 0),duration: UInt64(5.seconds) ),
+//                            .report,
                         ]
                         
                         for command in commands {
