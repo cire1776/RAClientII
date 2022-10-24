@@ -117,6 +117,26 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
             return droppedItems
         }
     }
+    
+    public subscript(source: ModelType, index: String) -> AnyObject? {
+        get throws {
+            switch source {
+            case .character:
+                guard let character = self.characters[index]
+                else { throw ModelType.Unknown() }
+                return character
+            case .facility:
+                guard let facility = self.facilities[index]
+                else { throw ModelType.Unknown() }
+                return facility
+            case .droppedItem:
+                guard let droppedItem = self.droppedItems[index]
+                else { throw ModelType.Unknown() }
+                return droppedItem
+            default:
+                return nil
+            }
+        }
     }
     
     public func update(fromStatus status: RABackend_GameStatus) {
