@@ -139,7 +139,7 @@ class Game: TickHolder, BeatNotifier {
 //        self.currentOperation = try container.decodeIfPresent(Game.Operation.self, forKey: Game.CodingKeys.currentOperation)
 //        self.cancelOperationAfterPerform = try container.decode(Bool.self, forKey: Game.CodingKeys.cancelOperationAfterPerform)
 //        self.operationResults = try container.decodeIfPresent(Game.Operation.Result.self, forKey: Game.CodingKeys.operationResults)
-        self.initialTick = try container.decode(UInt.self, forKey: Game.CodingKeys.initialTick)
+        self.initialTick = try container.decode(UInt64.self, forKey: Game.CodingKeys.initialTick)
         
 //        do {
 //            self.gameClock = try container.decode(GameClock.self, forKey: .gameClock)
