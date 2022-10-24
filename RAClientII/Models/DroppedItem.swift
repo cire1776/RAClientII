@@ -19,7 +19,7 @@ public enum InteractableType: Codable {
     case other
 }
 
-class DroppedItem: NSObject, NSCopying, Codable, Identifiable, Interactable {
+public class DroppedItem: NSObject, NSCopying, Codable, Identifiable, Interactable {
     static func == (lhs: DroppedItem, rhs: DroppedItem) -> Bool {
         lhs.position == rhs.position
     }
@@ -31,13 +31,13 @@ class DroppedItem: NSObject, NSCopying, Codable, Identifiable, Interactable {
     var item: Item
     var position: VenuePosition
     
-    init(_ item: Item, at position: VenuePosition) {
+    public init(_ item: Item, at position: VenuePosition) {
         self.id = item.id
         self.item = item
         self.position = position
     }
     
-    init(_ item: Item, at position: VenuePosition, within range: CGFloat) {
+    public init(_ item: Item, at position: VenuePosition, within range: CGFloat) {
         self.id = item.id
         self.item = item
         
@@ -47,7 +47,7 @@ class DroppedItem: NSObject, NSCopying, Codable, Identifiable, Interactable {
         self.position = VenuePosition(hex:position.hex, x: newX, y: newY)
     }
     
-    func copy(with zone: NSZone? = nil) -> Any {
+    public func copy(with zone: NSZone? = nil) -> Any {
         DroppedItem(self.item, at: self.position)
     }
 }
