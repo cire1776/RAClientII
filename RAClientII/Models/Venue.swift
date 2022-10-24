@@ -89,6 +89,36 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         }
     }
     
+    public func update(fromStatus status: RABackend_GameStatus) {
+        self.name = status.venueData.name
+        self.description = status.venueData.description_p
+        self.bounds = CGSize(status.venueData.bounds)
+        self.playerCharacter = status.activeCharacter.id.id
+        self.charactersPresent = Set(status.charactersPresentList.map {
+            $0.characterID.id
+        })
+        self.characters = status.charactersPresentList.reduce([String:Character]()) { accum, backendCharacter in
+            let character = try! Character(source: backendCharacter)
+            
+            var characters = accum
+            characters[character.id] = character
+            return characters
+        }
+        self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
+            let facility = Facility(from: backendFacility)
+            var facilities = accum
+            facilities[facility.id] = facility
+            return facilities
+        }
+        
+        self.droppedItems = status.droppedItems.reduce([DroppedItem.ID : DroppedItem]()) { accum, backendDroppedItem in
+            let droppedItem = DroppedItem(from: backendDroppedItem)
+            var droppedItems = accum
+            droppedItems[droppedItem.id] = droppedItem
+            return droppedItems
+        }
+    }
+    
     public func copy(with zone: NSZone? = nil) -> Any {
         let result = Venue()
         result.copy(from: self)

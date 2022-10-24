@@ -97,7 +97,7 @@ struct RAClientIIApp: App {
                         print("*", terminator: "")
                         for try await status in connection.responseStream {
                             await MainActor.run {
-                                GameClient.gameClient.venue = Venue(fromStatus: status)
+                                GameClient.gameClient.venue.update(fromStatus: status)
                                 print("@", terminator: "")
                             }
                             print(status)
