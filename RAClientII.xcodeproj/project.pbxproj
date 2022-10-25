@@ -233,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				63DFA90A2904067600C26F0E /* RAShared */,
-				63DFA90129030E9100C26F0E /* Extenstions of Shared */,
+				63DFA90129030E9100C26F0E /* Extensions of Shared */,
 				637F1AFE2901E08D008642A4 /* Extensions */,
 				637F1A64290187A0008642A4 /* Support & Helpers */,
 				637F1A6129018254008642A4 /* Models */,
@@ -421,12 +421,12 @@
 			path = Commands;
 			sourceTree = "<group>";
 		};
-		63DFA90129030E9100C26F0E /* Extenstions of Shared */ = {
+		63DFA90129030E9100C26F0E /* Extensions of Shared */ = {
 			isa = PBXGroup;
 			children = (
 				63DFA90229030ECD00C26F0E /* Locality + Client-side.swift */,
 			);
-			path = "Extenstions of Shared";
+			path = "Extensions of Shared";
 			sourceTree = "<group>";
 		};
 		63DFA90A2904067600C26F0E /* RAShared */ = {
