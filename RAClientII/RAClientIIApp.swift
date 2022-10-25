@@ -59,7 +59,6 @@ public enum ClientCommand: Codable {
     case unequip(itemID: Item.ID)
 }
 
-
 var queue = CommandQueue<ClientCommand, ClientCommand>() {
     print($0 as Any)
 }
@@ -69,114 +68,46 @@ struct RAClientIIApp: App {
     var gamePortalClient: RABackend_GamePortalAsyncClient!
     let port: Int = 1964
     
-    init() {
-        // build a fountain of EventLoops
-        let eventLoopGroup = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-        do {
-            // open a channel to the gPRC server
-            let channel = try GRPCChannelPool.with(
-                target: .host("localhost", port: self.port),
-                transportSecurity: .plaintext,
-                eventLoopGroup: eventLoopGroup
-            )
-            
-            var myself = self
-
-            Task {
-                // create a Client
-                myself.gamePortalClient = RABackend_GamePortalAsyncClient(channel: channel)
-                print("GRPC connection initialized")
-                
-
-                try! await withThrowingTaskGroup(of: Void.self) { group in
-                    
-                    let options = CallOptions(customMetadata: HPACKHeaders([("venueID", "primera"), ("activeCharacterID","cire")]),timeLimit: TimeLimit.deadline(NIODeadline.now() + .minutes(15)))
-                    let connection = myself.gamePortalClient.makeConnectCall(callOptions: options)
-                     
-                    group.addTask {
-                        print("*", terminator: "")
-                        for try await status in connection.responseStream {
-                            await MainActor.run {
-                                GameClient.gameClient.venue.update(fromStatus: status)
-                                print("@", terminator: "")
-                            }
-                            print(status)
-
-                        }
-                        print("#end", terminator: "")
-                    }
-                    
-                    group.addTask {
-                        while true {
-                            let clientCommand = await queue.pop
-                            
-                            guard let clientCommand = clientCommand else {
-                                try! await Task.sleep(nanoseconds: 5_000)
-                                continue
-                            }
-                            
-                            let gameCommand = RABackend_GameCommand(clientCommand: clientCommand.0)
-                            
-                            try! await connection.requestStream.send(gameCommand)
-                        }
-                    }
-                    
-                    group.addTask {
-                        let commands: [ClientCommand] = [
-                            .connect,
-                            .wait(10),
-                            .face(facing: 4),
-                            .addWaypoint(destination: VenuePosition(hex: (1,1), x: 0, y: 0),duration: UInt64(5.seconds) ),
-//                            .report,
-                        ]
-                        
-                        for command in commands {
-                            if case let .wait(duration) = command {
-                                try! await Task.sleep(nanoseconds: 1_000_000_000 * duration)
-                                continue
-                            }
-                            
-                            await queue.push((command,nil))
-                        }
-                    }
-                    try await group.waitForAll()
-                }
-                print("ending connection")
-            }
-        } catch {
-            print("Couldn’t connect to gRPC server")
-        }
-    }
-    
     var gameClient = GameClient.makeGameClient()
     var gameScene = GameScene(size: CGSize(width: 320, height: 200))
     
     var body: some Scene {
         WindowGroup {
             MainView()
-            .task {
-                GameClient.gameClient = gameClient
-                gameScene.gameClient = gameClient
-                GameClient.gameScene = gameScene
-                
-                await startup()
-                
-                gameClient.start()
-            }
+            .task { await startup() }
             .environmentObject(gameClient)
             .environmentObject(gameScene)
-
         }
     }
     
-    func startup() async -> Game {
-//        game.characterSetup()
+    init() {
+        let port = self.port
+        let gameClient = self.gameClient
+        
+        Task {
+            do {
+                var communicator = try Communicator(port: port)
+                try await communicator.connect(gameClient: gameClient)
+            } catch {
+                print("***Unable to connect to gRPC server")
+            }
+        }
+    }
+    
+    func startup() async {
+        await MainActor.run {
+            GameClient.gameClient = gameClient
+            gameScene.gameClient = gameClient
+            GameClient.gameScene = gameScene
+        }
+        
         let game = await Game()
         Game.game = game
         
         // needs to be before other initialization so that ticks and scheduling is available.
         game.heartbeat = Heartbeat(beatNotifier: game)
         try! game.heartbeat.start()
+        
         Game.game.oneTimeSetup()
         
         //        self.characters = Character.Characters()
@@ -190,6 +121,6 @@ struct RAClientIIApp: App {
         await GameClient.gameScene.initialize()
         gameClient.venue.recordAllCharacters()
         
-        return Game.game
+        gameClient.start()
     }
 }
