@@ -165,7 +165,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.facilitiesMap = other.facilitiesMap
         self.interactablesMap = other.interactablesMap
         
-        recordAllCharacters()
+        registerAllCharacters()
     }
     
 //    func setupDroppedItems() {
@@ -184,17 +184,19 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
 //        record(character: character)
 //    }
     
-    func recordAllCharacters() {
+    func registerAllCharacters() {
         for characterID in charactersPresent {
             guard let character = GameClient.gameClient.characters[characterID] else {
                 print("RecordAllCharacters: Character Not Found.")
                 continue
             }
-            record(character: character)
+            register(character: character)
         }
     }
     
-    func record(character: Character) {
+    
+    // TODO: change so that already registered characters are skipped
+    func register(character: Character) {
         let venuePosition = character.locality.position
         let position = orientation.topology(radius: 100).convert(from: venuePosition)
 

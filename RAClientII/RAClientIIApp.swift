@@ -119,7 +119,7 @@ struct RAClientIIApp: App {
         await gameScene.setupScene()
         
         await GameClient.gameScene.initialize()
-        gameClient.venue.recordAllCharacters()
+        gameClient.venue.registerAllCharacters()
         
         gameClient.start()
     }
