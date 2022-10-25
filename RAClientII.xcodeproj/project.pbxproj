@@ -10,6 +10,7 @@
 		636EDC2D2906A6B700BF2213 /* SharedProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */; };
 		636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2E2906B25700BF2213 /* ProtoBuff.swift */; };
 		636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */; };
+		636EDC632907FC3100BF2213 /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC622907FC3100BF2213 /* Communicator.swift */; };
 		637F1A4B29015EBA008642A4 /* RAClientIIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637F1A4A29015EBA008642A4 /* RAClientIIApp.swift */; };
 		637F1A4F29015EBC008642A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 637F1A4E29015EBC008642A4 /* Assets.xcassets */; };
 		637F1A5329015EBC008642A4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 637F1A5229015EBC008642A4 /* Preview Assets.xcassets */; };
@@ -106,6 +107,7 @@
 		636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedProtoBuff.swift; path = RAClientII/RAShared/SharedProtoBuff.swift; sourceTree = SOURCE_ROOT; };
 		636EDC2E2906B25700BF2213 /* ProtoBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoBuff.swift; sourceTree = "<group>"; };
 		636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + RABackend_Size.swift"; sourceTree = "<group>"; };
+		636EDC622907FC3100BF2213 /* Communicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
 		637F1A4729015EBA008642A4 /* RAClientII.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAClientII.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		637F1A4A29015EBA008642A4 /* RAClientIIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RAClientIIApp.swift; sourceTree = "<group>"; };
 		637F1A4E29015EBC008642A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				637F1AA52901CF24008642A4 /* Region.swift */,
 				639886A0290215440007D8C0 /* EntityHolder.swift */,
 				639886A6290216B30007D8C0 /* Hexagon + NameFrom.swift */,
+				636EDC622907FC3100BF2213 /* Communicator.swift */,
 			);
 			path = "Support & Helpers";
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				637F1A5E290180E9008642A4 /* GameScene.swift in Sources */,
 				639886CD2902B1B40007D8C0 /* DaylinSharpeningQuest.swift in Sources */,
 				63DFA90829031A5400C26F0E /* Move.swift in Sources */,
+				636EDC632907FC3100BF2213 /* Communicator.swift in Sources */,
 				637F1B1A2901FA21008642A4 /* Facility.swift in Sources */,
 				63DFA9262904067600C26F0E /* Locality.swift in Sources */,
 				6398869B29020A950007D8C0 /* MenuRenderer.swift in Sources */,
