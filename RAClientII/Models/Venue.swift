@@ -178,11 +178,11 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
             self.add(drop)
         }
     }
-    
-    func add(_ character: Character) {
-        self.charactersPresent.insert(character.id)
-        record(character: character)
-    }
+//
+//    func add(_ character: Character) {
+//        self.charactersPresent.insert(character.id)
+//        record(character: character)
+//    }
     
     func recordAllCharacters() {
         for characterID in charactersPresent {
@@ -200,8 +200,8 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
 
         character.characterMarker.gkQuadNode = self.interactablesMap.add(character.characterMarker, at: position.vector_float2)
     }
-    
-    func remove(_ character: Character.ID) {
-        self.charactersPresent.remove(character)
-    }
+//    
+//    func remove(_ character: Character.ID) {
+//        self.charactersPresent.remove(character)
+//    }
 }

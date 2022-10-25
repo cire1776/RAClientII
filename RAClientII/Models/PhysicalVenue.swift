@@ -40,8 +40,8 @@ protocol PhysicalVenue : AnyObject, Identifiable {
     func add(_ drop: DroppedItem)
     func removeDroppedItem(id: String)
     
-    func add(_ character: Character)
-    func remove(_ characterID: Character.ID)
+//    func add(_ character: Character)
+//    func remove(_ characterID: Character.ID)
 }
 
 extension PhysicalVenue {
