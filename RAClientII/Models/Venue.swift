@@ -168,16 +168,16 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         recordAllCharacters()
     }
     
-    func setupDroppedItems() {
-        let droppedItems = [
-            Item(id: nil, type: "apple", quantity: 5)!,
-            Item(id: nil, type: "hammer", quantity: 1)!,
-        ]
-        for item in droppedItems {
-            let drop = DroppedItem(item, at: VenuePosition(hex: (0,0), x:10, y:10), within: 20)
-            self.add(drop)
-        }
-    }
+//    func setupDroppedItems() {
+//        let droppedItems = [
+//            Item(id: nil, type: "apple", quantity: 5)!,
+//            Item(id: nil, type: "hammer", quantity: 1)!,
+//        ]
+//        for item in droppedItems {
+//            let drop = DroppedItem(item, at: VenuePosition(hex: (0,0), x:10, y:10), within: 20)
+//            self.add(drop)
+//        }
+//    }
 //
 //    func add(_ character: Character) {
 //        self.charactersPresent.insert(character.id)
