@@ -15,7 +15,7 @@ public enum ActionReliability: Codable {
 }
 
 // Predictive Object
-class GameClient: ObservableObject, ActionRegisterable, BeatNotifier {
+class GameClient: ObservableObject {
     //, TimeDescribing {
     static var game: Game!
     static var gameScene: GameScene!
@@ -33,23 +33,10 @@ class GameClient: ObservableObject, ActionRegisterable, BeatNotifier {
     @Published var venue: Venue!
 //    @Published var operation: Operation?
     
-    var operationTimes : OperationTimesList = [:]
-    
-    @Published var tick: UInt64 = 0
-    
-    var heartbeat: Heartbeat!
-
-    var actionRegistry = [Action.ID : (UInt64?, TickAction)]()
-
-//    var tickScheduler = [UInt : [TickAction]]()
-//
-//    var tickActions = [String: TickAction]()
-//    var secondsActions = [String : TickAction]()
-    
-    private var holdTicks: UInt = 0
-    private var firstTick = true
+//    var operationTimes : OperationTimesList = [:]
     
     @Published var ready = false // PassthroughSubject<Bool, Never>()
+
     private var readyMask: UInt8 = 0xF8 {
         didSet {
             if self.readyMask == 0xFF {
@@ -64,10 +51,6 @@ class GameClient: ObservableObject, ActionRegisterable, BeatNotifier {
     
     init() {}
     
-    
-    func beat() async {
-        print(".", separator: "")
-    }
 //    func update(venue: Venue) {
 //        DispatchQueue.main.async {
 //            self.readyMask |= 0x01

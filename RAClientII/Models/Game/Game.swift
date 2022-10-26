@@ -75,6 +75,9 @@ class Game: TickHolder, BeatNotifier {
     
     var changed = false
     
+    private var holdTicks: UInt = 0
+    private var firstTick = true
+    
     var savingEvent: (String, UInt) = ("",0)
     
     override init() async {
@@ -105,7 +108,19 @@ class Game: TickHolder, BeatNotifier {
     func beat() async {
         await advanceTick()
     }
-    
+
+    override func advanceTick(times: Int = 1) async {
+        if (self.tick % 20) == 0 {
+            print(".", terminator: "")
+        }
+        
+        if (self.tick % 200) == 0 {
+            print("current tick:", Game.game.tick)
+            print(GameClient.gameClient.characters as Any)
+        }
+        
+        await super.advanceTick(times: times)
+    }
     private func triggerLazy(loadEverything: Bool = false) {
 //        Endorsement.setupRegisteredEndorsements()
 //        Game.environment = Game.Environment()
@@ -214,14 +229,6 @@ class Game: TickHolder, BeatNotifier {
 //        self.server!.update(droppedItems: self.venue!.droppedItems)
         
         self.changed = true
-    }
-    
-    func tick(_ tick: UInt64) {
-//        guard let actions = tickScheduler.removeValue(forKey: tick) else { return }
-//        
-//        for action in actions.values {
-//            action.execute(at: tick)
-//        }
     }
     
     func getVenueData() -> Venue {
