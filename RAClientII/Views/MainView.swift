@@ -34,7 +34,7 @@ struct MainView: View {
     private var venueMap: SKNode? {
         return scene.childNode(withName: "HexagonMapNode")
     }
-    
+        
     var sideWindowTitle: String {
         guard let player = gameClient.player else { return "" }
         return player.displayName
@@ -145,7 +145,7 @@ struct MainView: View {
 //            }
 //        }
     }
-    
+        
     struct ContentSizePreferenceKey: PreferenceKey {
         typealias Value = CGSize
 
