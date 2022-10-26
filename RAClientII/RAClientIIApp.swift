@@ -120,7 +120,5 @@ struct RAClientIIApp: App {
         
         await GameClient.gameScene.initialize()
         gameClient.venue.registerAllCharacters()
-        
-        gameClient.start()
     }
 }

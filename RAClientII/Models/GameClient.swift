@@ -63,20 +63,6 @@ class GameClient: ObservableObject, ActionRegisterable, BeatNotifier {
     
     init() {}
     
-    func start() {
-//        let subscriber = self.$ready
-//                         .receive(on: DispatchQueue.main)
-//                         .sink { ready in
-//            if ready {
-//                print("game ready.")
-////                GameClient.gameScene.initialize()
-//                self.venue.recordAllCharacters()
-//            }
-//        }
-        
-//        allSubscriptions.insert(subscriber)
-        
-    }
     
     func beat() async {
         print(".", separator: "")
