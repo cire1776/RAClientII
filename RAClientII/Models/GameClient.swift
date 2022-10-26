@@ -36,18 +36,6 @@ class GameClient: ObservableObject {
 //    var operationTimes : OperationTimesList = [:]
     
     @Published var ready = false // PassthroughSubject<Bool, Never>()
-
-    private var readyMask: UInt8 = 0xF8 {
-        didSet {
-            if self.readyMask == 0xFF {
-                DispatchQueue.main.async {
-                    self.ready = true
-                    // mark that ready has been signaled.
-                    self.readyMask = 0x7F
-                }
-            }
-        }
-    }
     
     init() {}
     
