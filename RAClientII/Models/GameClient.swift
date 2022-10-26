@@ -17,6 +17,7 @@ public enum ActionReliability: Codable {
 // Predictive Object
 class GameClient: ObservableObject, ActionRegisterable, BeatNotifier {
     //, TimeDescribing {
+    static var game: Game!
     static var gameScene: GameScene!
     static var gameClient: GameClient!
 
