@@ -29,6 +29,8 @@ struct MainView: View {
     @State var sideWindowSize: CGSize = CGSize(width: Constants.sideWindowWidth, height: 200)
     @State var screenSelected = "Inventory"
     
+    @State var tickDisplayString = "N/A"
+    
     private var venueMap: SKNode? {
         return scene.childNode(withName: "HexagonMapNode")
     }
@@ -44,7 +46,7 @@ struct MainView: View {
                 VenueMap()
                 
                 ZStack {
-                    Window(title: (gameClient.venue?.name ?? "" ) + "  (\(gameClient.tick))",
+                    Window(title: (gameClient.venue?.name ?? "" ) + " (" + "\(game.tick)" + ")",
                            position: CGPoint.zero,
                            size: Binding.constant(CGSize(width: 250, height: 250))
                     ) {
