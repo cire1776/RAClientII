@@ -70,6 +70,7 @@ struct RAClientIIApp: App {
     
     var gameClient = GameClient.makeGameClient()
     var gameScene = GameScene(size: CGSize(width: 320, height: 200))
+    var game = Game()
     
     var body: some Scene {
         WindowGroup {
@@ -77,6 +78,7 @@ struct RAClientIIApp: App {
             .task { await startup() }
             .environmentObject(gameClient)
             .environmentObject(gameScene)
+            .environmentObject(game as TickHolder)
         }
     }
     
@@ -95,14 +97,13 @@ struct RAClientIIApp: App {
     }
     
     func startup() async {
+        Game.game = game
+        
         await MainActor.run {
             GameClient.gameClient = gameClient
             gameScene.gameClient = gameClient
             GameClient.gameScene = gameScene
         }
-        
-        let game = await Game()
-        Game.game = game
         
         // needs to be before other initialization so that ticks and scheduling is available.
         game.heartbeat = Heartbeat(beatNotifier: game)

@@ -24,6 +24,7 @@ extension Constants {
 struct MainView: View {
     @EnvironmentObject var scene: GameScene
     @EnvironmentObject var gameClient: GameClient
+    @EnvironmentObject var game: TickHolder
     
     @State var sideWindowSize: CGSize = CGSize(width: Constants.sideWindowWidth, height: 200)
     @State var screenSelected = "Inventory"
