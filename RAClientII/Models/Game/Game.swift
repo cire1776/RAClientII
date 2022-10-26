@@ -15,6 +15,7 @@ let sharedGame = Game.game!
 class Game: TickHolder, BeatNotifier {
     static var game: Game!
 //    static var environment: Game.Environment!
+    
     static var venues: [Venue.ID : Venue] = [
         "primera": Venue(named: "Primera", description: "The first place"),
     ]
@@ -62,7 +63,7 @@ class Game: TickHolder, BeatNotifier {
     let initialTick: UInt64
     
     var currentTick: UInt64 { self.tick }
-    
+        
 //    var tickScheduler = [UInt64 : [String: Schedulable]]()
     
     var playerID: Character.ID
