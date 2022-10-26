@@ -156,7 +156,7 @@ class Game: TickHolder, BeatNotifier {
 //        self.venue!.name = Game.venues.values.first?.name ?? "unknown"
         self.venue!.playerCharacter = "cire"
         
-        self.venue!.setupDroppedItems()
+//        self.venue!.setupDroppedItems()
 //        self.server!.update(droppedItems: self.venue!.droppedItems)
         
         self.changed = true
