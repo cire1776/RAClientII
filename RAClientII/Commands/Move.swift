@@ -16,9 +16,9 @@ extension Command {
         
         let travelTicks = priorPosition.calculateTravelTicks(to: venuePosition, at: 1.25, converter: converter)
         
-        characterNode.locality.startingTick = characterNode.locality.startingTick ?? gameScene.gameClient.tick
+        characterNode.locality.startingTick = characterNode.locality.startingTick ?? Game.game.tick
         
-        let waypoint = characterNode.locality.addWaypoint(to: venuePosition, at: gameScene.gameClient.tick, for: travelTicks)
+        let waypoint = characterNode.locality.addWaypoint(to: venuePosition, at: Game.game.tick, for: travelTicks)
         
         characterNode.locality.type = .predictive
 
