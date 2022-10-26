@@ -75,7 +75,6 @@ struct RAClientIIApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-            .task { await startup() }
             .environmentObject(gameClient)
             .environmentObject(gameScene)
             .environmentObject(game as TickHolder)
@@ -85,8 +84,10 @@ struct RAClientIIApp: App {
     init() {
         let port = self.port
         let gameClient = self.gameClient
+        let myself = self
         
         Task {
+            await myself.startup()
             do {
                 var communicator = try Communicator(port: port)
                 try await communicator.connect(gameClient: gameClient)
@@ -101,8 +102,8 @@ struct RAClientIIApp: App {
         
         await MainActor.run {
             GameClient.gameClient = gameClient
-            gameScene.gameClient = gameClient
             GameClient.gameScene = gameScene
+            gameScene.gameClient = gameClient
         }
         
         // needs to be before other initialization so that ticks and scheduling is available.
