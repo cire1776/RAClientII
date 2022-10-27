@@ -21,27 +21,45 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
         }
         
         for characterID in insertions {
-            guard let characterData = try? (scene.venue![.character, characterID] as! Character) else {
-                print("*** unable to find character: \(characterID)")
-                continue
-            }
+            self.performInsertion(scene: scene, characterID: characterID)
+        }
+    }
+    
+    private static func performInsertion(scene: GameScene, characterID: Character.ID) {
+        guard let characterData = try? (scene.venue![.character, characterID] as! Character) else {
+            print("***Unable to find character:", characterID)
+            return
+        }
+        
+        let playerType: Character.Class = characterData.id == scene.venue.playerCharacter ?
+            .player :
+        characterData.type
+
+        let characterNode: CharacterNode
+        let updating: Bool
+        if let node = scene.hexagonMapNode.childNode(withName: characterID) as? CharacterNode {
+            print("$$$updating")
+            updating = true
+            characterNode = node
+        } else {
+            updating = false
+            characterNode = CharacterNode(character: characterData, as: playerType)
+            print("$$$Inserting")
+        }
             
-            let playerType: Character.Class = characterData.id == scene.venue.playerCharacter ?
-                    .player :
-                    characterData.type
-            
-            let characterNode = CharacterNode(character: characterData, as: playerType)
-            characterNode.name = characterData.id
-            
-            if playerType == .player {
-                scene.playerNode = characterNode
-                Command.player = characterData
-            }
-            
-            characterNode.setFacing(to: 1, for: scene.orientation)
-            
-            let position = scene.hexagonMapNode.convert(position: characterData.locality.position)
-            characterNode.position = position
+        characterNode.name = characterData.id
+        
+        if playerType == .player {
+            scene.playerNode = characterNode
+            Command.player = characterData
+        }
+        
+        characterNode.setFacing(to: characterData.facing, for: scene.orientation)
+        
+        let position = scene.hexagonMapNode.convert(position: characterData.locality.position)
+        characterNode.position = position
+        
+        if !updating {
             characterNode.zPosition = Constants.playerLevel
             characterNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 10, height: 5))
             characterNode.physicsBody?.collisionBitMask = 0xFFFE
