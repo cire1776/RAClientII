@@ -84,6 +84,15 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.charactersPresent = Set(status.charactersPresentList.map {
             $0.characterID.id
         })
+        
+        self.characters = status.charactersPresentList
+            .reduce([Character.ID : Character.Expression]()) { accum, element in
+            var slices = accum
+            let slice = Character.Slice(from: element)
+            slices[id] = Character.Expression.character(character: slice)
+            return slices
+        }
+        
         self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
             let facility = Facility(from: backendFacility)
             var facilities = accum

@@ -26,14 +26,17 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
     }
     
     private static func performInsertion(scene: GameScene, characterID: Character.ID) {
-        guard let characterData = try? (scene.venue![.character, characterID] as! Character) else {
+        guard let expression = try? (scene.venue![.character, characterID] as! Character.Expression)
+        else {
             print("***Unable to find character:", characterID)
             return
         }
         
+        let characterData = expression.slice
+        
         let playerType: Character.Class = characterData.id == scene.venue.playerCharacterID ?
             .player :
-        characterData.slice.type
+        characterData.type
 
         let characterNode: CharacterNode
         let updating: Bool
@@ -43,7 +46,7 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
             characterNode = node
         } else {
             updating = false
-            characterNode = CharacterNode(character: characterData.slice, as: playerType)
+            characterNode = CharacterNode(character: characterData, as: playerType)
             print("$$$Inserting")
         }
             
@@ -51,7 +54,7 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
         
         if playerType == .player {
             scene.playerNode = characterNode
-            Command.player = characterData
+            Command.player = scene.venue!.playerCharacter
         }
         
         characterNode.setFacing(to: characterData.facing, for: scene.orientation)
