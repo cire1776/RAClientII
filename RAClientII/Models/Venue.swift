@@ -116,15 +116,10 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.charactersPresent = Set(status.charactersPresentList.map {
             $0.characterID.id
         })
-        self.characters = status.charactersPresentList.reduce([String:Character.Expression]()) { accum, backendCharacter in
-            let character = try! Character(source: backendCharacter)
-            
-            var characters = accum
-            characters[character.id] = .character(character: character.slice)
-            return characters
-        }
-        updateCharacters()
         
+        updateCharacters(fromStatus: status)
+        try? updateActiveCharacter(fromStatus: status)
+
         self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
             let facility = Facility(from: backendFacility)
             var facilities = accum
@@ -182,17 +177,35 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         registerAllCharacters()
     }
     
-    func updateCharacters() {
+    private func updateActiveCharacter(fromStatus status: RABackend_GameStatus) throws {
+        let character = try Character(source: status.activeCharacter.characterData)
+        
+        self.characters[character.id] = Character.Expression.player(character: character)
+    }
+        
+    private func updateCharacters(fromStatus status: RABackend_GameStatus) {
         guard let scene = GameClient.gameScene else { return }
+
+        self.characters = status.charactersPresentList.reduce([String:Character.Expression]()) { accum, backendCharacter in
+            let character = try! Character(source: backendCharacter)
+            
+            var characters = accum
+            characters[character.id] = .character(character: character.slice)
+            character.slice.type = .npc
+            return characters
+        }
         
         for characterNode in scene.characterNodes {
             if let character = characters[characterNode.name!] {
                 print("$$$Updating:", characterNode.name!)
-                characterNode.character = character.slice
                 
-                characterNode.setFacing(to: character.slice.facing, for: scene.orientation)
+                var slice: Character.Slice = character.slice
                 
-                let position = GameClient.gameScene.hexagonMapNode.convert(position: character.slice.locality.position)
+                characterNode.character = slice
+                
+                characterNode.setFacing(to: slice.facing, for: scene.orientation)
+                
+                let position = GameClient.gameScene.hexagonMapNode.convert(position: slice.locality.position)
                 characterNode.position = position
 
             }
