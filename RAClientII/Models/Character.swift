@@ -14,6 +14,47 @@ public class Character: Hashable, Identifiable, MainItemHolding {
         case player, character, npc
     }
     
+    public enum Expression {
+        case player(character: Character)
+        case character(character: Slice)
+        case npc(character: Slice)
+    }
+    
+    
+    public class Slice: ObservableObject {
+        public var id: String = "INVALID"
+       
+        public var displayName: String = "INVALID"
+        public var type: Character.Class = .character
+
+        @Published public var venueID: Venue.ID = ""
+        @Published public var locality: Locality = .zero
+        @Published var facing: Facing
+        
+        public var characterMarker = Marker()
+        
+        public var occupied = false
+        
+        init(id: String, displayName: String, type: Character.Class, venueID: Venue.ID, locality: Locality, facing: Facing, occupied: Bool = false) {
+            self.id = id
+            self.displayName = displayName
+            self.type = type
+            self.venueID = venueID
+            self.locality = locality
+            self.facing = facing
+            self.occupied = occupied
+        }
+        
+        init(from data: RABackend_CharacterData) {
+            self.id = data.characterID.id
+            self.displayName = data.displayName
+            self.type = .character
+            self.venueID = data.venue.id
+            self.locality = Locality(from: data.locality)
+            self.facing = Facing(data.facing)
+        }
+    }
+
     public typealias ID = String
     
     public static func == (lhs: Character, rhs: Character) -> Bool {
