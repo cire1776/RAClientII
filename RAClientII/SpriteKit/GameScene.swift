@@ -94,13 +94,18 @@ class GameScene : SKScene, ObservableObject, MarkerAdornable {
     }
     
     func subscribe() {
-        let cancellable = venue.$charactersPresent
+        let cancellable = venue.$characters
         .receive(on: DispatchQueue.main)
-        .sink(receiveValue: { charactersPresent in
+        .sink(receiveValue: { characters in
             let current = self.characterNodes.map({ $0.character.id })
             
-            let insertions = Array(charactersPresent.filter({ !current.contains($0) }))
-            let deletions = Array(current.filter({ !charactersPresent.contains($0) }))
+            let characterIDs = Array(characters
+                .map { $0.0 })
+                                 
+            let insertions = characterIDs
+                .filter({ !current.contains($0) })
+            
+            let deletions = Array(current.filter({ !characterIDs.contains($0) }))
             
             CharacterNode.setup(scene: self, insertions: insertions, deletions: deletions)
         })
