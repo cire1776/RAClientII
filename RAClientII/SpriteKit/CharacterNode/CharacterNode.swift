@@ -78,7 +78,7 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
   
     var ID: String = UUID().uuidString
     var type: Character.Class
-    let character: Character
+    var character: Character
     
     var movementAction: SKAction? = nil
     var movementLine: SKNode? = nil
