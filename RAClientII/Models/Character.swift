@@ -73,8 +73,10 @@ public class Character: Hashable, Identifiable, MainItemHolding {
     public var characterMarker = Marker()
     
     public var occupied = false
+    public var mountingPoints: Equipping.MountingPoints!
     
     var items = [String : Item]()
+    public var buffs = [BuffSpecifier.ID : BuffSpecifier]()
     
     var isUsingSubordinate: Bool {
         false
