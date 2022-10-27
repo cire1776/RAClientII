@@ -31,7 +31,7 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
             return
         }
         
-        let playerType: Character.Class = characterData.id == scene.venue.playerCharacter ?
+        let playerType: Character.Class = characterData.id == scene.venue.playerCharacterID ?
             .player :
         characterData.slice.type
 

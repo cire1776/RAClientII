@@ -21,7 +21,8 @@ protocol PhysicalVenue : AnyObject, Identifiable {
     
     var minimap: UIImage? { get set }
     
-    var playerCharacter: Character.ID { get set }
+    var playerCharacter: Character!     { get set }
+    var playerCharacterID: Character.ID { get set }
     
     var charactersPresent: Set<Character.ID> { get set }
     
@@ -53,7 +54,7 @@ extension PhysicalVenue {
         venue.orientation = self.orientation
         venue.bounds = self.bounds
         venue.minimap = self.minimap
-        venue.playerCharacter = self.playerCharacter
+        venue.playerCharacterID = self.playerCharacterID
         venue.charactersPresent = self.charactersPresent
         venue.facilities = self.facilities
         venue.facilitiesMap = self.facilitiesMap

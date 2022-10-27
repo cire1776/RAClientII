@@ -154,7 +154,7 @@ class Game: TickHolder, BeatNotifier {
     
     func oneTimeSetup() {
 //        self.venue!.name = Game.venues.values.first?.name ?? "unknown"
-        self.venue!.playerCharacter = "cire"
+        self.venue!.playerCharacterID = "cire"
         
 //        self.venue!.setupDroppedItems()
 //        self.server!.update(droppedItems: self.venue!.droppedItems)

@@ -22,9 +22,11 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     
     @Published var minimap: UIImage? = nil
     
-    @Published var playerCharacter: Character.ID
+    @Published var playerCharacter: Character!
+    @Published var playerCharacterID: Character.ID
+    
     @Published var charactersPresent = Set<Character.ID>()
-    @Published var characters = [Character.ID : Character]()
+    @Published var characters = [Character.ID : Character.Expression]()
     
     @Published var facilities = [Facility.ID : Facility]()
     var facilitiesMap = GKQuadtree(boundingQuad: GKQuad(quadMin: vector_float2(x: -10_000, y: -10_000), quadMax: vector_float2(x: 10_000, y: 10_000)), minimumCellSize: 40)
@@ -44,7 +46,8 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     
     public init() {
         self.id = "placeholder ID"
-        self.playerCharacter = "Unnamed Character"
+        self.playerCharacter = nil
+        self.playerCharacterID = "Unnamed Character"
         self.name = "Unnamed Venue"
         self.description = "Undescribed Place"
         self.region = Hexagon.Region(hexes: [
@@ -77,7 +80,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.description = status.venueData.description_p
         self.orientation = status.venueData.orientation.toOrientation
         self.bounds = CGSize(status.venueData.bounds)
-        self.playerCharacter = status.activeCharacter.id.id
+        self.playerCharacterID = status.activeCharacter.id.id
         self.charactersPresent = Set(status.charactersPresentList.map {
             $0.characterID.id
         })
@@ -100,16 +103,15 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.name = status.venueData.name
         self.description = status.venueData.description_p
         self.bounds = CGSize(status.venueData.bounds)
-        self.playerCharacter = status.activeCharacter.id.id
+        self.playerCharacterID = status.activeCharacter.id.id
         self.charactersPresent = Set(status.charactersPresentList.map {
             $0.characterID.id
         })
-        
-        self.characters = status.charactersPresentList.reduce([String:Character]()) { accum, backendCharacter in
+        self.characters = status.charactersPresentList.reduce([String:Character.Expression]()) { accum, backendCharacter in
             let character = try! Character(source: backendCharacter)
             
             var characters = accum
-            characters[character.id] = character
+            characters[character.id] = .character(character: character.slice)
             return characters
         }
         updateCharacters()
@@ -129,7 +131,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         }
     }
     
-    public subscript(source: ModelType, index: String) -> AnyObject? {
+    public subscript(source: ModelType, index: String) -> Any? {
         get throws {
             switch source {
             case .character:
@@ -162,7 +164,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.orientation = other.orientation
         self.bounds = other.bounds
         self.minimap = other.minimap
-        self.playerCharacter = other.playerCharacter
+        self.playerCharacterID = other.playerCharacterID
         self.charactersPresent = other.charactersPresent
         self.facilities = other.facilities
         self.facilitiesMap = other.facilitiesMap
@@ -179,9 +181,9 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
                 print("$$$Updating:", characterNode.name!)
                 characterNode.character = character.slice
                 
-                characterNode.setFacing(to: character.facing, for: scene.orientation)
+                characterNode.setFacing(to: character.slice.facing, for: scene.orientation)
                 
-                let position = GameClient.gameScene.hexagonMapNode.convert(position: character.locality.position)
+                let position = GameClient.gameScene.hexagonMapNode.convert(position: character.slice.locality.position)
                 characterNode.position = position
 
             }
