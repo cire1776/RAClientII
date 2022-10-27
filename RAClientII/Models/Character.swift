@@ -18,6 +18,17 @@ public class Character: Hashable, Identifiable, MainItemHolding {
         case player(character: Character)
         case character(character: Slice)
         case npc(character: Slice)
+    
+        public var slice: Character.Slice {
+            switch self {
+            case .player(character: let char):
+                return char.slice
+            case .character(character: let charSlice):
+                return charSlice
+            case .npc(character: let charSlice):
+                return charSlice
+            }
+        }
     }
     
     
