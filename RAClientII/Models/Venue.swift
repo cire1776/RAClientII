@@ -11,8 +11,8 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     public typealias ID = String
     
     public var id: String
-    var name: String
-    var description: String
+    @Published var name: String
+    @Published var description: String
     
     var orientation = Hexagon.Orientation.point
     
@@ -20,9 +20,9 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
 
     var bounds = CGSize(width: 3, height: 3)
     
-    var minimap: UIImage? = nil
+    @Published var minimap: UIImage? = nil
     
-    var playerCharacter: Character.ID
+    @Published var playerCharacter: Character.ID
     @Published var charactersPresent = Set<Character.ID>()
     @Published var characters = [Character.ID : Character]()
     
