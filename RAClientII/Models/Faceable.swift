@@ -1,11 +1,3 @@
-//
-//  Faceable.swift
-//  OldRAClient
-//
-//  Created by Eric Russell on 5/2/22.
-//
-
-import CoreGraphics//
 //  Faceable.swift
 //  OldRAClient
 //
@@ -13,6 +5,7 @@ import CoreGraphics//
 //
 
 import SpriteKit
+import CoreGraphics
 
 typealias Facing = UInt
 
