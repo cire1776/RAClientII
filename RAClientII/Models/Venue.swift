@@ -111,6 +111,8 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
             characters[character.id] = character
             return characters
         }
+        updateCharacters()
+        
         self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
             let facility = Facility(from: backendFacility)
             var facilities = accum
@@ -166,6 +168,23 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.interactablesMap = other.interactablesMap
         
         registerAllCharacters()
+    }
+    
+    func updateCharacters() {
+        guard let scene = GameClient.gameScene else { return }
+        
+        for characterNode in scene.characterNodes {
+            if let character = characters[characterNode.name!] {
+                print("$$$Updating:", characterNode.name!)
+                characterNode.character = character
+                
+                characterNode.setFacing(to: character.facing, for: scene.orientation)
+                
+                let position = GameClient.gameScene.hexagonMapNode.convert(position: character.locality.position)
+                characterNode.position = position
+
+            }
+        }
     }
     
     func registerAllCharacters() {
