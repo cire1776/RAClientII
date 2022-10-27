@@ -104,6 +104,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.charactersPresent = Set(status.charactersPresentList.map {
             $0.characterID.id
         })
+        
         self.characters = status.charactersPresentList.reduce([String:Character]()) { accum, backendCharacter in
             let character = try! Character(source: backendCharacter)
             

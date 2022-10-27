@@ -68,7 +68,6 @@ public struct Communicator {
                         GameClient.gameClient.venue.update(fromStatus: status)
                     }
                     print(status)
-
                 }
                 print("end of status loop")
             }
