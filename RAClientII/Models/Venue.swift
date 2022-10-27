@@ -7,7 +7,7 @@
 
 import GameplayKit
 
-public class Venue: ObservableObject, NSCopying, PhysicalVenue {
+public class Venue: ObservableObject, NSCopying, PhysicalVenue {    
     public typealias ID = String
     
     public var id: String
@@ -177,7 +177,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         for characterNode in scene.characterNodes {
             if let character = characters[characterNode.name!] {
                 print("$$$Updating:", characterNode.name!)
-                characterNode.character = character
+                characterNode.character = character.slice
                 
                 characterNode.setFacing(to: character.facing, for: scene.orientation)
                 
@@ -204,6 +204,6 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         let venuePosition = character.locality.position
         let position = orientation.topology(radius: 100).convert(from: venuePosition)
 
-        character.characterMarker.gkQuadNode = self.interactablesMap.add(character.characterMarker, at: position.vector_float2)
+        character.slice.characterMarker.gkQuadNode = self.interactablesMap.add(character.slice.characterMarker, at: position.vector_float2)
     }
 }

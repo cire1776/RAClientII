@@ -37,7 +37,7 @@ struct MainView: View {
         
     var sideWindowTitle: String {
         guard let player = gameClient.player else { return "" }
-        return player.displayName
+        return player.slice.displayName
     }
     
     var body: some View {

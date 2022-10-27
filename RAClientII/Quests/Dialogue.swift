@@ -162,6 +162,6 @@ class Dialogue: Interaction {
     }
     
     func dismiss(for character: Character) {
-        character.occupied = false
+        character.slice.occupied = false
     }
 }

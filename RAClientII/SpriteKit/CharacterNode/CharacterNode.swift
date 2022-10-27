@@ -33,7 +33,7 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
         
         let playerType: Character.Class = characterData.id == scene.venue.playerCharacter ?
             .player :
-        characterData.type
+        characterData.slice.type
 
         let characterNode: CharacterNode
         let updating: Bool
@@ -43,7 +43,7 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
             characterNode = node
         } else {
             updating = false
-            characterNode = CharacterNode(character: characterData, as: playerType)
+            characterNode = CharacterNode(character: characterData.slice, as: playerType)
             print("$$$Inserting")
         }
             
@@ -78,7 +78,7 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
   
     var ID: String = UUID().uuidString
     var type: Character.Class
-    var character: Character
+    var character: Character.Slice
     
     var movementAction: SKAction? = nil
     var movementLine: SKNode? = nil
@@ -100,7 +100,7 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
         self.scene as! GameScene
     }
 
-    init(character: Character, as type: Character.Class = .character) {
+    init(character: Character.Slice, as type: Character.Class = .character) {
         self.type = type
         self.character = character
         self.locality = character.locality
@@ -148,12 +148,6 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
                     self.movementStarted()
                 }
             }
-        })
-        
-        allSubscriptions.insert(subscription)
-        
-        subscription = self.character.$venue .sink(receiveValue: { notification in
-            print("Received unexpected venue notification: \(notification)")
         })
         
         allSubscriptions.insert(subscription)

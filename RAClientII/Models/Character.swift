@@ -61,21 +61,27 @@ public class Character: Hashable, Identifiable, MainItemHolding {
         lhs.id == rhs.id
     }
     
-    public var id: String
-   
-    public var displayName: String = "INVALID"
-    public var type: Character.Class
+    public var id: String {
+        get { slice.id }
+        set { slice.id = newValue }
+    }
+    
+    public var locality: Locality {
+        get { slice.locality }
+        set { slice.locality = newValue }
+    }
+    
+    public var facing: Facing {
+        get { slice.facing }
+        set { slice.facing = newValue }
+    }
 
-    @Published public var venue: Venue
-    @Published public var locality: Locality
-    @Published var facing: Facing
+    var slice: Character.Slice
     
-    public var characterMarker = Marker()
+    var items = [Item.ID : Item]()
     
-    public var occupied = false
     public var mountingPoints: Equipping.MountingPoints!
     
-    var items = [String : Item]()
     public var buffs = [BuffSpecifier.ID : BuffSpecifier]()
     
     var isUsingSubordinate: Bool {
@@ -83,12 +89,14 @@ public class Character: Hashable, Identifiable, MainItemHolding {
     }
     
     internal init(id: String, displayName: String, type: Class, venue: Venue, locality: Locality) {
-        self.id = id
-        self.displayName = displayName
-        self.type = type
-        self.venue = venue
-        self.locality = locality
-        self.facing = 0
+        self.slice = Slice(
+            id: id,
+            displayName: displayName,
+            type: type,
+            venueID: venue.id,
+            locality: locality,
+            facing: 0
+        )
     }
     
     public func hash(into hasher: inout Hasher) {
@@ -130,7 +138,7 @@ public extension Character {
         init(character: Character) {
             self.character = character
 
-            self.type = character.type == .player ? .player : .character
+            self.type = character.slice.type == .player ? .player : .character
             
             super.init()
         }
@@ -142,6 +150,7 @@ public extension Character {
         else { throw ModelType.Unknown() }
         
         self.init(id: characterData.characterID.id, displayName: characterData.displayName, type: .character, venue: venue, locality: Locality(from: characterData.locality))
-        self.type = .character
+        self.slice.type = .character
     }
 }
+
