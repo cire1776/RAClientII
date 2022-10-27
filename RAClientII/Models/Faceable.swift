@@ -7,7 +7,7 @@
 import SpriteKit
 import CoreGraphics
 
-typealias Facing = UInt
+public typealias Facing = UInt
 
 protocol Faceable: AnyObject  {
     var facing: Facing  { get set }
