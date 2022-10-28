@@ -64,8 +64,8 @@ public struct Communicator {
              
             group.addTask {
                 for try await status in connection.responseStream {
-                    await MainActor.run {
-                        GameClient.gameClient.venue.update(fromStatus: status)
+                    try await MainActor.run {
+                        try GameClient.gameClient.venue.update(fromStatus: status)
                     }
                     print(status)
                 }
@@ -101,7 +101,7 @@ public struct Communicator {
         try await connection.requestStream.send(gameCommand)
     }
     
-    private func sendDefaultCommands() async {
+    private func sendDefaultCommands() async throws {
         let commands: [ClientCommand] = [
             .connect,
             .wait(10),
@@ -123,7 +123,7 @@ public struct Communicator {
         
         for command in commands {
             if case let .wait(duration) = command {
-                try! await Task.sleep(nanoseconds: 1_000_000_000 * duration)
+                try await Task.sleep(nanoseconds: 1_000_000_000 * duration)
                 continue
             }
             

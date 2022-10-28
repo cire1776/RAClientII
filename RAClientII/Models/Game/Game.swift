@@ -94,15 +94,17 @@ class Game: TickHolder, BeatNotifier {
     }
     
     public subscript(source: ModelType, index: String) -> AnyObject? {
-        switch source {
-        case .venue:
-            return Game.venues[index]
-        case .item:
-            return Game.items[index]
-        case .itemType:
-            return Game.itemTypes[index]
-        default:
-            return ModelType.Unknown()
+        get throws {
+            switch source {
+            case .venue:
+                return Game.venues[index]
+            case .item:
+                return Game.items[index]
+            case .itemType:
+                return Game.itemTypes[index]
+            default:
+                throw RAError.Unknown
+            }
         }
     }
     

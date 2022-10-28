@@ -55,8 +55,8 @@ public class DroppedItem: NSObject, NSCopying, Codable, Identifiable, Interactab
         self.position = VenuePosition(position: source.position)
         self.type = .droppedItem
         
-        let item = sharedGame[.item, itemID] as! Item
-        self.item = item
+        let item = try? sharedGame[.item, itemID] as! Item
+        self.item = item!
         
         super.init()
     }

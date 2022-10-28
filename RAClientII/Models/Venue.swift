@@ -108,7 +108,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         }
     }
     
-    public func update(fromStatus status: RABackend_GameStatus) {
+    public func update(fromStatus status: RABackend_GameStatus) throws {
         self.name = status.venueData.name
         self.description = status.venueData.description_p
         self.bounds = CGSize(status.venueData.bounds)
@@ -140,15 +140,15 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
             switch source {
             case .character:
                 guard let character = self.characters[index]
-                else { throw ModelType.Unknown() }
+                else { throw RAError.Unknown }
                 return character
             case .facility:
                 guard let facility = self.facilities[index]
-                else { throw ModelType.Unknown() }
+                else { throw RAError.Unknown }
                 return facility
             case .droppedItem:
                 guard let droppedItem = self.droppedItems[index]
-                else { throw ModelType.Unknown() }
+                else { throw RAError.Unknown }
                 return droppedItem
             default:
                 return nil

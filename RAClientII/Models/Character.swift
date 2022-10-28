@@ -158,7 +158,7 @@ public extension Character {
     convenience init(source characterData: RABackend_CharacterData) throws {
         guard let venue = Game.game.venue,
               venue.id == characterData.venue.id
-        else { throw ModelType.Unknown() }
+        else { throw RAError.Unknown }
         
         self.init(id: characterData.characterID.id, displayName: characterData.displayName, type: .character, venue: venue, locality: Locality(from: characterData.locality))
         self.slice.type = .character
