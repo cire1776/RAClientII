@@ -21,8 +21,8 @@ protocol PhysicalVenue : AnyObject, Identifiable {
     
     var minimap: UIImage? { get set }
     
-    var playerCharacter: Character!     { get set }
-    var playerCharacterID: Character.ID { get set }
+    var playerCharacter: ActiveCharacter!  { get set }
+    var playerCharacterID: Character.ID    { get set }
     
     var charactersPresent: Set<Character.ID> { get set }
     

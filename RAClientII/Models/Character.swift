@@ -9,13 +9,80 @@ import Foundation
 import OrderedCollections
 import GameplayKit
 
+/// This struct provides the full amount of data that the client is able to have about the player's active character.
+public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItemHolding {
+    public static func == (lhs: ActiveCharacter, rhs: ActiveCharacter) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    public var id: String
+    
+    public var slice: Character.Slice
+    
+    public var locality: Locality {
+        get {
+            return slice.locality
+        }
+        
+        set {
+            slice.locality = newValue
+        }
+    }
+    
+    public var items: [Item.ID : Item]
+    
+    public var mountingPoints: Equipping.MountingPoints
+    
+    public var isUsingSubordinate: Bool = false
+    
+    public init(_ character: Character) {
+        self.id = character.id
+        self.slice = character.slice
+        self.items = [:]
+        self.mountingPoints = Equipping.MountingPoints()
+    }
+    
+    public init(_ activeCharacter: ActiveCharacter) {
+        self.id = activeCharacter.id
+        self.slice = activeCharacter.slice
+        self.items = activeCharacter.items
+        self.mountingPoints = activeCharacter.mountingPoints
+    }
+    
+    public init(from activeCharacter: RABackend_ActiveCharacterData) {
+        self.id = activeCharacter.characterData.characterID.id
+        self.slice = Character.Slice(from: activeCharacter.characterData)
+        self.items = [:]
+        self.items = activeCharacter.items
+            .reduce(into: [Item.ID : Item]()) { items, item in
+//                var items = accum
+                items[item.itemID.id] = Item(source: item)
+//                return items
+            }
+        
+        self.mountingPoints = activeCharacter.mountingPoints.mountingPoints
+            .reduce(into: Equipping.MountingPoints()) { points, mountingPoint in
+                points.mountingPoints[Equipping.Slot(rawValue: mountingPoint.key)!]?.insert(mountingPoint.value)
+            }
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+    
+    func canAccept(_ item: Item) -> Bool {
+        true
+    }
+    
+}
+
 public class Character: Hashable, Identifiable, MainItemHolding {
     public enum Class: Codable {
         case player, character, npc
     }
     
     public enum Expression {
-        case player(character: Character)
+        case player(character: ActiveCharacter)
         case character(character: Slice)
         case npc(character: Slice)
     
@@ -64,6 +131,24 @@ public class Character: Hashable, Identifiable, MainItemHolding {
             self.locality = Locality(from: data.locality)
             self.facing = Facing(data.facing)
         }
+        
+        init(from data: RABackend_ActiveCharacterData) {
+            self.id = data.characterData.characterID.id
+            self.displayName = data.characterData.displayName
+            self.type = .character
+            self.venueID = data.characterData.venue.id
+            self.locality = Locality(from: data.characterData.locality)
+            self.facing = Facing(data.characterData.facing)
+        }
+        
+        public init(_ activeCharacter: ActiveCharacter) {
+            self.id = activeCharacter.id
+            self.displayName = activeCharacter.slice.displayName
+            self.type = .player
+            self.venueID = activeCharacter.slice.venueID
+            self.locality = Locality(locality: activeCharacter.slice.locality)
+            self.facing = Facing(activeCharacter.slice.facing)
+        }
     }
 
     public typealias ID = String
@@ -107,6 +192,18 @@ public class Character: Hashable, Identifiable, MainItemHolding {
             venueID: venue.id,
             locality: locality,
             facing: 0
+        )
+    }
+    
+    public convenience init(from source: RABackend_ActiveCharacterData) {
+        let venue = try! Game.game[.venue, source.characterData.venue.id] as? Venue
+        
+        self.init(
+            id: source.characterData.characterID.id,
+            displayName: source.characterData.displayName,
+            type: .player,
+            venue: venue!,
+            locality: .init(from: source.characterData.locality)
         )
     }
     

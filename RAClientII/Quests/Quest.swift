@@ -10,13 +10,11 @@ import OrderedCollections
 import SpriteKit
 
 struct Quest {
-    static var character: Character = GameClient.gameClient.player
-
+    static var character: Character! = nil
+    
     static var quests: [String : Quest] = [:]
     
     static var interactions: [String : [String : Interaction]] = [:]
-
-
     
     static func add(at questName: String,
                     _ interactions: [String : Interaction]) {
@@ -30,6 +28,7 @@ struct Quest {
     var interactions: [String : Interaction] = [:]
     
     init(_ questName: String, _ interactions: (Quest) -> [String : Interaction]) {
+        Self.character = Game.game?.player
         self.questName = questName
         self.interactions = interactions(self)
         

@@ -81,10 +81,12 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.orientation = status.venueData.orientation.toOrientation
         self.bounds = CGSize(status.venueData.bounds)
         self.playerCharacterID = status.activeCharacter.id.id
+        self.playerCharacter = try? Character(source: status.activeCharacter.characterData)
         self.charactersPresent = Set(status.charactersPresentList.map {
             $0.characterID.id
         })
         
+        // This deals in Slices, not ActiveData
         self.characters = status.charactersPresentList
             .reduce([Character.ID : Character.Expression]()) { accum, element in
             var slices = accum
@@ -113,11 +115,13 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.description = status.venueData.description_p
         self.bounds = CGSize(status.venueData.bounds)
         self.playerCharacterID = status.activeCharacter.id.id
+        self.playerCharacter = try venue[.character, self.playerCharacterID] as! Character?
         self.charactersPresent = Set(status.charactersPresentList.map {
             $0.characterID.id
         })
         
         updateCharacters(fromStatus: status)
+        updateItems(from: status.activeCharacter.items)
         try? updateActiveCharacter(fromStatus: status)
 
         self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
@@ -177,8 +181,21 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         registerAllCharacters()
     }
     
+    private func updateItems(from data: [RABackend_Item]) {
+        guard let playerCharacter = self.playerCharacter else { return }
+        
+        playerCharacter.items = data
+            .reduce([Item.ID : Item]()) { accum, item in
+            var items = accum
+                
+            items[item.itemID.id] = Item(source: item)
+                
+            return items
+        }
+    }
+    
     private func updateActiveCharacter(fromStatus status: RABackend_GameStatus) throws {
-        let character = try Character(source: status.activeCharacter.characterData)
+        let character = try ActiveCharacter(Character(source: status.activeCharacter.characterData))
         
         self.characters[character.id] = Character.Expression.player(character: character)
     }

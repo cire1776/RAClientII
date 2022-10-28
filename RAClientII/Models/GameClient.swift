@@ -28,7 +28,7 @@ class GameClient: ObservableObject {
     }
 
     // Authoritative Source for these Properties
-    @Published var player: Character!
+    @Published var player: ActiveCharacter!
     @Published var characters: Character.Characters!
     @Published var venue: Venue!
 //    @Published var operation: Operation?
