@@ -53,7 +53,7 @@ class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser 
         
         if playerType == .player {
             scene.playerNode = characterNode
-            Command.player = scene.venue!.playerCharacter
+            Command.player = scene.venue!.playerCharacter.slice
         }
         
         characterNode.setFacing(to: characterData.facing, for: scene.orientation)
