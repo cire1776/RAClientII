@@ -77,7 +77,11 @@ public struct Communicator {
             }
             
             group.addTask {
-                await myself.sendDefaultCommands()
+                do {
+                    try await myself.sendDefaultCommands()
+                } catch {
+                    print("Error raised in sendDefaultCommand", error)
+                }
             }
             try await group.waitForAll()
         }
