@@ -84,6 +84,13 @@ public class Item: Hashable, NSCopying, Equatable, Identifiable, Codable {
         self.init(id: id,  typeID: name, quantity: quantity)
     }
     
+    public convenience init?(source: RABackend_Item) {
+        self.init(id: source.itemID.id,
+                  typeID: source.typeID.id,
+                  quantity: UInt(source.quantity)
+        )
+    }
+    
     public func copy(with zone: NSZone? = nil) -> Any {
         let copy = Item(id: self.id, type: self.typeID, quantity: self.quantity)
         copy!.isEquipped = self.isEquipped
