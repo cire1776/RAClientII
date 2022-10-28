@@ -38,6 +38,10 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
     public init(_ character: Character) {
         self.id = character.id
         self.slice = character.slice
+        self.slice.facing = character.slice.facing
+        
+        // use the slice version to avoid using self too early.
+        self.slice.locality = character.locality
         self.items = [:]
         self.mountingPoints = Equipping.MountingPoints()
     }
@@ -45,7 +49,11 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
     public init(_ activeCharacter: ActiveCharacter) {
         self.id = activeCharacter.id
         self.slice = activeCharacter.slice
-        self.items = activeCharacter.items
+        self.slice.facing = activeCharacter.slice.facing
+        
+        // use the slice version to avoid using self too early.
+        self.slice.locality = activeCharacter.locality
+        self.items = [:]
         self.mountingPoints = activeCharacter.mountingPoints
     }
     
@@ -55,9 +63,7 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
         self.items = [:]
         self.items = activeCharacter.items
             .reduce(into: [Item.ID : Item]()) { items, item in
-//                var items = accum
                 items[item.itemID.id] = Item(source: item)
-//                return items
             }
         
         self.mountingPoints = activeCharacter.mountingPoints.mountingPoints
