@@ -103,7 +103,7 @@ class Game: TickHolder, BeatNotifier {
             case .itemType:
                 return Game.itemTypes[index]
             default:
-                throw RAError.Unknown
+                throw RAError.Unknown(reason:"@@@reason: Unknown ModelType")
             }
         }
     }

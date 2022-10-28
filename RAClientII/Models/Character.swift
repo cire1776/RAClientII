@@ -261,7 +261,7 @@ public extension Character {
     convenience init(source characterData: RABackend_CharacterData) throws {
         guard let venue = Game.game.venue,
               venue.id == characterData.venue.id
-        else { throw RAError.Unknown }
+        else { throw RAError.Unknown(reason:"@@@reason: Problem loading venue") }
         
         self.init(id: characterData.characterID.id, displayName: characterData.displayName, type: .character, venue: venue, locality: Locality(from: characterData.locality))
         self.slice.type = .character
