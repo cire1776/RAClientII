@@ -75,7 +75,7 @@ public class Item: Hashable, NSCopying, Equatable, Identifiable, Codable {
 //                                contentFilterID: contentFilterID) : nil
     }
     
-    convenience init?(id: ID?, type name: String, quantity: UInt) {
+    public convenience init?(id: ID?, type name: String, quantity: UInt) {
         guard Game.itemTypes.index(forKey: name) != nil else {
             print("Item type not found:", name)
             return nil
