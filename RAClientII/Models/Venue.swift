@@ -178,7 +178,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.orientation = other.orientation
         self.bounds = other.bounds
         self.minimap = other.minimap
-        self.playerCharacterID = other.playerCharacterID
+        self.characters = other.characters
         self.charactersPresent = other.charactersPresent
         self.facilities = other.facilities
         self.facilitiesMap = other.facilitiesMap
