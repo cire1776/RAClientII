@@ -126,6 +126,8 @@ public struct Communicator {
         ]
         
         for command in commands {
+            print("sending:", command)
+
             if case let .wait(duration) = command {
                 try await Task.sleep(nanoseconds: 1_000_000_000 * duration)
                 continue
