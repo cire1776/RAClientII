@@ -43,6 +43,7 @@ extension FaceableNode {
         setFacing(towards: destination)
     }
     
+    // facing can be 0 to 5
     func setFacing(to facing: Facing, for orientation: Hexagon.Orientation) {
         let rotation = Self.facingAngles[Int(facing)]
         print("facing:", facing, "rotation",Double(rotation).radiansToDegrees)
