@@ -35,7 +35,7 @@ protocol PhysicalVenue : AnyObject, Identifiable {
     
     var interactablesMap: GKQuadtree<NSObject> { get set }
     
-    var venue: Venue  { get }
+//    var venue: Venue  { get }
     
     func addFacility(id: Facility.ID?, kind: Facility.Kind, specifier: String, position: VenuePosition) -> Facility?
     
@@ -47,24 +47,23 @@ protocol PhysicalVenue : AnyObject, Identifiable {
 }
 
 extension PhysicalVenue {
-    var venue: Venue {
-        let venue = Venue()
-        
-        venue.region = self.region
-        venue.name = self.name
-        venue.orientation = self.orientation
-        venue.bounds = self.bounds
-        venue.minimap = self.minimap
-        venue.playerCharacterID = self.playerCharacterID
-        venue.charactersPresent = self.charactersPresent
-        venue.facilities = self.facilities
-        venue.facilitiesMap = self.facilitiesMap
-        venue.droppedItems = self.droppedItems
-        venue.droppedItemsMap = self.droppedItemsMap
-        venue.interactablesMap = self.interactablesMap
-        
-        return venue
-    }
+//    var venue: Venue {
+//        let venue = Venue()
+//        
+//        venue.region = self.region
+//        venue.name = self.name
+//        venue.orientation = self.orientation
+//        venue.bounds = self.bounds
+//        venue.minimap = self.minimap
+//        venue.charactersPresent = self.charactersPresent
+//        venue.facilities = self.facilities
+//        venue.facilitiesMap = self.facilitiesMap
+//        venue.droppedItems = self.droppedItems
+//        venue.droppedItemsMap = self.droppedItemsMap
+//        venue.interactablesMap = self.interactablesMap
+//        
+//        return venue
+//    }
     
     func addFacility(id: Facility.ID? = nil, kind: Facility.Kind, specifier: String, position: VenuePosition) -> Facility? {
 //        let id = id ?? UUID().uuidString
