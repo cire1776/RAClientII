@@ -67,10 +67,10 @@ public struct Communicator {
              
             group.addTask {
                 for try await status in connection.responseStream {
+                    print(status)
                     try await MainActor.run {
                         try GameClient.gameClient.venue.update(fromStatus: status)
                     }
-                    print(status)
                 }
                 print("end of status loop")
             }
