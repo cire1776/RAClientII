@@ -38,14 +38,17 @@ public struct Communicator {
         // build a fountain of EventLoops
         var retries = 0
         
-        do {
-            while retries < Constants.maxConnectionRetries {
-                try await self.performConnection()
-                break
+        while true {
+            do {
+                while retries < Constants.maxConnectionRetries {
+                    try await self.performConnection()
+                }
+            } catch {
+                print("***Couldn't perform the connection", error, "retries:",retries)
+                retries += 1
             }
-        } catch {
-            print("***Couldn't perform the connection: ", error)
-            retries += 1
+            
+            if retries > 10 { break }
         }
     }
     
