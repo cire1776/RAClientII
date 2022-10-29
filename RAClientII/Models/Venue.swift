@@ -146,9 +146,11 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         get throws {
             switch source {
             case .character:
-            
                 guard let character = self.characters[index]
-                else { dump(self.characters);throw RAError.Unknown(reason:"@@@reason: character not found: \(index)") }
+                else {
+                    dump(self.characters)
+                    throw RAError.Unknown(reason:"@@@reason: character not found: \(index)")
+                }
                 return character
             case .facility:
                 guard let facility = self.facilities[index]
