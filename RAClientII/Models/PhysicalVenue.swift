@@ -25,6 +25,7 @@ protocol PhysicalVenue : AnyObject, Identifiable {
     var playerCharacterID: Character.ID    { get set }
     
     var charactersPresent: Set<Character.ID> { get set }
+    var characters: [Character.ID : Character.Expression]   { get set }
     
     var facilities: [Facility.ID : Facility] { get set }
     var facilitiesMap: GKQuadtree<NSObject> { get set }
