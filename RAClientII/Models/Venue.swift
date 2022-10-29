@@ -22,7 +22,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     
     @Published var minimap: UIImage? = nil
     
-    @Published var playerCharacter: Character!
+    @Published var playerCharacter: ActiveCharacter!
     @Published var playerCharacterID: Character.ID
     
     @Published var charactersPresent = Set<Character.ID>()
@@ -81,7 +81,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.orientation = status.venueData.orientation.toOrientation
         self.bounds = CGSize(status.venueData.bounds)
         self.playerCharacterID = status.activeCharacter.id.id
-        self.playerCharacter = try? Character(source: status.activeCharacter.characterData)
+        self.playerCharacter = ActiveCharacter(from: status.activeCharacter)
         self.charactersPresent = Set(status.charactersPresentList.map {
             $0.characterID.id
         })
@@ -114,15 +114,18 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.name = status.venueData.name
         self.description = status.venueData.description_p
         self.bounds = CGSize(status.venueData.bounds)
-        self.playerCharacterID = status.activeCharacter.id.id
-        self.playerCharacter = try venue[.character, self.playerCharacterID] as! Character?
+        
         self.charactersPresent = Set(status.charactersPresentList.map {
             $0.characterID.id
         })
         
         updateCharacters(fromStatus: status)
-        updateItems(from: status.activeCharacter.items)
+
+        self.playerCharacterID = status.activeCharacter.id.id
+        
         try? updateActiveCharacter(fromStatus: status)
+
+        updateItems(from: status.activeCharacter.items)
 
         self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
             let facility = Facility(from: backendFacility)
@@ -198,6 +201,8 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     private func updateActiveCharacter(fromStatus status: RABackend_GameStatus) throws {
         let character = try ActiveCharacter(Character(source: status.activeCharacter.characterData))
         
+        self.playerCharacter = character
+        
         self.characters[character.id] = Character.Expression.player(character: character)
     }
         
@@ -205,11 +210,10 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         guard let scene = GameClient.gameScene else { return }
 
         self.characters = status.charactersPresentList.reduce([String:Character.Expression]()) { accum, backendCharacter in
-            let character = try! Character(source: backendCharacter)
+            let character = Character.Slice(from: backendCharacter)
             
             var characters = accum
-            characters[character.id] = .character(character: character.slice)
-            character.slice.type = .npc
+            characters[character.id] = .character(character: character)
             return characters
         }
         
@@ -217,7 +221,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
             if let character = characters[characterNode.name!] {
                 print("$$$Updating:", characterNode.name!)
                 
-                var slice: Character.Slice = character.slice
+                let slice: Character.Slice = character.slice
                 
                 characterNode.character = slice
                 
