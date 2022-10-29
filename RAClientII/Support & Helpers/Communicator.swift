@@ -108,6 +108,8 @@ public struct Communicator {
             .face(facing: 4),
             .addWaypoint(destination: VenuePosition(hex: (1,1), x: 10, y: 12),duration: UInt64(5.seconds) ),
             .wait(6),
+            .face(facing: 0),
+            .wait(3),
             .face(facing: 1),
             .wait(3),
             .face(facing: 2),
@@ -117,8 +119,7 @@ public struct Communicator {
             .face(facing: 4),
             .wait(3),
             .face(facing: 5),
-            .wait(3),
-            .face(facing: 6)
+            .addWaypoint(destination: VenuePosition(hex: (0,0), x: 20, y: 15), duration: 100)
         ]
         
         for command in commands {
