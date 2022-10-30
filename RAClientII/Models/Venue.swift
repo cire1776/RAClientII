@@ -111,6 +111,11 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     }
     
     public func update(fromStatus status: RABackend_GameStatus) throws {
+        print("@@@updating:",status)
+        Task {
+            await sharedGame.synchronize(serverTick: status.tick)
+        }
+        
         self.name = status.venueData.name
         self.description = status.venueData.description_p
         self.bounds = CGSize(status.venueData.bounds)
