@@ -111,19 +111,18 @@ class Game: TickHolder, BeatNotifier {
     func beat() async {
         await advanceTick()
     }
-
-    override func advanceTick(times: Int = 1) async {
+    
+    public override func performTick(at tick: UInt64) {
         if (self.tick % 20) == 0 {
             print(".", terminator: "")
         }
         
-        if (self.tick % 200) == 0 {
-            print("current tick:", Game.game.tick)
+        if (self.tick % 2000) == 0 {
+            print("current tick:", self.tick)
             print(GameClient.gameClient.characters as Any)
         }
-        
-        await super.advanceTick(times: times)
     }
+    
     private func triggerLazy(loadEverything: Bool = false) {
 //        Endorsement.setupRegisteredEndorsements()
 //        Game.environment = Game.Environment()
