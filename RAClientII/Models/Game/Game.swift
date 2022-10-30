@@ -60,8 +60,6 @@ class Game: TickHolder, BeatNotifier {
     
     var heartbeat: Heartbeat!
     
-    let initialTick: UInt64
-    
     var currentTick: UInt64 { self.tick }
         
 //    var tickScheduler = [UInt64 : [String: Schedulable]]()
@@ -77,13 +75,10 @@ class Game: TickHolder, BeatNotifier {
     var changed = false
     
     private var holdTicks: UInt = 0
-    private var firstTick = true
     
     var savingEvent: (String, UInt) = ("",0)
     
     override init() {
-        self.initialTick = 2_500
-        
         self.playerID = "cire"
         
         restoreItemTypes()
