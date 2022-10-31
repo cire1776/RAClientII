@@ -118,6 +118,9 @@ class Game: TickHolder, BeatNotifier {
         }
     }
     
+    public override func housekeeping(at tick: UInt64) {
+    }
+    
     private func triggerLazy(loadEverything: Bool = false) {
 //        Endorsement.setupRegisteredEndorsements()
 //        Game.environment = Game.Environment()
