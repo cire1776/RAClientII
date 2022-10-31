@@ -42,23 +42,6 @@ extension Constants {
 
 var allSubscriptions = Set<AnyCancellable>()
 
-public enum ClientCommand: Codable {
-    case nop, report
-    case wait(UInt64)
-    case connect, close
-    case beginOperation, cancelOperation
-    case command
-    case face(facing: UInt)
-    case addWaypoint(destination: VenuePosition, duration: UInt64)
-    case abortMovement, abortLastWaypoint
-    case consume(itemID: Item.ID)
-    case use(itemID: Item.ID)
-    case drop(itemID: Item.ID)
-    case pickup(droppedItemID: DroppedItem.ID)
-    case equip(itemID: Item.ID)
-    case unequip(itemID: Item.ID)
-}
-
 var queue = CommandQueue<ClientCommand, ClientCommand>() {
     print($0 as Any)
 }
