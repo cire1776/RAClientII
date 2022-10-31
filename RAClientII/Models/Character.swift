@@ -132,7 +132,7 @@ public class Character: Hashable, Identifiable, MainItemHolding {
         init(from data: RABackend_CharacterData) {
             self.id = data.characterID.id
             self.displayName = data.displayName
-            self.type = .character
+            self.type = data.type.asCharacterClass
             self.venueID = data.venue.id
             self.locality = Locality(from: data.locality)
             self.facing = Facing(data.facing)
@@ -141,7 +141,7 @@ public class Character: Hashable, Identifiable, MainItemHolding {
         init(from data: RABackend_ActiveCharacterData) {
             self.id = data.characterData.characterID.id
             self.displayName = data.characterData.displayName
-            self.type = .character
+            self.type = .player
             self.venueID = data.characterData.venue.id
             self.locality = Locality(from: data.characterData.locality)
             self.facing = Facing(data.characterData.facing)
@@ -260,7 +260,12 @@ public extension Character {
               venue.id == characterData.venue.id
         else { throw RAError.Unknown(reason:"@@@reason: Problem loading venue") }
         
-        self.init(id: characterData.characterID.id, displayName: characterData.displayName, type: .character, venue: venue, locality: Locality(from: characterData.locality))
+        self.init(id: characterData.characterID.id,
+                  displayName: characterData.displayName,
+                  type: characterData.type.asCharacterClass ?? .character,
+                  venue: venue,
+                  locality: Locality(from: characterData.locality)
+        )
         self.slice.type = .character
     }
     
