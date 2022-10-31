@@ -46,6 +46,7 @@
 		639236A729048F7100973DDF /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236A629048F7100973DDF /* CommandQueue.swift */; };
 		639236B0290542BF00973DDF /* RABackend.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236AE290542BF00973DDF /* RABackend.pb.swift */; };
 		639236B1290542BF00973DDF /* RABackend.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236AF290542BF00973DDF /* RABackend.grpc.swift */; };
+		6392C205290EBC3600B541DA /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392C204290EBC3600B541DA /* Command.swift */; };
 		63988695290209570007D8C0 /* MenuTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63988694290209570007D8C0 /* MenuTree.swift */; };
 		63988697290209DC0007D8C0 /* HexagonMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63988696290209DB0007D8C0 /* HexagonMap.swift */; };
 		6398869B29020A950007D8C0 /* MenuRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398869829020A950007D8C0 /* MenuRenderer.swift */; };
@@ -80,7 +81,6 @@
 		63DFA90329030ECD00C26F0E /* Locality + Client-side.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA90229030ECD00C26F0E /* Locality + Client-side.swift */; };
 		63DFA90529031A0400C26F0E /* UIDelegate + Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA90429031A0400C26F0E /* UIDelegate + Movement.swift */; };
 		63DFA90829031A5400C26F0E /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA90629031A5400C26F0E /* Move.swift */; };
-		63DFA90929031A5400C26F0E /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA90729031A5400C26F0E /* Command.swift */; };
 		63DFA9262904067600C26F0E /* Locality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA90B2904067600C26F0E /* Locality.swift */; };
 		63DFA9272904067600C26F0E /* BuffSpecifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA90C2904067600C26F0E /* BuffSpecifier.swift */; };
 		63DFA9282904067600C26F0E /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA90D2904067600C26F0E /* Waypoint.swift */; };
@@ -139,6 +139,7 @@
 		639236A629048F7100973DDF /* CommandQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommandQueue.swift; path = RAClientII/RAShared/CommandQueue.swift; sourceTree = SOURCE_ROOT; };
 		639236AE290542BF00973DDF /* RABackend.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.pb.swift; sourceTree = "<group>"; };
 		639236AF290542BF00973DDF /* RABackend.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.grpc.swift; sourceTree = "<group>"; };
+		6392C204290EBC3600B541DA /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		63988694290209570007D8C0 /* MenuTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTree.swift; sourceTree = "<group>"; };
 		63988696290209DB0007D8C0 /* HexagonMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexagonMap.swift; sourceTree = "<group>"; };
 		6398869829020A950007D8C0 /* MenuRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRenderer.swift; sourceTree = "<group>"; };
@@ -173,7 +174,6 @@
 		63DFA90229030ECD00C26F0E /* Locality + Client-side.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locality + Client-side.swift"; sourceTree = "<group>"; };
 		63DFA90429031A0400C26F0E /* UIDelegate + Movement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + Movement.swift"; sourceTree = "<group>"; };
 		63DFA90629031A5400C26F0E /* Move.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
-		63DFA90729031A5400C26F0E /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Command.swift; path = ../../../RoyalAmbition/OldRAClient/OldRAClient/Commands/Command.swift; sourceTree = "<group>"; };
 		63DFA90B2904067600C26F0E /* Locality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locality.swift; sourceTree = "<group>"; };
 		63DFA90C2904067600C26F0E /* BuffSpecifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuffSpecifier.swift; sourceTree = "<group>"; };
 		63DFA90D2904067600C26F0E /* Waypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
@@ -415,7 +415,7 @@
 		63DFA8E82902D04D00C26F0E /* Commands */ = {
 			isa = PBXGroup;
 			children = (
-				63DFA90729031A5400C26F0E /* Command.swift */,
+				6392C204290EBC3600B541DA /* Command.swift */,
 				63DFA90629031A5400C26F0E /* Move.swift */,
 			);
 			path = Commands;
@@ -622,7 +622,6 @@
 				63DFA9372904067600C26F0E /* VenuePosition.swift in Sources */,
 				639886D72902B3E00007D8C0 /* Window.swift in Sources */,
 				639886A1290215440007D8C0 /* EntityHolder.swift in Sources */,
-				63DFA90929031A5400C26F0E /* Command.swift in Sources */,
 				637F1AFD2901E054008642A4 /* HexagonMapNode.swift in Sources */,
 				637F1A66290187BA008642A4 /* ServerProxy.swift in Sources */,
 				637F1AAC2901D23B008642A4 /* Characters.swift in Sources */,
@@ -638,6 +637,7 @@
 				639886A5290215B50007D8C0 /* HexagonNode.swift in Sources */,
 				63DFA9292904067600C26F0E /* Heartbeat.swift in Sources */,
 				637F1AAA2901D15F008642A4 /* Geography.swift in Sources */,
+				6392C205290EBC3600B541DA /* Command.swift in Sources */,
 				637F1A852901AF0A008642A4 /* Character.swift in Sources */,
 				637F1A6329018263008642A4 /* GameClient.swift in Sources */,
 				639886D92902B62D0007D8C0 /* NonPlayerCharacter.swift in Sources */,
