@@ -14,14 +14,14 @@ extension Hexagon {
             return topology.normalOffsets[edge]!
         }
         
-        private struct AxialCoordinate: Hashable, Codable {
+        struct AxialCoordinate: Hashable, Codable {
             let r: Int, q: Int
         }
         
-        private var hexes: OrderedDictionary<AxialCoordinate, T?>
+        var hexes: OrderedDictionary<AxialCoordinate, T?>
         let width: Int
         let height: Int
-        
+
         var first: (Coordinates, T)? {
             var element: T? = nil
             
