@@ -50,6 +50,21 @@ class HexagonMapNode: SKNode, EntityHolder {
     var selection: Coordinates? = nil
     var facilityNodes = [Facility.ID : SKNode]()
     
+    public override init() {
+            self.venue = Venue()
+            self.region = venue.region
+            self.radius = 100
+            self.orientation = .point
+            
+            super.init()
+            self.name = "HexagonMapNode"
+            
+            createHexagonNodes()
+            createFacilityNodes()
+
+            subscribe()
+    }
+    
     init(in venue: Venue, of radius: CGFloat,  orientation: Hexagon.Orientation) {
         self.venue = venue
         self.region = venue.region
