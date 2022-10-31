@@ -76,7 +76,7 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
         .npc       : .orange
     ]
   
-    var ID: String = UUID().uuidString
+    public var id: String = UUID().uuidString
     var type: Character.Class
     var character: Character.Slice
     
