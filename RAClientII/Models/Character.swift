@@ -83,7 +83,7 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
 }
 
 public class Character: Hashable, Identifiable, MainItemHolding {
-    public enum Class: Codable {
+    public enum Class: String, Codable, CaseIterable {
         case player, character, npc
     }
     
