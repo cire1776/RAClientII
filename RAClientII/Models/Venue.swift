@@ -129,7 +129,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.playerCharacterID = status.activeCharacter.id.id
         
         try? updateActiveCharacter(fromStatus: status)
-
+        updateMovement()
         updateItems(from: status.activeCharacter.items)
 
         self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
@@ -190,6 +190,30 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         self.interactablesMap = other.interactablesMap
         
         registerAllCharacters()
+    }
+    
+    private func updateMovement() {
+        Task {
+            var nodes = await GameClient.gameScene.characterNodes
+
+            for characterID in charactersPresent {
+                let expression = try self[.character, characterID] as? Character.Expression
+                
+                guard let characterSlice = expression?.slice else { continue }
+                
+                guard let node = nodes.first else { continue }
+                nodes = Array(nodes.dropFirst())
+                
+                let isNodeMoving = await node.isMoving
+                if characterSlice.locality.isMoving && isNodeMoving { continue }
+                
+                if characterSlice.locality.isMoving {
+                    await MainActor.run {
+                        node.movementStarted()
+                    }
+                }
+            }
+        }
     }
     
     private func updateItems(from data: [RABackend_Item]) {
