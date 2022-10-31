@@ -163,7 +163,9 @@ extension CharacterNode {
         line.zPosition = Constants.lineLevel
     }
     
-    func movementStarted() {
+    func movementStarted(at currentTick: UInt64=Game.game.tick) {
+        self.locality = self.character.locality
+
         // during movement position is predictive,
         // except for brief moments at the end of
         // a waypoint.
@@ -171,9 +173,7 @@ extension CharacterNode {
         
         guard self.isMoving else { return }
         
-        let currentTick = Game.game.tick
-        
-        self.currentArrivalTick = self.locality.waypoints.first!.arrivalTick
+        self.currentArrivalTick = self.locality.waypoints.first!.arrivalTick + Game.game.tick
        
         print("currentArrivalTick:", currentArrivalTick!, "currentTick:", currentTick)
         

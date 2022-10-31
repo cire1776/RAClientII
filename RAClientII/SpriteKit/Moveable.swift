@@ -12,7 +12,7 @@ protocol Moveable {
     
     func markerColor(isCurrent: Bool) -> SKColor
     
-    func movementStarted()
+    func movementStarted(at currentTick: UInt64)
     func addWaypoint(to destination: CGPoint)
     
     func moveAuthoritatively(_ locality: Locality)
