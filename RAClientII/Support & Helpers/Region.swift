@@ -61,6 +61,8 @@ extension Hexagon {
             }
         }
         
+        public var isWholeMap: Bool = false
+        
         func ForEach(perform action: (T,(Int,Int))->()) {
             for (key, hex) in hexes {
                 if let hex = hex {
