@@ -10,7 +10,7 @@ import GameplayKit
 public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     public typealias ID = String
     
-    public var id: String
+    public var id: Venue.ID
     @Published var name: String
     @Published var description: String
     
