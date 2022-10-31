@@ -263,5 +263,18 @@ public extension Character {
         self.init(id: characterData.characterID.id, displayName: characterData.displayName, type: .character, venue: venue, locality: Locality(from: characterData.locality))
         self.slice.type = .character
     }
+    
+    convenience init(source activeCharacter: ActiveCharacter) throws {
+        guard let venue = Game.game.venue,
+              venue.id == activeCharacter.slice.venueID
+        else { throw RAError.Unknown(reason:"@@@reason: Problem loading venue") }
+
+        self.init(id: activeCharacter.id,
+                      displayName: activeCharacter.slice.displayName,
+                  type: activeCharacter.slice.type,
+                  venue: venue,
+                  locality: activeCharacter.locality
+        )
+    }
 }
 
