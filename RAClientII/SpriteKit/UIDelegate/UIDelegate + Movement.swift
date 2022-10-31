@@ -115,11 +115,14 @@ extension UIDelegate {
     }
     
     func movementComplete(isPlayer: Bool) {
+        
+        // TODO: Why aren't I using isPlayer directly?
         if playerNode.type == .player {
             scene.clearMarker(named: Constants.currentWaypointName)
 
             if !playerNode.isMoving {
                 scene.removeAction(forKey: Constants.movementActionKey)
+                self.movementLine?.removeFromParent()
                 self.movementLine = nil
             }
         }
