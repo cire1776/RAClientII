@@ -242,10 +242,7 @@ public extension Character {
         
         override init() {
             self.character = nil
-            
             self.type = .other
-            
-            
             super.init()
         }
         
