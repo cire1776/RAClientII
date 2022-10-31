@@ -133,7 +133,7 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
         allSubscriptions.insert(subscription)
         
         subscription =  self.character.$locality
-                            .debounce(for: 0.01, scheduler: RunLoop.main)
+//                            .debounce(for: 0.01, scheduler: RunLoop.main)
                             .receive(on: RunLoop.main)
                             .sink(receiveValue: { notification in
             if self.scene != nil,
