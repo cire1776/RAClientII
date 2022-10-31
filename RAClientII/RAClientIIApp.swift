@@ -15,6 +15,8 @@ import NIOHPACK
 
 public enum Constants {
     public static let numberOfTicksPerSecond: UInt64 = 20
+    public static let worldWidth = 100
+    public static let worldHeight = 100
 }
 
 extension Constants {
