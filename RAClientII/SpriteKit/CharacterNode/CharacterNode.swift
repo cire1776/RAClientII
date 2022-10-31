@@ -8,7 +8,7 @@
 import SpriteKit
 import Combine
 
-class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser {
+public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, MarkerUser {
     static func setup(scene: GameScene, insertions: [Character.ID], deletions: [Character.ID]) {
         for character in deletions {
             if let node = scene.hexagonMapNode.childNode(withName: character)  as? CharacterNode {
