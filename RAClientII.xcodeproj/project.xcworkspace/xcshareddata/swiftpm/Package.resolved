@@ -89,6 +89,15 @@
         "revision" : "88c7d15e1242fdb6ecbafbc7926426a19be1e98a",
         "version" : "1.20.2"
       }
+    },
+    {
+      "identity" : "xxhash-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daisuke-t-jp/xxHash-Swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "e86a07ab4867f81481d430e1370a5ec97b6e3359"
+      }
     }
   ],
   "version" : 2

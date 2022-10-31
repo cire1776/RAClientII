@@ -91,6 +91,8 @@ class GameScene : SKScene, ObservableObject, MarkerAdornable {
         self.predictiveSignal.zPosition = 1000
         
         self.camera!.addChild(self.predictiveSignal)
+        
+        self.uiDelegate.setupMovement(self.view!)
     }
     
     func subscribe() {

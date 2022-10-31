@@ -47,6 +47,11 @@
 		639236B0290542BF00973DDF /* RABackend.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236AE290542BF00973DDF /* RABackend.pb.swift */; };
 		639236B1290542BF00973DDF /* RABackend.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639236AF290542BF00973DDF /* RABackend.grpc.swift */; };
 		6392C205290EBC3600B541DA /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392C204290EBC3600B541DA /* Command.swift */; };
+		6392C2102910435D00B541DA /* HexAdorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392C20F2910435D00B541DA /* HexAdorner.swift */; };
+		6392C218291046F900B541DA /* Blitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392C217291046F900B541DA /* Blitor.swift */; };
+		6392C22D29104DF300B541DA /* RGBA32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392C22C29104DF300B541DA /* RGBA32.swift */; };
+		6392C2322910504300B541DA /* xxHash-Swift in Frameworks */ = {isa = PBXBuildFile; productRef = 6392C2312910504300B541DA /* xxHash-Swift */; };
+		6392C2382910547C00B541DA /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392C2372910547C00B541DA /* CGFloat.swift */; };
 		63988695290209570007D8C0 /* MenuTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63988694290209570007D8C0 /* MenuTree.swift */; };
 		63988697290209DC0007D8C0 /* HexagonMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63988696290209DB0007D8C0 /* HexagonMap.swift */; };
 		6398869B29020A950007D8C0 /* MenuRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6398869829020A950007D8C0 /* MenuRenderer.swift */; };
@@ -140,6 +145,14 @@
 		639236AE290542BF00973DDF /* RABackend.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.pb.swift; sourceTree = "<group>"; };
 		639236AF290542BF00973DDF /* RABackend.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.grpc.swift; sourceTree = "<group>"; };
 		6392C204290EBC3600B541DA /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		6392C20629103ADF00B541DA /* GameMapScene + UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameMapScene + UI.swift"; sourceTree = "<group>"; };
+		6392C20729103ADF00B541DA /* GameMapScene+Initialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameMapScene+Initialization.swift"; sourceTree = "<group>"; };
+		6392C20829103ADF00B541DA /* GameMapScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMapScene.swift; sourceTree = "<group>"; };
+		6392C20F2910435D00B541DA /* HexAdorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexAdorner.swift; sourceTree = "<group>"; };
+		6392C2152910457900B541DA /* MapMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapMaker.swift; sourceTree = "<group>"; };
+		6392C217291046F900B541DA /* Blitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blitor.swift; sourceTree = "<group>"; };
+		6392C22C29104DF300B541DA /* RGBA32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA32.swift; sourceTree = "<group>"; };
+		6392C2372910547C00B541DA /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		63988694290209570007D8C0 /* MenuTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTree.swift; sourceTree = "<group>"; };
 		63988696290209DB0007D8C0 /* HexagonMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexagonMap.swift; sourceTree = "<group>"; };
 		6398869829020A950007D8C0 /* MenuRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRenderer.swift; sourceTree = "<group>"; };
@@ -201,6 +214,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6392C2322910504300B541DA /* xxHash-Swift in Frameworks */,
 				637F1A8F2901B66B008642A4 /* NIOConcurrencyHelpers in Frameworks */,
 				637F1A882901B202008642A4 /* OrderedCollections in Frameworks */,
 				637F1A962901B69C008642A4 /* GRPC in Frameworks */,
@@ -276,12 +290,13 @@
 				637F1AF72901DFF8008642A4 /* CharacterNode */,
 				63DFA8E42902CFB200C26F0E /* FaceableNode.swift */,
 				63DFA8E62902CFD600C26F0E /* Moveable.swift */,
-				637F1A5D290180E9008642A4 /* GameScene.swift */,
+				6392C239291069F600B541DA /* GameScene */,
 				637F1A7F2901ADF2008642A4 /* MarkerAdornable.swift */,
 				637F1A812901AE29008642A4 /* Updating.swift */,
 				639886A4290215B50007D8C0 /* HexagonNode.swift */,
 				637F1AFC2901E054008642A4 /* HexagonMapNode.swift */,
 				639886A22902158B0007D8C0 /* DroppedItemNode.swift */,
+				6392C20C291040C800B541DA /* GameMap */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
@@ -316,6 +331,9 @@
 				639886A0290215440007D8C0 /* EntityHolder.swift */,
 				639886A6290216B30007D8C0 /* Hexagon + NameFrom.swift */,
 				636EDC622907FC3100BF2213 /* Communicator.swift */,
+				6392C20F2910435D00B541DA /* HexAdorner.swift */,
+				6392C217291046F900B541DA /* Blitor.swift */,
+				6392C22C29104DF300B541DA /* RGBA32.swift */,
 			);
 			path = "Support & Helpers";
 			sourceTree = "<group>";
@@ -335,6 +353,7 @@
 				637F1AFF2901E0CE008642A4 /* SKCameraNode.swift */,
 				6398869E29020B010007D8C0 /* UIImage.swift */,
 				63DFA8ED2902D23800C26F0E /* CGVector.swift */,
+				6392C2372910547C00B541DA /* CGFloat.swift */,
 				63DFA8F12902D2E300C26F0E /* SKNode.swift */,
 				63DFA8EF2902D2D800C26F0E /* SKNode+toImage.swift */,
 				636EDC2E2906B25700BF2213 /* ProtoBuff.swift */,
@@ -358,6 +377,24 @@
 				63DFA90429031A0400C26F0E /* UIDelegate + Movement.swift */,
 			);
 			path = UIDelegate;
+			sourceTree = "<group>";
+		};
+		6392C20C291040C800B541DA /* GameMap */ = {
+			isa = PBXGroup;
+			children = (
+				6392C20829103ADF00B541DA /* GameMapScene.swift */,
+				6392C20629103ADF00B541DA /* GameMapScene + UI.swift */,
+				6392C20729103ADF00B541DA /* GameMapScene+Initialization.swift */,
+			);
+			path = GameMap;
+			sourceTree = "<group>";
+		};
+		6392C239291069F600B541DA /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				637F1A5D290180E9008642A4 /* GameScene.swift */,
+			);
+			path = GameScene;
 			sourceTree = "<group>";
 		};
 		63988693290209430007D8C0 /* Menus */ = {
@@ -444,6 +481,7 @@
 				63DFA90E2904067600C26F0E /* Heartbeat.swift */,
 				63DFA90F2904067600C26F0E /* Attributes.swift */,
 				63DFA9102904067600C26F0E /* Hexagon.swift */,
+				6392C2152910457900B541DA /* MapMaker.swift */,
 				63DFA9112904067600C26F0E /* ItemType.swift */,
 				63DFA91A2904067600C26F0E /* DataList.swift */,
 				63DFA91B2904067600C26F0E /* ModelType.swift */,
@@ -500,6 +538,7 @@
 				637F1A902901B66B008642A4 /* NIOCore */,
 				637F1A932901B69C008642A4 /* CGRPCZlib */,
 				637F1A952901B69C008642A4 /* GRPC */,
+				6392C2312910504300B541DA /* xxHash-Swift */,
 			);
 			productName = RAClientII;
 			productReference = 637F1A4729015EBA008642A4 /* RAClientII.app */;
@@ -533,6 +572,7 @@
 				637F1A862901B202008642A4 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				637F1A8B2901B66B008642A4 /* XCRemoteSwiftPackageReference "swift-nio" */,
 				637F1A922901B69C008642A4 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				6392C2302910504300B541DA /* XCRemoteSwiftPackageReference "xxHash-Swift" */,
 			);
 			productRefGroup = 637F1A4829015EBA008642A4 /* Products */;
 			projectDirPath = "";
@@ -566,6 +606,7 @@
 				639886CF2902B1B40007D8C0 /* SwitchDialogue.swift in Sources */,
 				639886CC2902B1B40007D8C0 /* DaylinWoodcuttingQuest.swift in Sources */,
 				637F1A5E290180E9008642A4 /* GameScene.swift in Sources */,
+				6392C2102910435D00B541DA /* HexAdorner.swift in Sources */,
 				639886CD2902B1B40007D8C0 /* DaylinSharpeningQuest.swift in Sources */,
 				63DFA90829031A5400C26F0E /* Move.swift in Sources */,
 				636EDC632907FC3100BF2213 /* Communicator.swift in Sources */,
@@ -579,12 +620,14 @@
 				637F1B022901E139008642A4 /* Venue.swift in Sources */,
 				63DFA8F22902D2E300C26F0E /* SKNode.swift in Sources */,
 				636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */,
+				6392C218291046F900B541DA /* Blitor.swift in Sources */,
 				63988695290209570007D8C0 /* MenuTree.swift in Sources */,
 				63DFA93B2904067600C26F0E /* TickHolder.swift in Sources */,
 				63DFA8F02902D2D800C26F0E /* SKNode+toImage.swift in Sources */,
 				639886D32902B1B40007D8C0 /* Monologue.swift in Sources */,
 				6398869D29020A950007D8C0 /* MenuOption.swift in Sources */,
 				637F1B182901F794008642A4 /* UIDelegate.swift in Sources */,
+				6392C2382910547C00B541DA /* CGFloat.swift in Sources */,
 				639886A32902158B0007D8C0 /* DroppedItemNode.swift in Sources */,
 				6398869F29020B010007D8C0 /* UIImage.swift in Sources */,
 				639886DB2902B6E90007D8C0 /* ItemHolding.swift in Sources */,
@@ -643,6 +686,7 @@
 				639886D92902B62D0007D8C0 /* NonPlayerCharacter.swift in Sources */,
 				63DFA9282904067600C26F0E /* Waypoint.swift in Sources */,
 				637F1B002901E0CE008642A4 /* SKCameraNode.swift in Sources */,
+				6392C22D29104DF300B541DA /* RGBA32.swift in Sources */,
 				637F1B082901EC20008642A4 /* PhysicalVenue.swift in Sources */,
 				637F1A822901AE29008642A4 /* Updating.swift in Sources */,
 				63DFA93E2904067600C26F0E /* Skill.swift in Sources */,
@@ -893,6 +937,14 @@
 				kind = branch;
 			};
 		};
+		6392C2302910504300B541DA /* XCRemoteSwiftPackageReference "xxHash-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daisuke-t-jp/xxHash-Swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -925,6 +977,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 637F1A922901B69C008642A4 /* XCRemoteSwiftPackageReference "grpc-swift" */;
 			productName = GRPC;
+		};
+		6392C2312910504300B541DA /* xxHash-Swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6392C2302910504300B541DA /* XCRemoteSwiftPackageReference "xxHash-Swift" */;
+			productName = "xxHash-Swift";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
