@@ -149,7 +149,6 @@
 		6392C20729103ADF00B541DA /* GameMapScene+Initialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameMapScene+Initialization.swift"; sourceTree = "<group>"; };
 		6392C20829103ADF00B541DA /* GameMapScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMapScene.swift; sourceTree = "<group>"; };
 		6392C20F2910435D00B541DA /* HexAdorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexAdorner.swift; sourceTree = "<group>"; };
-		6392C2152910457900B541DA /* MapMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapMaker.swift; sourceTree = "<group>"; };
 		6392C217291046F900B541DA /* Blitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blitor.swift; sourceTree = "<group>"; };
 		6392C22C29104DF300B541DA /* RGBA32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA32.swift; sourceTree = "<group>"; };
 		6392C2372910547C00B541DA /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
@@ -481,7 +480,6 @@
 				63DFA90E2904067600C26F0E /* Heartbeat.swift */,
 				63DFA90F2904067600C26F0E /* Attributes.swift */,
 				63DFA9102904067600C26F0E /* Hexagon.swift */,
-				6392C2152910457900B541DA /* MapMaker.swift */,
 				63DFA9112904067600C26F0E /* ItemType.swift */,
 				63DFA91A2904067600C26F0E /* DataList.swift */,
 				63DFA91B2904067600C26F0E /* ModelType.swift */,
