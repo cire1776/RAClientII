@@ -141,6 +141,8 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
                notification.isPositionAuthoritative {
                 print("received character.locality update:",self.character.id)
                 
+                guard self.locality.isMoving else { return }
+                
                 let wasAlreadyMoving = self.isMoving
                 self.moveAuthoritatively(notification)
                 
