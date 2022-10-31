@@ -116,8 +116,7 @@ extension UIDelegate {
     
     func movementComplete(isPlayer: Bool) {
         
-        // TODO: Why aren't I using isPlayer directly?
-        if playerNode.type == .player {
+        if isPlayer {
             scene.clearMarker(named: Constants.currentWaypointName)
 
             if !playerNode.isMoving {
