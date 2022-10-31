@@ -177,7 +177,7 @@ extension CharacterNode {
        
         print("currentArrivalTick:", currentArrivalTick!, "currentTick:", currentTick)
         
-        if isPlayer {
+        if self.isPlayer {
             updateMarker()
             updateLine()
         }
