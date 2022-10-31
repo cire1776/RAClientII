@@ -108,22 +108,22 @@ public struct Communicator {
         let commands: [ClientCommand] = [
             .connect,
             .wait(10),
-            .face(facing: 4),
-            .addWaypoint(destination: VenuePosition(hex: (1,1), x: 10, y: 12),duration: UInt64(5.seconds) ),
+//            .face(facing: 4),
+            .addWaypoint(destination: VenuePosition(hex: (1,1), x: 10, y: 12), duration: 100 ),
             .wait(6),
-            .face(facing: 0),
-            .wait(3),
-            .face(facing: 1),
-            .wait(3),
-            .face(facing: 2),
-            .wait(3),
-            .face(facing: 3),
-            .wait(3),
-            .face(facing: 4),
-            .wait(3),
-            .face(facing: 5),
+//            .face(facing: 0),
+//            .wait(3),
+//            .face(facing: 1),
+//            .wait(3),
+//            .face(facing: 2),
+//            .wait(3),
+//            .face(facing: 3),
+//            .wait(3),
+//            .face(facing: 4),
+//            .wait(3),
+//            .face(facing: 5),
             .addWaypoint(destination: VenuePosition(hex: (0,0), x: 20, y: 15), duration: 100),
-            .wait(1),
+            .wait(6),
             .addWaypoint(destination: VenuePosition(hex: (1,0), x: 0, y:0), duration: 100),
             .wait(6),
             .addWaypoint(destination: .zero, duration: 100)
@@ -140,5 +140,7 @@ public struct Communicator {
             
             await queue.push((command,nil))
         }
+        
+        print("Default commands complete")
     }
 }
