@@ -31,11 +31,9 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
             return
         }
         
-        let characterData = expression.slice
+        let characterSlice = expression.slice
         
-        let playerType: Character.Class = characterData.id == scene.venue.playerCharacterID ?
-            .player :
-        characterData.type
+        let playerType: Character.Class = characterSlice.id == scene.venue.playerCharacterID ? .player : characterSlice.type
 
         let characterNode: CharacterNode
         let updating: Bool
@@ -45,20 +43,20 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
             characterNode = node
         } else {
             updating = false
-            characterNode = CharacterNode(character: characterData, as: playerType)
+            characterNode = CharacterNode(character: characterSlice, as: playerType)
             print("$$$Inserting")
         }
             
-        characterNode.name = characterData.id
+        characterNode.name = characterSlice.id
         
         if playerType == .player {
             scene.playerNode = characterNode
-            Command.player = scene.venue!.playerCharacter.slice
+            Command.player = try? Character(source: scene.venue!.playerCharacter)
         }
         
-        characterNode.setFacing(to: characterData.facing, for: scene.orientation)
+        characterNode.setFacing(to: characterSlice.facing, for: scene.orientation)
         
-        let position = scene.hexagonMapNode.convert(position: characterData.locality.position)
+        let position = scene.hexagonMapNode.convert(position: characterSlice.locality.position)
         characterNode.position = position
         
         if !updating {
