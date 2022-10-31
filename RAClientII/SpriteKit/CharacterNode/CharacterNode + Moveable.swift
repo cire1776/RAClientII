@@ -101,7 +101,7 @@ extension CharacterNode {
 
                 self?.movementLine?.removeFromParent()
                 
-                let movementLine = self?.gameScene.markerLayer.drawDashedLine(from: (self?.position)!, to: destination, pattern: [10, 5]) { line in
+                let movementLine = self?.gameScene.markerLayer.drawDashedLine(from: self?.position ?? .zero, to: destination, pattern: [10, 5]) { line in
                     self?.styleDashedLine(line)
                     line.name = "movementLine"
                 }
