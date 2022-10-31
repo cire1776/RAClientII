@@ -34,6 +34,7 @@ public extension RABackend_GameCommand {
         case .face(facing: let facing):
             self.command = .face
             self.facing = UInt64(facing)
+        // addWaypoint is move and ignores the duration.
         case .addWaypoint(destination: let destination, duration: let duration):
             self.command = .addWaypoint
             self.addWaypointParams.position = RABackend_VenuePosition(position: destination)
@@ -60,6 +61,8 @@ public extension RABackend_GameCommand {
         case .unequip(itemID: let itemID):
             self.command = .unequip
             self.itemID.id = itemID
+        case .move:
+            break
         }
     }
 }
