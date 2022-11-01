@@ -9,6 +9,10 @@ import CoreGraphics
 
 extension Command {
     static func Move(characterNode: CharacterNode, venuePosition: VenuePosition) {
+        Task {
+            await queue.push((.addWaypoint(destination: venuePosition, duration: 100), nil))
+        }
+        
         let gameScene = characterNode.gameScene
         let converter = gameScene.hexagonMapNode.convert(position:)
         

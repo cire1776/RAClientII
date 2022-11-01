@@ -11,6 +11,7 @@
 		63295F64291122A90027409A /* UIDelegate + RotateCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F63291122A90027409A /* UIDelegate + RotateCharacter.swift */; };
 		63295F6629118E330027409A /* FaceableCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F6529118E330027409A /* FaceableCommand.swift */; };
 		63295F7D2911B46F0027409A /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F7C2911B46F0027409A /* CGRect.swift */; };
+		63295F942911C6E20027409A /* UIDelegate + Taps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F932911C6E20027409A /* UIDelegate + Taps.swift */; };
 		636EDC2D2906A6B700BF2213 /* SharedProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */; };
 		636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2E2906B25700BF2213 /* ProtoBuff.swift */; };
 		636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */; };
@@ -117,6 +118,7 @@
 		63295F63291122A90027409A /* UIDelegate + RotateCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + RotateCharacter.swift"; sourceTree = "<group>"; };
 		63295F6529118E330027409A /* FaceableCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceableCommand.swift; sourceTree = "<group>"; };
 		63295F7C2911B46F0027409A /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
+		63295F932911C6E20027409A /* UIDelegate + Taps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + Taps.swift"; sourceTree = "<group>"; };
 		636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedProtoBuff.swift; path = RAClientII/RAShared/SharedProtoBuff.swift; sourceTree = SOURCE_ROOT; };
 		636EDC2E2906B25700BF2213 /* ProtoBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoBuff.swift; sourceTree = "<group>"; };
 		636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + RABackend_Size.swift"; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 			children = (
 				637F1AF92901DFF8008642A4 /* CharacterNode.swift */,
 				637F1AF82901DFF8008642A4 /* CharacterNode + Moveable.swift */,
+				63295F932911C6E20027409A /* UIDelegate + Taps.swift */,
 			);
 			path = CharacterNode;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				63DFA8E72902CFD600C26F0E /* Moveable.swift in Sources */,
 				63DFA9362904067600C26F0E /* Topology.swift in Sources */,
 				63DFA90529031A0400C26F0E /* UIDelegate + Movement.swift in Sources */,
+				63295F942911C6E20027409A /* UIDelegate + Taps.swift in Sources */,
 				63DFA9342904067600C26F0E /* DataList.swift in Sources */,
 				639886CE2902B1B40007D8C0 /* DaylinHatchetReturnQuest.swift in Sources */,
 				639886A7290216B30007D8C0 /* Hexagon + NameFrom.swift in Sources */,

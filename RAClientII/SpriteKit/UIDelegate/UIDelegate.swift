@@ -57,7 +57,7 @@ class UIDelegate {
         self.setupMovement(view)
         self.setupZoom(view)
         self.setupRotateCharacter(view)
-//        self.setupTaps(view)
+        self.setupTaps(view)
 //        self.setupDebugMenu(view)
     }
 }

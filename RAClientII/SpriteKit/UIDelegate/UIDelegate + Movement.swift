@@ -79,8 +79,6 @@ extension UIDelegate {
         
         if let line = scene.markerLayer.childNode(withName: "designatorLine") {
             line.removeFromParent()
-        } else {
-            print("designatorLine not found")
         }
         
         guard self.hexagonMapNode.contains(point: destination) else { return }
