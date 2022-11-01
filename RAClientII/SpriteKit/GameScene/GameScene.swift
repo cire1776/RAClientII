@@ -92,7 +92,7 @@ class GameScene : SKScene, ObservableObject, MarkerAdornable {
         
         self.camera!.addChild(self.predictiveSignal)
         
-        self.uiDelegate.setupMovement(self.view!)
+        self.uiDelegate.setup(view: self.view!)
     }
     
     func subscribe() {

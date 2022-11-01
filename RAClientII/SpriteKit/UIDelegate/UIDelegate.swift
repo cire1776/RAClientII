@@ -54,10 +54,10 @@ class UIDelegate {
     func setup(view: SKView) {
         view.isMultipleTouchEnabled = true
         
-//        self.setupZoom(view)
 //        self.setupRotateCharacter(view)
+        self.setupMovement(view)
+        self.setupZoom(view)
 //        self.setupTaps(view)
-//        self.setupMovement(view)
 //        self.setupDebugMenu(view)
     }
 }

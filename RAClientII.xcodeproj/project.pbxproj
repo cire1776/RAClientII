@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63295F62291121EC0027409A /* UIDelegate + Zoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F61291121EC0027409A /* UIDelegate + Zoom.swift */; };
 		636EDC2D2906A6B700BF2213 /* SharedProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */; };
 		636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2E2906B25700BF2213 /* ProtoBuff.swift */; };
 		636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */; };
@@ -109,6 +110,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63295F61291121EC0027409A /* UIDelegate + Zoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + Zoom.swift"; sourceTree = "<group>"; };
 		636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedProtoBuff.swift; path = RAClientII/RAShared/SharedProtoBuff.swift; sourceTree = SOURCE_ROOT; };
 		636EDC2E2906B25700BF2213 /* ProtoBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoBuff.swift; sourceTree = "<group>"; };
 		636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + RABackend_Size.swift"; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 			children = (
 				637F1B172901F794008642A4 /* UIDelegate.swift */,
 				63DFA90429031A0400C26F0E /* UIDelegate + Movement.swift */,
+				63295F61291121EC0027409A /* UIDelegate + Zoom.swift */,
 			);
 			path = UIDelegate;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				639886CB2902B1B40007D8C0 /* Index.swift in Sources */,
 				63DFA9322904067600C26F0E /* Double.swift in Sources */,
 				637F1A5B29018063008642A4 /* MainView.swift in Sources */,
+				63295F62291121EC0027409A /* UIDelegate + Zoom.swift in Sources */,
 				639886A5290215B50007D8C0 /* HexagonNode.swift in Sources */,
 				63DFA9292904067600C26F0E /* Heartbeat.swift in Sources */,
 				637F1AAA2901D15F008642A4 /* Geography.swift in Sources */,
