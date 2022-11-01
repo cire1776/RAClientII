@@ -47,7 +47,7 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
             print("$$$Inserting")
         }
             
-        characterNode.name = characterSlice.id
+        characterNode.name = characterNode.nodeTag
         
         if characterSlice.type == .player {
             scene.playerNode = characterNode
@@ -99,6 +99,10 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
     var gameScene: GameScene {
         self.scene as! GameScene
     }
+    
+    var nodeTag: String {
+        "character:\(self.type):\(self.character.id)"
+    }
 
     init(character: Character.Slice, as type: Character.Class = .character) {
         self.type = type
@@ -113,7 +117,7 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
         super.init(texture: texture, color: color, size: size)
         
         self.colorBlendFactor = 1.0
-        self.name = "character:player"
+        self.name = self.nodeTag
         
         subscribe()
         

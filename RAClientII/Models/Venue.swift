@@ -259,7 +259,14 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         }
         
         for characterNode in scene.characterNodes {
-            if let character = characters[characterNode.name!] {
+            let characterID = String((
+                characterNode
+                .name?
+                .split(separator: ":")
+                .last
+            )!)
+            
+            if let character = characters[characterID] {
                 print("$$$Updating:", characterNode.name!)
                 
                 let slice: Character.Slice = character.slice
