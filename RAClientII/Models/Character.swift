@@ -104,7 +104,6 @@ public class Character: Hashable, Identifiable, MainItemHolding {
         }
     }
     
-    
     public class Slice: ObservableObject {
         public var id: String = "INVALID"
        
