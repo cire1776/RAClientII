@@ -32,8 +32,8 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
         }
         
         let characterSlice = expression.slice
+        guard case let .player(playerChar) = expression else { return }
         
-        let playerType: Character.Class = characterSlice.id == scene.venue.playerCharacterID ? .player : characterSlice.type
 
         let characterNode: CharacterNode
         let updating: Bool
@@ -43,13 +43,13 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
             characterNode = node
         } else {
             updating = false
-            characterNode = CharacterNode(character: characterSlice, as: playerType)
+            characterNode = CharacterNode(character: characterSlice, as: characterSlice.type)
             print("$$$Inserting")
         }
             
         characterNode.name = characterSlice.id
         
-        if playerType == .player {
+        if characterSlice.type == .player {
             scene.playerNode = characterNode
             Command.player = try? Character(source: scene.venue!.playerCharacter)
         }

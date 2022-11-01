@@ -38,6 +38,7 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
     public init(_ character: Character) {
         self.id = character.id
         self.slice = character.slice
+        self.slice.type = character.slice.type
         self.slice.facing = character.slice.facing
         
         // use the slice version to avoid using self too early.
@@ -49,6 +50,7 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
     public init(_ activeCharacter: ActiveCharacter) {
         self.id = activeCharacter.id
         self.slice = activeCharacter.slice
+        self.slice.type = .player
         self.slice.facing = activeCharacter.slice.facing
         
         // use the slice version to avoid using self too early.

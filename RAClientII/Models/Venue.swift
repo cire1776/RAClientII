@@ -91,7 +91,16 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
             .reduce([Character.ID : Character.Expression]()) { accum, element in
             var slices = accum
             let slice = Character.Slice(from: element)
-            slices[id] = Character.Expression.character(character: slice)
+                
+            switch slice.type {
+            case .player:
+                slices[id] = Character.Expression.player(character: self.playerCharacter)
+            case .character:
+                slices[id] = Character.Expression.character(character: slice)
+            case .npc:
+                slices[id] = Character.Expression.npc(character: slice)
+            }
+            
             return slices
         }
         
@@ -125,11 +134,12 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         })
         
         updateCharacters(fromStatus: status)
-
         self.playerCharacterID = status.activeCharacter.id.id
         
         try? updateActiveCharacter(fromStatus: status)
+        
         updateMovement()
+        
         updateItems(from: status.activeCharacter.items)
 
         self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
