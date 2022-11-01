@@ -263,7 +263,7 @@ public extension Character {
         
         self.init(id: characterData.characterID.id,
                   displayName: characterData.displayName,
-                  type: characterData.type.asCharacterClass ?? .character,
+                  type: characterData.type.asCharacterClass,
                   venue: venue,
                   locality: Locality(from: characterData.locality)
         )
