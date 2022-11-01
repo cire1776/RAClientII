@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		63295F62291121EC0027409A /* UIDelegate + Zoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F61291121EC0027409A /* UIDelegate + Zoom.swift */; };
+		63295F64291122A90027409A /* UIDelegate + RotateCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F63291122A90027409A /* UIDelegate + RotateCharacter.swift */; };
+		63295F6629118E330027409A /* FaceableCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F6529118E330027409A /* FaceableCommand.swift */; };
 		636EDC2D2906A6B700BF2213 /* SharedProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */; };
 		636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2E2906B25700BF2213 /* ProtoBuff.swift */; };
 		636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */; };
@@ -111,6 +113,8 @@
 
 /* Begin PBXFileReference section */
 		63295F61291121EC0027409A /* UIDelegate + Zoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + Zoom.swift"; sourceTree = "<group>"; };
+		63295F63291122A90027409A /* UIDelegate + RotateCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + RotateCharacter.swift"; sourceTree = "<group>"; };
+		63295F6529118E330027409A /* FaceableCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceableCommand.swift; sourceTree = "<group>"; };
 		636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedProtoBuff.swift; path = RAClientII/RAShared/SharedProtoBuff.swift; sourceTree = SOURCE_ROOT; };
 		636EDC2E2906B25700BF2213 /* ProtoBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoBuff.swift; sourceTree = "<group>"; };
 		636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + RABackend_Size.swift"; sourceTree = "<group>"; };
@@ -373,6 +377,7 @@
 				637F1B172901F794008642A4 /* UIDelegate.swift */,
 				63DFA90429031A0400C26F0E /* UIDelegate + Movement.swift */,
 				63295F61291121EC0027409A /* UIDelegate + Zoom.swift */,
+				63295F63291122A90027409A /* UIDelegate + RotateCharacter.swift */,
 			);
 			path = UIDelegate;
 			sourceTree = "<group>";
@@ -442,6 +447,7 @@
 			children = (
 				6392C204290EBC3600B541DA /* Command.swift */,
 				63DFA90629031A5400C26F0E /* Move.swift */,
+				63295F6529118E330027409A /* FaceableCommand.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -588,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63DFA92A2904067600C26F0E /* Attributes.swift in Sources */,
+				63295F64291122A90027409A /* UIDelegate + RotateCharacter.swift in Sources */,
 				63DFA90329030ECD00C26F0E /* Locality + Client-side.swift in Sources */,
 				637F1AA62901CF24008642A4 /* Region.swift in Sources */,
 				639886CF2902B1B40007D8C0 /* SwitchDialogue.swift in Sources */,
@@ -674,6 +681,7 @@
 				639886D92902B62D0007D8C0 /* NonPlayerCharacter.swift in Sources */,
 				63DFA9282904067600C26F0E /* Waypoint.swift in Sources */,
 				637F1B002901E0CE008642A4 /* SKCameraNode.swift in Sources */,
+				63295F6629118E330027409A /* FaceableCommand.swift in Sources */,
 				6392C22D29104DF300B541DA /* RGBA32.swift in Sources */,
 				637F1B082901EC20008642A4 /* PhysicalVenue.swift in Sources */,
 				637F1A822901AE29008642A4 /* Updating.swift in Sources */,
