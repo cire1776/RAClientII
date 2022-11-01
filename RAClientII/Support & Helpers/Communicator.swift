@@ -28,7 +28,7 @@ public struct Communicator {
         let eventLoopGroup = MultiThreadedEventLoopGroup(numberOfThreads: 1)
 
         self.channel = try GRPCChannelPool.with(
-            target: .host("localhost", port: self.port),
+            target: .host("192.168.1.70", port: self.port),
             transportSecurity: .plaintext,
             eventLoopGroup: eventLoopGroup
         )
