@@ -265,7 +265,6 @@ public extension Character {
                   venue: venue,
                   locality: Locality(from: characterData.locality)
         )
-        self.slice.type = .character
     }
     
     convenience init(source activeCharacter: ActiveCharacter) throws {
