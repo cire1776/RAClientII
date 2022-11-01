@@ -94,8 +94,8 @@ public class Character: Hashable, Identifiable, MainItemHolding {
     
         public var slice: Character.Slice {
             switch self {
-            case .player(character: let char):
-                return char.slice
+            case .player(character: let activeChar):
+                return activeChar.slice
             case .character(character: let charSlice):
                 return charSlice
             case .npc(character: let charSlice):
