@@ -147,9 +147,6 @@
 		639236AE290542BF00973DDF /* RABackend.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.pb.swift; sourceTree = "<group>"; };
 		639236AF290542BF00973DDF /* RABackend.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RABackend.grpc.swift; sourceTree = "<group>"; };
 		6392C204290EBC3600B541DA /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		6392C20629103ADF00B541DA /* GameMapScene + UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameMapScene + UI.swift"; sourceTree = "<group>"; };
-		6392C20729103ADF00B541DA /* GameMapScene+Initialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GameMapScene+Initialization.swift"; sourceTree = "<group>"; };
-		6392C20829103ADF00B541DA /* GameMapScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMapScene.swift; sourceTree = "<group>"; };
 		6392C20F2910435D00B541DA /* HexAdorner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexAdorner.swift; sourceTree = "<group>"; };
 		6392C217291046F900B541DA /* Blitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blitor.swift; sourceTree = "<group>"; };
 		6392C22C29104DF300B541DA /* RGBA32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBA32.swift; sourceTree = "<group>"; };
@@ -297,7 +294,6 @@
 				639886A4290215B50007D8C0 /* HexagonNode.swift */,
 				637F1AFC2901E054008642A4 /* HexagonMapNode.swift */,
 				639886A22902158B0007D8C0 /* DroppedItemNode.swift */,
-				6392C20C291040C800B541DA /* GameMap */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
@@ -379,16 +375,6 @@
 				63295F61291121EC0027409A /* UIDelegate + Zoom.swift */,
 			);
 			path = UIDelegate;
-			sourceTree = "<group>";
-		};
-		6392C20C291040C800B541DA /* GameMap */ = {
-			isa = PBXGroup;
-			children = (
-				6392C20829103ADF00B541DA /* GameMapScene.swift */,
-				6392C20629103ADF00B541DA /* GameMapScene + UI.swift */,
-				6392C20729103ADF00B541DA /* GameMapScene+Initialization.swift */,
-			);
-			path = GameMap;
 			sourceTree = "<group>";
 		};
 		6392C239291069F600B541DA /* GameScene */ = {
