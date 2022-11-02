@@ -38,6 +38,7 @@ protocol PhysicalVenue : AnyObject, Identifiable {
 //    var venue: Venue  { get }
     
     func addFacility(id: Facility.ID?, kind: Facility.Kind, specifier: String, position: VenuePosition) -> Facility?
+    func accept(facility: Facility)
     
     func add(_ drop: DroppedItem)
     func removeDroppedItem(id: String)
@@ -79,6 +80,16 @@ extension PhysicalVenue {
 //
 //        return facility
         return nil
+    }
+    
+    func accept(facility: Facility) {
+        self.facilities[facility.id] = facility
+
+        let position = orientation.topology(radius: 100).convert(from:  facility.position)
+
+        self.facilitiesMap.add(facility, at: vector_float2(x: Float(position.x), y: Float(position.y)))
+
+        self.interactablesMap.add(facility, at: vector_float2(x: Float(position.x), y: Float(position.y)))
     }
     
     func add(_ drop: DroppedItem) {
