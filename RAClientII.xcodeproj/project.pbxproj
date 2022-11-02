@@ -12,6 +12,7 @@
 		63295F6629118E330027409A /* FaceableCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F6529118E330027409A /* FaceableCommand.swift */; };
 		63295F7D2911B46F0027409A /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F7C2911B46F0027409A /* CGRect.swift */; };
 		63295F942911C6E20027409A /* UIDelegate + Taps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F932911C6E20027409A /* UIDelegate + Taps.swift */; };
+		63295F9729126FDF0027409A /* SizedFacilityNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F9629126FDF0027409A /* SizedFacilityNode.swift */; };
 		636EDC2D2906A6B700BF2213 /* SharedProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */; };
 		636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2E2906B25700BF2213 /* ProtoBuff.swift */; };
 		636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */; };
@@ -119,6 +120,7 @@
 		63295F6529118E330027409A /* FaceableCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceableCommand.swift; sourceTree = "<group>"; };
 		63295F7C2911B46F0027409A /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		63295F932911C6E20027409A /* UIDelegate + Taps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + Taps.swift"; sourceTree = "<group>"; };
+		63295F9629126FDF0027409A /* SizedFacilityNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizedFacilityNode.swift; sourceTree = "<group>"; };
 		636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedProtoBuff.swift; path = RAClientII/RAShared/SharedProtoBuff.swift; sourceTree = SOURCE_ROOT; };
 		636EDC2E2906B25700BF2213 /* ProtoBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoBuff.swift; sourceTree = "<group>"; };
 		636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + RABackend_Size.swift"; sourceTree = "<group>"; };
@@ -233,6 +235,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63295F9529126FA10027409A /* FacilityNode */ = {
+			isa = PBXGroup;
+			children = (
+				63295F9629126FDF0027409A /* SizedFacilityNode.swift */,
+			);
+			path = FacilityNode;
+			sourceTree = "<group>";
+		};
 		637F1A3E29015EBA008642A4 = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +301,7 @@
 		637F1A5C290180DA008642A4 /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
+				63295F9529126FA10027409A /* FacilityNode */,
 				63988693290209430007D8C0 /* Menus */,
 				637F1B162901F782008642A4 /* UIDelegate */,
 				637F1AF72901DFF8008642A4 /* CharacterNode */,
@@ -694,6 +705,7 @@
 				637F1B082901EC20008642A4 /* PhysicalVenue.swift in Sources */,
 				637F1A822901AE29008642A4 /* Updating.swift in Sources */,
 				63DFA93E2904067600C26F0E /* Skill.swift in Sources */,
+				63295F9729126FDF0027409A /* SizedFacilityNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
