@@ -12,7 +12,7 @@ public typealias Facing = UInt
 protocol Faceable: AnyObject  {
     var facing: Facing  { get set }
     
-    var locality: Locality { get set }
+    var position: VenuePosition { get }
     
     func setFacing(to facing: Facing)
     
@@ -45,7 +45,7 @@ extension Faceable {
     }
     
     func setFacing(towards destination: CGPoint, for orientation: Hexagon.Orientation) {
-        let position = orientation.topology(radius: 100).convert(from: self.locality.position)
+        let position = orientation.topology(radius: 100).convert(from: self.position)
         let difference = destination - position
         let direction = CGVector(dx: difference.x, dy: difference.y)
         let angleOfTravel = -direction.angle()
