@@ -205,30 +205,10 @@ class HexagonMapNode: SKNode, EntityHolder {
         
         self.facilityNodes.removeAll()
         
-//        for (_, facility) in facilities ?? self.venue.facilities {
-//            // must be before tree
-//            if let fruitTree = facility as? Facilities.FruitTree {
-//                let facility = FruitTreeNode(facility: fruitTree, holder: self)
-//                self.facilityNodes[fruitTree.id] = facility
-//                continue
-//            }
-//
-//            if let tree = facility as? Facilities.Tree {
-//                let facility = TreeNode(facility: tree, holder: self)
-//                self.facilityNodes[tree.id] = facility
-//                continue
-//            }
-//
-//            if let sawmill = facility as? Facilities.SawMill {
-//                let facility = SawMillNode(facility: sawmill, holder: self)
-//                self.facilityNodes[sawmill.id] = facility
-//            }
-//
-//            if let rubblePile = facility as? Facilities.RubblePile {
-//                let facility = RubblePileNode(facility: rubblePile, holder: self)
-//                self.facilityNodes[rubblePile.id] = facility
-//            }
-//        }
+        for (_, facility) in facilities ?? self.venue.facilities {
+            let node = SizedFacilityNode(for: facility, in: self)
+            self.facilityNodes[facility.id] = node
+        }
     }
     
     func updateFacilityNode(for facility: Facility) {
