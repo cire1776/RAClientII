@@ -9,7 +9,7 @@ import SpriteKit
 import Foundation
 import OrderedCollections
 
-protocol Interaction {
+protocol Interchange {
     var quest: Quest { get }
     
     func currentPage(for character: Character) -> DialogueNode?
@@ -19,7 +19,7 @@ protocol Interaction {
     func dismiss(for character: Character)
 }
 
-class Dialogue: Interaction {
+class Dialogue: Interchange {
     enum Instruction: Hashable {
         static func == (lhs: Dialogue.Instruction, rhs: Dialogue.Instruction) -> Bool {
             switch (lhs, rhs) {

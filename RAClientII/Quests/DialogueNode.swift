@@ -9,13 +9,13 @@ import Foundation
 import SpriteKit
 
 class DialogueNode: SKNode {
-    var interaction: Interaction
+    var interaction: Interchange
     let character: Character
 
     var uiDelegate: UIDelegate
     var responseLabels = [Dialogue.Instruction : SKLabelNode]()
    
-    init(interaction: Interaction, for character: Character) {
+    init(interaction: Interchange, for character: Character) {
         self.interaction = interaction
         self.character = character
         
@@ -55,8 +55,8 @@ class DialogueResponseNode: DialogueNode {
         }
     }
     
-    override init(interaction: Interaction, for character: Character) {
-        dialogue = interaction as! Dialogue
+    override init(interaction interchange: Interchange, for character: Character) {
+        dialogue = interchange as! Dialogue
         
         var label = SKLabelNode(text:"")
         
@@ -72,9 +72,10 @@ class DialogueResponseNode: DialogueNode {
         label.fontColor = .black
 
         self.label = label
+        
         self.background = SKShapeNode(rectOf: CGSize(width: 2_000, height: 1_500),cornerRadius: 5)
 
-        super.init(interaction: interaction, for: character)
+        super.init(interaction: interchange, for: character)
         
         background.addChild(label)
 
@@ -120,7 +121,7 @@ class MonologueNode: DialogueNode {
     let advanceButton: SKSpriteNode
     let buttonName = "advance button"
     
-    init(interaction: Interaction, text: String, for character: Character) {
+    init(interaction: Interchange, text: String, for character: Character) {
         self.monologue = interaction as! Monologue
         
         let label = SKLabelNode(text:"")

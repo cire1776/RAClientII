@@ -12,7 +12,7 @@ import SpriteKit
  SwitchDialogue(forCharacter, .greaterThan(2, "Daylin Wooducutting Quest: Lurking"), .goto(interaction:"F", index:0), .goto(interaction:"G", index 0))
  */
 
-class SwitchDialogue: Interaction {
+class SwitchDialogue: Interchange {
     var quest: Quest
 
     var nextInteraction: Endorsement.Key?

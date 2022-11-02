@@ -8,7 +8,7 @@
 import Foundation
 
 extension Quest {
-    static let DaylinSharpeningQuest = { (quest: Quest) -> [String : Interaction] in
+    static let DaylinSharpeningQuest = { (quest: Quest) -> [String : Interchange] in
         Exchange.add(for: "daylin", exchange: .quest(
             label: "Speak with Daylin",
             questID: "Daylin Sharpening Quest",

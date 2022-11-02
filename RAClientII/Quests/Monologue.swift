@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class Monologue: Interaction {
+class Monologue: Interchange {
     var quest: Quest
 
     var tag: String = ""

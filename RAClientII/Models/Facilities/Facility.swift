@@ -28,6 +28,8 @@ public enum Facilities {}
 
 public class Facility: NSObject, Identifiable, Interactable {
     public typealias ID = String
+    public typealias Interaction = String
+    
     public enum Kind: String, Codable, Equatable, Hashable {
         case tree, fruitTree
         case sawMill
@@ -44,6 +46,8 @@ public class Facility: NSObject, Identifiable, Interactable {
     public var buffs = [BuffSpecifier.ID : BuffSpecifier]()
     
 //    public var totalSkillBuffs = [Skill : Int]()
+    
+    public var interactions = [Interaction]()
     
     public var customProperties = [String : String]()
         

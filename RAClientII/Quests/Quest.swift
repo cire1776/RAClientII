@@ -14,10 +14,10 @@ struct Quest {
     
     static var quests: [String : Quest] = [:]
     
-    static var interactions: [String : [String : Interaction]] = [:]
+    static var interactions: [String : [String : Interchange]] = [:]
     
     static func add(at questName: String,
-                    _ interactions: [String : Interaction]) {
+                    _ interactions: [String : Interchange]) {
         Self.interactions[questName] = interactions
     }
     
@@ -25,9 +25,9 @@ struct Quest {
     
     var interactionTag: String = ""
     var index : UInt = 0
-    var interactions: [String : Interaction] = [:]
+    var interactions: [String : Interchange] = [:]
     
-    init(_ questName: String, _ interactions: (Quest) -> [String : Interaction]) {
+    init(_ questName: String, _ interactions: (Quest) -> [String : Interchange]) {
         Self.character = Game.game?.player
         self.questName = questName
         self.interactions = interactions(self)
