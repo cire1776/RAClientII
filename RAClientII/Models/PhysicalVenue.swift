@@ -69,7 +69,7 @@ extension PhysicalVenue {
     func addFacility(id: Facility.ID? = nil, kind: Facility.Kind, specifier: String, position: VenuePosition) -> Facility? {
 //        let id = id ?? UUID().uuidString
 //        guard let facility = Facility.factories[kind]?.init(specifier: specifier).build( id: id, at: position) else { return nil }
-//
+
 //        self.facilities[facility.id] = facility
 //
 //        let position = orientation.topology(radius: 100).convert(from:  position)
@@ -88,7 +88,7 @@ extension PhysicalVenue {
         self.facilities[facility.id] = facility
 
         let position = orientation.topology(radius: 100).convert(from:  facility.position)
-
+        
         self.facilitiesMap.add(facility, at: vector_float2(x: Float(position.x), y: Float(position.y)))
 
         self.interactablesMap.add(facility, at: vector_float2(x: Float(position.x), y: Float(position.y)))

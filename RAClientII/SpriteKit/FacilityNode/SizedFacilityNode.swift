@@ -8,11 +8,6 @@
 import SpriteKit
 import OrderedCollections
 
-/*
- required knowledge: ID, Kind, Size, Interactions, Position, Facing
-*/
-
-
 class SizedFacilityNode: SKSpriteNode, FaceableNode, Updating {
     let facility: Facility
     let kind: Facility.Kind

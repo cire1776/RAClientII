@@ -218,7 +218,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
                 
                 let isNodeMoving = await node.isMoving
                 if characterSlice.locality.isMoving && isNodeMoving { continue }
-                
+                                
                 if characterSlice.locality.isMoving {
                     await MainActor.run {
                         node.movementStarted()
