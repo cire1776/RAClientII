@@ -359,7 +359,6 @@
 			children = (
 				637F1AF92901DFF8008642A4 /* CharacterNode.swift */,
 				637F1AF82901DFF8008642A4 /* CharacterNode + Moveable.swift */,
-				63295F932911C6E20027409A /* UIDelegate + Taps.swift */,
 			);
 			path = CharacterNode;
 			sourceTree = "<group>";
@@ -395,6 +394,7 @@
 				63DFA90429031A0400C26F0E /* UIDelegate + Movement.swift */,
 				63295F61291121EC0027409A /* UIDelegate + Zoom.swift */,
 				63295F63291122A90027409A /* UIDelegate + RotateCharacter.swift */,
+				63295F932911C6E20027409A /* UIDelegate + Taps.swift */,
 			);
 			path = UIDelegate;
 			sourceTree = "<group>";
