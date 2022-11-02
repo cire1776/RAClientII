@@ -27,11 +27,11 @@ extension UIDelegate {
             if self.dialogueNode != nil {
 //                handleDialogueClick(at: destination)
             } else if self.displayedMenu.isActive {
-//                handleMenuClick(at: destination, for: self.displayedMenu)
+                handleMenuClick(at: destination, for: self.displayedMenu)
             } else if self.debugMenu.isActive {
-//                handleMenuClick(at: destination, for: self.debugMenu)
+                handleMenuClick(at: destination, for: self.debugMenu)
             } else if isPlayer(near: destination) && character.occupied {
-//                checkToCancelOperation(at: destination)
+                checkToCancelOperation(at: destination)
             } else if isPlayer(near: destination) &&
                       areInteractables(near: destination) {
                 let interactable = closestInteractable(to: destination,excludingPlayer: true)
@@ -81,9 +81,9 @@ extension UIDelegate {
     
     func checkFacilityInteraction(_ facility: Facility, at destination: CGPoint, by character: Character.Slice ) {
         if character.occupied {
-//            checkToCancelOperation(at: destination)
+            checkToCancelOperation(at: destination)
         } else {
-//            selectFacility(at: destination, for: character)
+            selectFacility(at: destination, for: character)
         }
     }
 }
