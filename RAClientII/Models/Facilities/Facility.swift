@@ -18,6 +18,13 @@ public struct FacilityList: NoncodableDataList {
     public init(dictionary: [String : T]) {
         self.items = dictionary
     }
+    
+    public init(source: RABackend_FacilityList) {
+        for backendFacility in source.facilities {
+            let facility = Facility(from: backendFacility)
+            self.accept(facility)
+        }
+    }
 }
 
 public extension Constants {
