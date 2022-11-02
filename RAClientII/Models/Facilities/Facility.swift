@@ -82,7 +82,9 @@ public class Facility: NSObject, Identifiable, Faceable, Interactable {
         self.position = VenuePosition(position: source.position)
         self.facing = Facing(source.facing)
         self.type = .facility
-
+        self.customProperties = source.properties
+        self.interactions = source.interactions
+        
         if let kind = Kind(rawValue:source.kind) {
             self.kind = kind
         } else {
