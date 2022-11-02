@@ -40,7 +40,7 @@ extension UIDelegate {
                     checkFacilityInteraction(facility, at: destination, by: character)
                 } else if let _ = interactable as? Character.Marker {
 //                    selectCharacter(at: destination, by: character)
-                } else if let droppedItem = interactable as? DroppedItem {
+                } else if let _ = interactable as? DroppedItem {
 //                    checkForDroppedItemPickup(droppedItem,at: destination)
                 }
             } else {
