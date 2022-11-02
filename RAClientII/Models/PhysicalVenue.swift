@@ -83,6 +83,8 @@ extension PhysicalVenue {
     }
     
     func accept(facility: Facility) {
+        guard self.facilities.contains(where: { $0.value.id == facility.id }) else { return }
+        
         self.facilities[facility.id] = facility
 
         let position = orientation.topology(radius: 100).convert(from:  facility.position)
