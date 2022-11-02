@@ -16,7 +16,7 @@ import OrderedCollections
 class SizedFacilityNode: SKSpriteNode, FaceableNode, Updating {
     let facility: Facility
     let kind: Facility.Kind
-    let facilitySize: Int
+    let category: Int
     let interactions = [Facility.Interaction]()
     let venuePosition: VenuePosition
     let facing: Facing
@@ -26,23 +26,23 @@ class SizedFacilityNode: SKSpriteNode, FaceableNode, Updating {
         self.kind = facility.kind
         self.venuePosition = facility.position
         
-        self.facilitySize = Int(facility.customProperties["size", default: "0"]) ?? 0
+        self.category = Int(facility.customProperties["category", default: "0"]) ?? 0
         
-        let possibleDiameters = (facility.customProperties["possible diameters"] ?? "16")
+        let possibleDiameters = (facility.customProperties["sizes"] ?? "4")
             .split(separator: ",")
             .map { Int($0) }
         
         let diameter: Int
         
-        if self.facilitySize >= possibleDiameters.count {
-            diameter = 16
+        if self.category > possibleDiameters.count {
+            diameter = 4
         } else {
-            diameter = possibleDiameters[self.facilitySize] ?? 16
+            diameter = possibleDiameters[self.category] ?? 4
         }
         
         self.facing = facility.facing
         
-        let texture = SKTexture(imageNamed: kind.rawValue + "\(facilitySize).png")
+        let texture = SKTexture(imageNamed: kind.rawValue + "\(category).png")
         
         super.init(texture: texture, color: .white, size: CGSize(width: diameter, height: diameter))
  
