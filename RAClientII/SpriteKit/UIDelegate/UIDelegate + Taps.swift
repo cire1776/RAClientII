@@ -87,21 +87,3 @@ extension UIDelegate {
         }
     }
 }
-
-extension UIDelegate {
-    func isPlayer(near position: CGPoint) -> Bool {
-        let offset = scene.playerNode.position - position
-        return abs(offset.x) <= Constants.InteractableAccessRange && abs(offset.y) <= Constants.InteractableAccessRange
-    }
-    
-    func areInteractables(near position: CGPoint) -> Bool {
-        var area = CGRect(origin: position, dx: Constants.InteractableAccessRange, dy: Constants.InteractableAccessRange)
-        area = area.offsetBy(dx: -Constants.InteractableAccessRange, dy: -Constants.InteractableAccessRange)
-        
-        let quad = GKQuad(quadMin: vector_float2(x: Float(area.minX), y: Float(area.minY)), quadMax: vector_float2(x: Float(area.maxX), y: Float(area.maxY)))
-
-        let interactables = GameClient.gameClient.venue.interactablesMap.elements(in: quad)
-        
-        return !interactables.isEmpty
-    }
-}
