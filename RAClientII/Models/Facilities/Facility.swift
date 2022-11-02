@@ -26,7 +26,7 @@ public extension Constants {
 
 public enum Facilities {}
 
-public class Facility: NSObject, Identifiable, Interactable {
+public class Facility: NSObject, Identifiable, Faceable, Interactable {
     public typealias ID = String
     public typealias Interaction = String
     
@@ -42,6 +42,7 @@ public class Facility: NSObject, Identifiable, Interactable {
     public var kind: Kind
     
     public var position: VenuePosition
+    public var facing: Facing = 0
     
     public var buffs = [BuffSpecifier.ID : BuffSpecifier]()
     
@@ -72,6 +73,7 @@ public class Facility: NSObject, Identifiable, Interactable {
     public init(from source: RABackend_Facility) {
         self.id = source.id.id
         self.position = VenuePosition(position: source.position)
+        self.facing = Facing(source.facing)
         self.type = .facility
 
         if let kind = Kind(rawValue:source.kind) {
