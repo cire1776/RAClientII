@@ -21,7 +21,7 @@ class SizedFacilityNode: SKSpriteNode, FaceableNode, Updating {
     let venuePosition: VenuePosition
     let facing: Facing
     
-    init(for facility: Facility) {
+    init(for facility: Facility, in holder: EntityHolder) {
         self.facility = facility
         self.kind = facility.kind
         self.venuePosition = facility.position
@@ -45,6 +45,10 @@ class SizedFacilityNode: SKSpriteNode, FaceableNode, Updating {
         let texture = SKTexture(imageNamed: kind.rawValue + "\(facilitySize).png")
         
         super.init(texture: texture, color: .white, size: CGSize(width: diameter, height: diameter))
+ 
+        self.position = holder.convert(position: self.venuePosition)
+        
+        holder.addChild(self)
     }
     
     required init?(coder aDecoder: NSCoder) {
