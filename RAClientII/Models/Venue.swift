@@ -146,6 +146,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
             let facility = Facility(from: backendFacility)
             var facilities = accum
             facilities[facility.id] = facility
+            Game.game.venue?.accept(facility: facility)
             return facilities
         }
         
