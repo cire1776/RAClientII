@@ -13,6 +13,14 @@
 		63295F7D2911B46F0027409A /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F7C2911B46F0027409A /* CGRect.swift */; };
 		63295F942911C6E20027409A /* UIDelegate + Taps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F932911C6E20027409A /* UIDelegate + Taps.swift */; };
 		63295F9729126FDF0027409A /* SizedFacilityNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F9629126FDF0027409A /* SizedFacilityNode.swift */; };
+		63295F9B2912F2DB0027409A /* UIDelegate + MenuInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F9A2912F2DB0027409A /* UIDelegate + MenuInteraction.swift */; };
+		63295F9D2912F2EC0027409A /* UIDelegate + InteractableAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F9C2912F2EC0027409A /* UIDelegate + InteractableAccess.swift */; };
+		63295FA52912F4170027409A /* PlayerRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295F9F2912F4170027409A /* PlayerRenderer.swift */; };
+		63295FA62912F4170027409A /* DroppedItemPickupRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FA02912F4170027409A /* DroppedItemPickupRenderer.swift */; };
+		63295FA72912F4170027409A /* FacilityExitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FA12912F4170027409A /* FacilityExitRenderer.swift */; };
+		63295FA82912F4170027409A /* NonPlayerCharacterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FA22912F4170027409A /* NonPlayerCharacterRenderer.swift */; };
+		63295FA92912F4170027409A /* CharacterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FA32912F4170027409A /* CharacterRenderer.swift */; };
+		63295FAA2912F4170027409A /* FacilityExitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FA42912F4170027409A /* FacilityExitRenderer.swift */; };
 		636EDC2D2906A6B700BF2213 /* SharedProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */; };
 		636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2E2906B25700BF2213 /* ProtoBuff.swift */; };
 		636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */; };
@@ -121,6 +129,14 @@
 		63295F7C2911B46F0027409A /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		63295F932911C6E20027409A /* UIDelegate + Taps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + Taps.swift"; sourceTree = "<group>"; };
 		63295F9629126FDF0027409A /* SizedFacilityNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizedFacilityNode.swift; sourceTree = "<group>"; };
+		63295F9A2912F2DB0027409A /* UIDelegate + MenuInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + MenuInteraction.swift"; sourceTree = "<group>"; };
+		63295F9C2912F2EC0027409A /* UIDelegate + InteractableAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + InteractableAccess.swift"; sourceTree = "<group>"; };
+		63295F9F2912F4170027409A /* PlayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerRenderer.swift; sourceTree = "<group>"; };
+		63295FA02912F4170027409A /* DroppedItemPickupRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroppedItemPickupRenderer.swift; sourceTree = "<group>"; };
+		63295FA12912F4170027409A /* FacilityExitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityExitRenderer.swift; sourceTree = "<group>"; };
+		63295FA22912F4170027409A /* NonPlayerCharacterRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonPlayerCharacterRenderer.swift; sourceTree = "<group>"; };
+		63295FA32912F4170027409A /* CharacterRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterRenderer.swift; sourceTree = "<group>"; };
+		63295FA42912F4170027409A /* FacilityExitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityExitRenderer.swift; sourceTree = "<group>"; };
 		636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedProtoBuff.swift; path = RAClientII/RAShared/SharedProtoBuff.swift; sourceTree = SOURCE_ROOT; };
 		636EDC2E2906B25700BF2213 /* ProtoBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoBuff.swift; sourceTree = "<group>"; };
 		636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + RABackend_Size.swift"; sourceTree = "<group>"; };
@@ -241,6 +257,20 @@
 				63295F9629126FDF0027409A /* SizedFacilityNode.swift */,
 			);
 			path = FacilityNode;
+			sourceTree = "<group>";
+		};
+		63295F9E2912F4170027409A /* Individual Renderers */ = {
+			isa = PBXGroup;
+			children = (
+				63295F9F2912F4170027409A /* PlayerRenderer.swift */,
+				63295FA02912F4170027409A /* DroppedItemPickupRenderer.swift */,
+				63295FA12912F4170027409A /* FacilityExitRenderer.swift */,
+				63295FA22912F4170027409A /* NonPlayerCharacterRenderer.swift */,
+				63295FA32912F4170027409A /* CharacterRenderer.swift */,
+				63295FA42912F4170027409A /* FacilityExitRenderer.swift */,
+			);
+			name = "Individual Renderers";
+			path = "../../../../RoyalAmbition/OldRAClient/OldRAClient/SpriteKit/Menus/Individual Renderers";
 			sourceTree = "<group>";
 		};
 		637F1A3E29015EBA008642A4 = {
@@ -395,6 +425,8 @@
 				63295F61291121EC0027409A /* UIDelegate + Zoom.swift */,
 				63295F63291122A90027409A /* UIDelegate + RotateCharacter.swift */,
 				63295F932911C6E20027409A /* UIDelegate + Taps.swift */,
+				63295F9A2912F2DB0027409A /* UIDelegate + MenuInteraction.swift */,
+				63295F9C2912F2EC0027409A /* UIDelegate + InteractableAccess.swift */,
 			);
 			path = UIDelegate;
 			sourceTree = "<group>";
@@ -414,6 +446,7 @@
 				6398869A29020A950007D8C0 /* MenuOption.swift */,
 				6398869829020A950007D8C0 /* MenuRenderer.swift */,
 				63988694290209570007D8C0 /* MenuTree.swift */,
+				63295F9E2912F4170027409A /* Individual Renderers */,
 			);
 			path = Menus;
 			sourceTree = "<group>";
@@ -614,12 +647,15 @@
 				63295F64291122A90027409A /* UIDelegate + RotateCharacter.swift in Sources */,
 				63DFA90329030ECD00C26F0E /* Locality + Client-side.swift in Sources */,
 				637F1AA62901CF24008642A4 /* Region.swift in Sources */,
+				63295FA92912F4170027409A /* CharacterRenderer.swift in Sources */,
 				639886CF2902B1B40007D8C0 /* SwitchDialogue.swift in Sources */,
 				639886CC2902B1B40007D8C0 /* DaylinWoodcuttingQuest.swift in Sources */,
 				637F1A5E290180E9008642A4 /* GameScene.swift in Sources */,
 				6392C2102910435D00B541DA /* HexAdorner.swift in Sources */,
 				639886CD2902B1B40007D8C0 /* DaylinSharpeningQuest.swift in Sources */,
 				63DFA90829031A5400C26F0E /* Move.swift in Sources */,
+				63295FA52912F4170027409A /* PlayerRenderer.swift in Sources */,
+				63295F9D2912F2EC0027409A /* UIDelegate + InteractableAccess.swift in Sources */,
 				636EDC632907FC3100BF2213 /* Communicator.swift in Sources */,
 				637F1B1A2901FA21008642A4 /* Facility.swift in Sources */,
 				63DFA9262904067600C26F0E /* Locality.swift in Sources */,
@@ -632,6 +668,7 @@
 				63DFA8F22902D2E300C26F0E /* SKNode.swift in Sources */,
 				636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */,
 				6392C218291046F900B541DA /* Blitor.swift in Sources */,
+				63295F9B2912F2DB0027409A /* UIDelegate + MenuInteraction.swift in Sources */,
 				63988695290209570007D8C0 /* MenuTree.swift in Sources */,
 				63DFA93B2904067600C26F0E /* TickHolder.swift in Sources */,
 				63DFA8F02902D2D800C26F0E /* SKNode+toImage.swift in Sources */,
@@ -649,6 +686,7 @@
 				636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */,
 				639886D02902B1B40007D8C0 /* Quest.swift in Sources */,
 				639886B62902AA8F0007D8C0 /* Game.swift in Sources */,
+				63295FA82912F4170027409A /* NonPlayerCharacterRenderer.swift in Sources */,
 				637F1A6029018152008642A4 /* VenueMap.swift in Sources */,
 				63EF5C2A2904111500DECC44 /* Int.swift in Sources */,
 				6398869C29020A950007D8C0 /* MenuNode.swift in Sources */,
@@ -672,6 +710,8 @@
 				63DFA9362904067600C26F0E /* Topology.swift in Sources */,
 				63DFA90529031A0400C26F0E /* UIDelegate + Movement.swift in Sources */,
 				63295F942911C6E20027409A /* UIDelegate + Taps.swift in Sources */,
+				63295FAA2912F4170027409A /* FacilityExitRenderer.swift in Sources */,
+				63295FA72912F4170027409A /* FacilityExitRenderer.swift in Sources */,
 				63DFA9342904067600C26F0E /* DataList.swift in Sources */,
 				639886CE2902B1B40007D8C0 /* DaylinHatchetReturnQuest.swift in Sources */,
 				639886A7290216B30007D8C0 /* Hexagon + NameFrom.swift in Sources */,
@@ -689,6 +729,7 @@
 				63DFA8EE2902D23800C26F0E /* CGVector.swift in Sources */,
 				639886CB2902B1B40007D8C0 /* Index.swift in Sources */,
 				63DFA9322904067600C26F0E /* Double.swift in Sources */,
+				63295FA62912F4170027409A /* DroppedItemPickupRenderer.swift in Sources */,
 				637F1A5B29018063008642A4 /* MainView.swift in Sources */,
 				63295F62291121EC0027409A /* UIDelegate + Zoom.swift in Sources */,
 				639886A5290215B50007D8C0 /* HexagonNode.swift in Sources */,
