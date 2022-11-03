@@ -16,3 +16,10 @@ public extension CGFloat {
         return Int(self) % 2 == 0
     }
 }
+
+extension CGFloat {
+    init?(_ text: String) {
+        guard let double = Double(text) else { return nil }
+        self = CGFloat(double)
+    }
+}
