@@ -64,7 +64,6 @@ public class Item: Hashable, NSCopying, Equatable, Identifiable, Codable {
         self.quantity = quantity
 //        self.inventory = nil
         
-        let type = Game.itemTypes[typeID]!
         
 //        let massCapacity = type.capability?.massCapacity ?? 25
 //        let contentFilterID = type.capability?.contentFilterID
