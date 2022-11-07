@@ -57,7 +57,6 @@ class Monologue: Interchange {
     }
     
     func dismiss(for character: Character) {
-        character.slice.occupied = false
         self.dialogueNode = nil
     }
     

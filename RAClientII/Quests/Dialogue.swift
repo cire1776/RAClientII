@@ -162,6 +162,5 @@ class Dialogue: Interchange {
     }
     
     func dismiss(for character: Character) {
-        character.slice.occupied = false
     }
 }
