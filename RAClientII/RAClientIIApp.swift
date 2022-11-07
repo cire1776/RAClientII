@@ -62,7 +62,7 @@ struct RAClientIIApp: App {
             MainView()
             .environmentObject(gameClient)
             .environmentObject(gameScene)
-            .environmentObject(game as TickHolder)
+            .environmentObject(game.clock)
         }
     }
     
@@ -92,13 +92,12 @@ struct RAClientIIApp: App {
         }
         
         // needs to be before other initialization so that ticks and scheduling is available.
-        game.heartbeat = Heartbeat(beatNotifier: game)
-        try! game.heartbeat.start()
+        await game.clock.set(heartbeat: Heartbeat(beatNotifier: game.clock))
+        try! await game.clock.heartbeat.start()
         
         Game.game.oneTimeSetup()
         
         //        self.characters = Character.Characters()
-        game.heartbeat = Heartbeat(beatNotifier: game)
         
         await MainActor.run {
             gameClient.venue = game.venue

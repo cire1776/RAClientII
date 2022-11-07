@@ -19,14 +19,15 @@ extension Command {
         let priorPosition = characterNode.locality.lastDestination ?? characterNode.character.locality.position
         
         let travelTicks = priorPosition.calculateTravelTicks(to: venuePosition, at: 1.25, converter: converter)
-        
-        _ = characterNode.locality.addWaypoint(to: venuePosition, at: Game.game.tick, for: travelTicks)
+       
+        let currentTick = await Game.game.clock.tick
+        _ = characterNode.locality.addWaypoint(to: venuePosition, at: currentTick, for: travelTicks)
         
         characterNode.locality.type = .predictive
         
          if characterNode.locality.isOnLastWaypoint {
             characterNode.setFacing(venuePosition)
-            characterNode.movementStarted()
+             await characterNode.movementStarted(at: currentTick)
         }
     }
 }

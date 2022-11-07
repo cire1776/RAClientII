@@ -220,9 +220,9 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
                 if characterSlice.locality.isMoving && isNodeMoving { continue }
                                 
                 if characterSlice.locality.isMoving {
-                    await MainActor.run {
-                        node.movementStarted()
-                    }
+                    let tick = await Game.game.clock.tick
+                    
+                    await node.movementStarted(at: tick)
                 }
             }
         }
@@ -242,18 +242,26 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     }
     
     private func updateActiveCharacter(fromStatus status: RABackend_GameStatus) throws {
-        let character = try ActiveCharacter(Character(source: status.activeCharacter.characterData))
+        let character = try ActiveCharacter(status.activeCharacter.characterData)
         
         self.playerCharacter = character
         
         self.characters[character.id] = Character.Expression.player(character: character)
+        
+        if status.hasOperation {
+            character.slice.operation = Operation(from: status.operation)
+            character.slice.operation!.begin(for: playerCharacter.slice, actionRegistry: sharedGame.clock)
+        } else {
+            character.slice.operation?.cancel(for: character.slice, actionRegistry: sharedGame.clock)
+            character.slice.operation = nil
+        }
     }
         
     private func updateCharacters(fromStatus status: RABackend_GameStatus) {
         guard let scene = GameClient.gameScene else { return }
 
         self.characters = status.charactersPresentList.reduce([String:Character.Expression]()) { accum, backendCharacter in
-            let character = Character.Slice(from: backendCharacter)
+            let character = Character.Slice(from: backendCharacter )
             
             var characters = accum
             characters[character.id] = .character(character: character)

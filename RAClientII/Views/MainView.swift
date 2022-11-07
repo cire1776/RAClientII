@@ -24,7 +24,7 @@ extension Constants {
 struct MainView: View {
     @EnvironmentObject var scene: GameScene
     @EnvironmentObject var gameClient: GameClient
-    @EnvironmentObject var game: TickHolder
+    @EnvironmentObject var clock: Game.Clock
     
     @State var sideWindowSize: CGSize = CGSize(width: Constants.sideWindowWidth, height: 200)
     @State var screenSelected = "Inventory"
@@ -46,7 +46,7 @@ struct MainView: View {
                 VenueMap()
                 
                 ZStack {
-                    Window(title: (gameClient.venue?.name ?? "" ) + " (" + "\(game.tick)" + ")",
+                    Window(title: (gameClient.venue?.name ?? ""),
                            position: CGPoint.zero,
                            size: Binding.constant(CGSize(width: 250, height: 250))
                     ) {

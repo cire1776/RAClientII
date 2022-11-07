@@ -12,7 +12,8 @@ import OrderedCollections
 let sharedGame = Game.game!
 #endif
 
-class Game: TickHolder, BeatNotifier {
+
+public class Game: ObservableObject {
     static var game: Game!
 //    static var environment: Game.Environment!
     
@@ -58,11 +59,9 @@ class Game: TickHolder, BeatNotifier {
 //    var currentOperation: Game.Operation? = nil
 //    var cancelOperationAfterPerform = false
     
-    var heartbeat: Heartbeat!
+    var clock = Game.Clock()
     
-    var currentTick: UInt64 { self.tick }
-        
-//    var tickScheduler = [UInt64 : [String: Schedulable]]()
+    @Published var ticks: UInt64 = 0
     
     var playerID: Character.ID
     
@@ -78,12 +77,10 @@ class Game: TickHolder, BeatNotifier {
     
     var savingEvent: (String, UInt) = ("",0)
     
-    override init() {
+    init() {
         self.playerID = "cire"
         
         restoreItemTypes()
-        
-        super.init()
         
         triggerLazy(loadEverything: true)
     }
@@ -101,24 +98,6 @@ class Game: TickHolder, BeatNotifier {
                 throw RAError.Unknown(reason:"@@@reason: Unknown ModelType")
             }
         }
-    }
-    
-    func beat() async {
-        await advanceTick()
-    }
-    
-    public override func performTick(at tick: UInt64) {
-        if (self.tick % 20) == 0 {
-            print(".", terminator: "")
-        }
-        
-        if (self.tick % 2000) == 0 {
-            print("current tick:", self.tick)
-            print(GameClient.gameClient.characters as Any)
-        }
-    }
-    
-    public override func housekeeping(at tick: UInt64) {
     }
     
     private func triggerLazy(loadEverything: Bool = false) {

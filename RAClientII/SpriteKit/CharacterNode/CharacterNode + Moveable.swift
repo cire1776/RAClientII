@@ -173,7 +173,7 @@ extension CharacterNode {
         
         guard self.isMoving else { return }
         
-        self.currentArrivalTick = self.locality.waypoints.first!.arrivalTick + Game.game.tick
+        self.currentArrivalTick = self.locality.waypoints.first!.arrivalTick + currentTick
        
         print("currentArrivalTick:", currentArrivalTick!, "currentTick:", currentTick)
         
@@ -258,7 +258,9 @@ extension CharacterNode {
         }
         let gameScene = (self.scene as! GameScene)
         
-        print("reached waypoint at tick:", Game.game.tick)
+        let currentTick = await Game.game.clock.tick
+        
+        print("reached waypoint at tick:", currentTick)
         
         self.physicsBody?.velocity = CGVector.zero
         gameScene.uiDelegate.movementComplete(isPlayer: isPlayer)
@@ -279,8 +281,10 @@ extension CharacterNode {
         var newVelocity = CGVector(dx: difference.x, dy: difference.y).normalized
         
         let timeLeft: UInt64
-        if self.currentArrivalTick ?? 0 > Game.game.tick {
-            timeLeft = self.currentArrivalTick! - Game.game.tick
+        let currentTick = await Game.game.clock.tick
+        
+        if self.currentArrivalTick ?? 0 > currentTick {
+            timeLeft = self.currentArrivalTick! - currentTick
 
             newVelocity = newVelocity * (18 * difference.magnitude / CGFloat(timeLeft))
 
