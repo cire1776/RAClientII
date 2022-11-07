@@ -199,16 +199,25 @@ class HexagonMapNode: SKNode, EntityHolder {
 //        self.addChild(centerAdorner)
     }
     
+
     private func createFacilityNodes(facilities: [Facility.ID : Facility]? = nil) {
-        for (_, node) in self.facilityNodes {
-            node.removeFromParent()
+        let copiedFacilityNodes = self.facilityNodes
+        for (_, node) in copiedFacilityNodes {
+            Task {
+                await MainActor.run {
+                    node.removeFromParent()
+                }
+            }
         }
         
         self.facilityNodes.removeAll()
         
-        for (_, facility) in facilities ?? self.venue.facilities {
+        let copiedFacilities = facilities ?? self.venue.facilities
+        
+        for (_, facility) in copiedFacilities {
             let node = SizedFacilityNode(for: facility, in: self)
             self.facilityNodes[facility.id] = node
+            self.addChild(node)
         }
     }
     
