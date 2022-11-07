@@ -111,7 +111,7 @@ class HexagonMapNode: SKNode, EntityHolder {
     
     private var droppedItemsLayer: HolderNode {
         let holder: HolderNode
-        if let layer = self.childNode(withName: Constants.droppedItemLayerName) {
+        if let layer = self.safe_childNode(withName: Constants.droppedItemLayerName) {
             layer.removeAllChildren()
             holder = layer as! HolderNode
         } else {
@@ -124,14 +124,14 @@ class HexagonMapNode: SKNode, EntityHolder {
     
     func select(coordinates: Coordinates) {
         if let selection = self.selection {
-            let previouslySelectedNode = self.childNode(withName: Hexagon.nameFrom(coordinates: selection)) as! HexagonNode
+            let previouslySelectedNode = self.safe_childNode(withName: Hexagon.nameFrom(coordinates: selection)) as! HexagonNode
             previouslySelectedNode.strokeColor = .white
             previouslySelectedNode.lineWidth = 2
             previouslySelectedNode.zPosition = Constants.hexagonTileLevel
             
         }
         
-        if let selectedNode = self.childNode(withName: Hexagon.nameFrom(coordinates: coordinates)) as? HexagonNode {
+        if let selectedNode = self.safe_childNode(withName: Hexagon.nameFrom(coordinates: coordinates)) as? HexagonNode {
             self.selection = coordinates
 
             selectedNode.strokeColor = .yellow
@@ -298,15 +298,26 @@ class HexagonMapNode: SKNode, EntityHolder {
     
     func findHexNode(at hex: (Int, Int) ) -> HexagonNode {
         let hexName = Hexagon.nameFrom(coordinates: hex)
-        return self.childNode(withName: hexName) as! HexagonNode
+        return self.safe_childNode(withName: hexName) as! HexagonNode
     }
     
     func contains(point: CGPoint) -> Bool {
         findHex(at: point) != nil
     }
     
+    func safe_childNode(withName name: String) -> SKNode? {
+        let children = self.children
+        
+        return children.first {
+            $0.name == name
+        }
+    }
+    
     func convert(position venuePosition: VenuePosition) -> CGPoint {
-        let possibleHex = self.childNode(withName: Hexagon.nameFrom(coordinates: venuePosition.hex))
+
+        let name = Hexagon.nameFrom(coordinates: venuePosition.hex)
+        let possibleHex = self.safe_childNode(withName: name)
+        
         guard let hex = possibleHex as? HexagonNode else { return .zero }
         let position = hex.convert(CGPoint(x: venuePosition.x, y: venuePosition.y), to: hex.parent!)
         let result = CGPoint(x: position.x, y: position.y)
