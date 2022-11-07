@@ -88,7 +88,6 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
     func canAccept(_ item: Item) -> Bool {
         true
     }
-    
 }
 
 public class Character: Hashable, Identifiable, MainItemHolding {

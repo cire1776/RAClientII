@@ -295,6 +295,5 @@ extension CharacterNode {
             timeLeft = 0
             self.position = destination
         }
-        
     }
 }

@@ -13,7 +13,5 @@ extension Command {
             let command:(ClientCommand, ClientCommand?) = (.face(facing: facing), nil)
             await queue.push(command)
         }
-        
-        
     }
 }

@@ -49,7 +49,6 @@ public class Game: ObservableObject {
     
     static var items = [Item.ID: Item]()
     
-    
     // Server Mock Objects
     var venueID: Venue.ID = "Uninitialized"
     var venue: Venue? {

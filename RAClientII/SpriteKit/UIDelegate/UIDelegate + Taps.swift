@@ -67,7 +67,7 @@ extension UIDelegate {
             
             return lhs.position.distance(to: destination, converter: converter) < rhs.position.distance(to: destination, converter: converter)
         })
-        .map { $0 as! Interactable}
+        .map { $0 as! Interactable }
         
         if excludingPlayer && interactables[0].type == .player {
             let newPossibility = interactables[1]
