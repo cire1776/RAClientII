@@ -27,6 +27,9 @@ public extension RABackend_GameCommand {
             self.command = .close
         case .beginOperation:
             self.command = .beginOperation
+            guard case let .beginOperation(facilityID, operation) = clientCommand else { return }
+            self.operation.facility.id = facilityID
+            self.operation.operation = operation
         case .cancelOperation:
             self.command = .cancelOperation
         case .command:

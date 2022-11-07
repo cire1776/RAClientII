@@ -30,8 +30,8 @@ extension UIDelegate {
                 handleMenuClick(at: destination, for: self.displayedMenu)
             } else if self.debugMenu.isActive {
                 handleMenuClick(at: destination, for: self.debugMenu)
-            } else if isPlayer(near: destination) && character.occupied {
-                checkToCancelOperation(at: destination)
+            } else if isPlayer(near: destination) && character.occupied && character.operation != nil {
+                    checkToCancelOperation(at: destination)
             } else if isPlayer(near: destination) &&
                       areInteractables(near: destination) {
                 let interactable = closestInteractable(to: destination,excludingPlayer: true)
@@ -44,7 +44,8 @@ extension UIDelegate {
 //                    checkForDroppedItemPickup(droppedItem,at: destination)
                 }
             } else {
-                guard !character.occupied else { return }
+                // if the character is moving, it will be occupied but more movement can be specified.
+                guard !character.occupied || character.locality.isMoving else { return }
                 movementClick(sender: sender)
             }
         }

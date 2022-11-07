@@ -11,7 +11,8 @@ public enum ClientCommand: Codable {
     case nop, report
     case wait(UInt64)
     case connect, close
-    case beginOperation, cancelOperation
+    case beginOperation(facility: Facility.ID, operation: String)
+    case cancelOperation
     case command
     case face(facing: UInt)
     case move(destination: VenuePosition)

@@ -32,7 +32,7 @@ extension UIDelegate {
         
         var renderer: MenuRenderer? = nil
         
-        renderer = FacilityMenuRenderer(for: facility)
+        renderer = character.occupied ? FacilityExitRenderer() : FacilityMenuRenderer(for: facility)
         
         if let renderer = renderer {
             self.displayedMenu.openMenu(in: scene, focusedAt: position, renderedBy: renderer)

@@ -35,11 +35,14 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
     
     public var isUsingSubordinate: Bool = false
     
+    public var occupied: Bool { slice.occupied }
+    
     public init(_ character: Character) {
         self.id = character.id
         self.slice = character.slice
         self.slice.type = character.slice.type
         self.slice.facing = character.slice.facing
+        self.slice.operation = nil
         
         // use the slice version to avoid using self too early.
         self.slice.locality = character.locality
@@ -52,6 +55,7 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
         self.slice = activeCharacter.slice
         self.slice.type = .player
         self.slice.facing = activeCharacter.slice.facing
+        self.slice.operation = nil
         
         // use the slice version to avoid using self too early.
         self.slice.locality = activeCharacter.locality
@@ -62,6 +66,9 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
     public init(from activeCharacter: RABackend_ActiveCharacterData) {
         self.id = activeCharacter.characterData.characterID.id
         self.slice = Character.Slice(from: activeCharacter.characterData)
+        
+        self.slice.operation = nil
+        
         self.items = [:]
         self.items = activeCharacter.items
             .reduce(into: [Item.ID : Item]()) { items, item in
@@ -118,19 +125,22 @@ public class Character: Hashable, Identifiable, MainItemHolding {
         
         public var characterMarker = Marker()
         
-        public var occupied = false
+        public var operation: Operation?
+        public var occupied: Bool {
+            operation != nil || locality.isMoving
+        }
         
-        init(id: String, displayName: String, type: Character.Class, venueID: Venue.ID, locality: Locality, facing: Facing, occupied: Bool = false) {
+        init(id: String, displayName: String, type: Character.Class, venueID: Venue.ID, locality: Locality, facing: Facing, operation: Operation?=nil) {
             self.id = id
             self.displayName = displayName
             self.type = type
             self.venueID = venueID
             self.locality = locality
             self.facing = facing
-            self.occupied = occupied
+            self.operation = operation
         }
         
-        init(from data: RABackend_CharacterData) {
+        init(from data: RABackend_CharacterData ) {
             self.id = data.characterID.id
             self.displayName = data.displayName
             self.type = data.type.asCharacterClass
@@ -155,6 +165,7 @@ public class Character: Hashable, Identifiable, MainItemHolding {
             self.venueID = activeCharacter.slice.venueID
             self.locality = Locality(locality: activeCharacter.slice.locality)
             self.facing = Facing(activeCharacter.slice.facing)
+            self.operation = activeCharacter.slice.operation
         }
     }
 
@@ -191,14 +202,19 @@ public class Character: Hashable, Identifiable, MainItemHolding {
         false
     }
     
-    internal init(id: String, displayName: String, type: Class, venue: Venue, locality: Locality) {
+    var occupied: Bool {
+        self.slice.operation != nil || locality.isMoving
+    }
+    
+    internal init(id: String, displayName: String, type: Class, venue: Venue, locality: Locality,operation: Operation?) {
         self.slice = Slice(
             id: id,
             displayName: displayName,
             type: type,
             venueID: venue.id,
             locality: locality,
-            facing: 0
+            facing: 0,
+            operation: operation
         )
     }
     
@@ -210,7 +226,8 @@ public class Character: Hashable, Identifiable, MainItemHolding {
             displayName: source.characterData.displayName,
             type: .player,
             venue: venue!,
-            locality: .init(from: source.characterData.locality)
+            locality: .init(from: source.characterData.locality),
+            operation: Operation(from: source.operation)
         )
     }
     
@@ -265,7 +282,8 @@ public extension Character {
                   displayName: characterData.displayName,
                   type: characterData.type.asCharacterClass,
                   venue: venue,
-                  locality: Locality(from: characterData.locality)
+                  locality: Locality(from: characterData.locality),
+                  operation: Operation(from: characterData.operation)
         )
     }
     
@@ -278,7 +296,8 @@ public extension Character {
                       displayName: activeCharacter.slice.displayName,
                   type: activeCharacter.slice.type,
                   venue: venue,
-                  locality: activeCharacter.locality
+                  locality: activeCharacter.locality,
+                  operation: activeCharacter.slice.operation
         )
     }
 }

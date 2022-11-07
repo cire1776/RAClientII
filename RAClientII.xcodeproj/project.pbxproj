@@ -22,6 +22,7 @@
 		63295FB6291326ED0027409A /* FacilityMenuRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FB0291326EC0027409A /* FacilityMenuRenderer.swift */; };
 		63295FB7291326ED0027409A /* FacilityExitRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FB1291326ED0027409A /* FacilityExitRenderer.swift */; };
 		63295FB8291326ED0027409A /* DroppedItemPickupRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FB2291326ED0027409A /* DroppedItemPickupRenderer.swift */; };
+		635B1910291550C70040011B /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B190F291550C70040011B /* Operation.swift */; };
 		636EDC2D2906A6B700BF2213 /* SharedProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */; };
 		636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2E2906B25700BF2213 /* ProtoBuff.swift */; };
 		636EDC312906B65500BF2213 /* CGSize + RABackend_Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */; };
@@ -92,6 +93,7 @@
 		639886D72902B3E00007D8C0 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639886D52902B3E00007D8C0 /* Window.swift */; };
 		639886D92902B62D0007D8C0 /* NonPlayerCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639886D82902B62D0007D8C0 /* NonPlayerCharacter.swift */; };
 		639886DB2902B6E90007D8C0 /* ItemHolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639886DA2902B6E90007D8C0 /* ItemHolding.swift */; };
+		63D5A7AF2915AEC400BFCC67 /* OperationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D5A7AE2915AEC400BFCC67 /* OperationCommand.swift */; };
 		63DFA8E52902CFB200C26F0E /* FaceableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA8E42902CFB200C26F0E /* FaceableNode.swift */; };
 		63DFA8E72902CFD600C26F0E /* Moveable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA8E62902CFD600C26F0E /* Moveable.swift */; };
 		63DFA8EC2902D14200C26F0E /* Faceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFA8EB2902D14200C26F0E /* Faceable.swift */; };
@@ -139,6 +141,7 @@
 		63295FB0291326EC0027409A /* FacilityMenuRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityMenuRenderer.swift; sourceTree = "<group>"; };
 		63295FB1291326ED0027409A /* FacilityExitRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityExitRenderer.swift; sourceTree = "<group>"; };
 		63295FB2291326ED0027409A /* DroppedItemPickupRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DroppedItemPickupRenderer.swift; sourceTree = "<group>"; };
+		635B190F291550C70040011B /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedProtoBuff.swift; path = RAClientII/RAShared/SharedProtoBuff.swift; sourceTree = SOURCE_ROOT; };
 		636EDC2E2906B25700BF2213 /* ProtoBuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtoBuff.swift; sourceTree = "<group>"; };
 		636EDC302906B65500BF2213 /* CGSize + RABackend_Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + RABackend_Size.swift"; sourceTree = "<group>"; };
@@ -204,6 +207,7 @@
 		639886D52902B3E00007D8C0 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		639886D82902B62D0007D8C0 /* NonPlayerCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonPlayerCharacter.swift; sourceTree = "<group>"; };
 		639886DA2902B6E90007D8C0 /* ItemHolding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemHolding.swift; sourceTree = "<group>"; };
+		63D5A7AE2915AEC400BFCC67 /* OperationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationCommand.swift; sourceTree = "<group>"; };
 		63DFA8E42902CFB200C26F0E /* FaceableNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceableNode.swift; sourceTree = "<group>"; };
 		63DFA8E62902CFD600C26F0E /* Moveable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Moveable.swift; sourceTree = "<group>"; };
 		63DFA8EB2902D14200C26F0E /* Faceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Faceable.swift; sourceTree = "<group>"; };
@@ -383,6 +387,7 @@
 				6392C20F2910435D00B541DA /* HexAdorner.swift */,
 				6392C217291046F900B541DA /* Blitor.swift */,
 				6392C22C29104DF300B541DA /* RGBA32.swift */,
+				635B190F291550C70040011B /* Operation.swift */,
 			);
 			path = "Support & Helpers";
 			sourceTree = "<group>";
@@ -501,6 +506,7 @@
 				6392C204290EBC3600B541DA /* Command.swift */,
 				63DFA90629031A5400C26F0E /* Move.swift */,
 				63295F6529118E330027409A /* FaceableCommand.swift */,
+				63D5A7AE2915AEC400BFCC67 /* OperationCommand.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -699,6 +705,7 @@
 				63DFA9272904067600C26F0E /* BuffSpecifier.swift in Sources */,
 				637F1AFB2901DFF8008642A4 /* CharacterNode.swift in Sources */,
 				63DFA93A2904067600C26F0E /* TickAction.swift in Sources */,
+				635B1910291550C70040011B /* Operation.swift in Sources */,
 				63DFA9392904067600C26F0E /* Equipping.swift in Sources */,
 				639886A9290217030007D8C0 /* MappedHexagon.swift in Sources */,
 				639236B0290542BF00973DDF /* RABackend.pb.swift in Sources */,
@@ -740,6 +747,7 @@
 				63DFA9292904067600C26F0E /* Heartbeat.swift in Sources */,
 				637F1AAA2901D15F008642A4 /* Geography.swift in Sources */,
 				6392C205290EBC3600B541DA /* Command.swift in Sources */,
+				63D5A7AF2915AEC400BFCC67 /* OperationCommand.swift in Sources */,
 				637F1A852901AF0A008642A4 /* Character.swift in Sources */,
 				637F1A6329018263008642A4 /* GameClient.swift in Sources */,
 				639886D92902B62D0007D8C0 /* NonPlayerCharacter.swift in Sources */,
