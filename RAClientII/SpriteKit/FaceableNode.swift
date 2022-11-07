@@ -35,12 +35,16 @@ extension FaceableNode {
     }
     
     func setFacing(_ venuePosition: VenuePosition) {
-        let gameScene = self.scene as! GameScene
-        let hexagonNodeMap = gameScene.hexagonMapNode
-        
-        let destination = hexagonNodeMap!.convert(position: venuePosition)
-        
-        setFacing(towards: destination)
+        Task {
+            await MainActor.run {
+                let gameScene = self.scene as! GameScene
+                let hexagonNodeMap = gameScene.hexagonMapNode
+                
+                let destination = hexagonNodeMap!.convert(position: venuePosition)
+                
+                setFacing(towards: destination)
+            }
+        }
     }
     
     // facing can be 0 to 5

@@ -8,6 +8,7 @@
 import SpriteKit
 import GameKit
 
+@MainActor
 extension UIDelegate {
     func setupTaps(_ view: SKView) {
         let tap = UITapGestureRecognizer(target: self, action: #selector(Self.taps(sender:)))

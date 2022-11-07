@@ -13,6 +13,7 @@ extension UIDelegate {
         view.addGestureRecognizer(pan)
     }
    
+    @MainActor
     func movementClick(sender: UITapGestureRecognizer) {
         guard sender.numberOfTouches == 1 else { return }
         
@@ -29,7 +30,7 @@ extension UIDelegate {
         }
     }
     
-    @objc
+    @MainActor @objc
     private func pan(sender: UIPanGestureRecognizer) {
         if sender.numberOfTouches == 2 || screenDragInProgress {
             switch sender.state {
@@ -72,7 +73,8 @@ extension UIDelegate {
             lastDragLocation = nil
         }
     }
-    
+   
+    @MainActor
     func handleMovementGestures(to destination: CGPoint) {
         var destination = scene.convertPoint(fromView: destination)
         destination = scene.convert(destination, to: hexagonMapNode)

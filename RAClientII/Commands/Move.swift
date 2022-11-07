@@ -8,15 +8,16 @@
 import CoreGraphics
 
 extension Command {
-    static func Move(characterNode: CharacterNode, venuePosition: VenuePosition) {
-        Task {
-            await queue.push((.addWaypoint(destination: venuePosition, duration: 100), nil))
-        }
+    @MainActor
+    static func Move(characterNode: CharacterNode, venuePosition: VenuePosition) async {
+        await queue.push((.addWaypoint(destination: venuePosition, duration: 100), nil))
         
         let gameScene = characterNode.gameScene
         let converter = gameScene.hexagonMapNode.convert(position:)
         
-        let priorPosition = characterNode.locality.lastDestination ?? characterNode.character.locality.position
+        let lastDestination = characterNode.locality.lastDestination
+        let characterPosition = characterNode.character.locality.position
+        let priorPosition =  lastDestination ?? characterPosition
         
         let travelTicks = priorPosition.calculateTravelTicks(to: venuePosition, at: 1.25, converter: converter)
        

@@ -130,15 +130,15 @@ extension CharacterNode {
         return node
     }
     
-    func movementUpdate(_ currentTime: TimeInterval) {
+    func movementUpdate(_ currentTime: TimeInterval) async {
         guard let venuePosition = self.locality.currentDestination else { return }
         
         let destination = gameScene.hexagonMapNode.convert(position: venuePosition)
 
         if self.isCloseEnough(destination) {
-            self.endWaypoint()
+            await self.endWaypoint()
         } else {
-            self.continueAlongWaypoint(to: destination)
+            await self.continueAlongWaypoint(to: destination)
         }
     }
     
@@ -154,7 +154,9 @@ extension CharacterNode {
             drawLine(to: destination, coordinates, position)
         }
         
-        Command.Move(characterNode: self, venuePosition: VenuePosition(hex: (coordinates.x, coordinates.y), x: Int(position.x), y: Int(position.y)))
+        Task {
+            await Command.Move(characterNode: self, venuePosition: VenuePosition(hex: (coordinates.x, coordinates.y), x: Int(position.x), y: Int(position.y)))
+        }
     }
     
     private func styleDashedLine(_ line: SKShapeNode) {
@@ -163,7 +165,7 @@ extension CharacterNode {
         line.zPosition = Constants.lineLevel
     }
     
-    func movementStarted(at currentTick: UInt64=Game.game.tick) {
+    func movementStarted(at currentTick: UInt64) async {
         self.locality = self.character.locality
 
         // during movement position is predictive,
@@ -252,7 +254,7 @@ extension CharacterNode {
         return abs(distance.magnitude) < 2
     }
     
-    private func endWaypoint() {
+    private func endWaypoint() async {
         if isFirst {
             isFirst = false
         }
@@ -268,14 +270,14 @@ extension CharacterNode {
         self.locality.completeCurrentWaypoint()
         
         if self.locality.isMoving {
-            self.movementStarted()
+            await self.movementStarted(at: currentTick)
             setCurrentFacing()
         } else {
             gameScene.markerLayer.removeFromParent()
         }
     }
     
-    private func continueAlongWaypoint(to destination: CGPoint) {
+    private func continueAlongWaypoint(to destination: CGPoint) async {
         let difference = destination - self.position
 
         var newVelocity = CGVector(dx: difference.x, dy: difference.y).normalized

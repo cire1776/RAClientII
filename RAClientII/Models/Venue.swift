@@ -121,41 +121,42 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     
     public func update(fromStatus status: RABackend_GameStatus) throws {
         print("@@@updating:",status)
-        Task {
-            await sharedGame.synchronize(serverTick: status.tick)
-        }
-        
-        self.id = status.venueData.id.id
-        self.name = status.venueData.name
-        self.description = status.venueData.description_p
-        self.bounds = CGSize(status.venueData.bounds)
-        
-        self.charactersPresent = Set(status.charactersPresentList.map {
-            $0.characterID.id
-        })
-        
-        updateCharacters(fromStatus: status)
-        self.playerCharacterID = status.activeCharacter.id.id
-        
-        try? updateActiveCharacter(fromStatus: status)
-        
-        updateMovement()
-        
-        updateItems(from: status.activeCharacter.items)
 
-        self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
-            let facility = Facility(from: backendFacility)
-            var facilities = accum
-            facilities[facility.id] = facility
-            Game.game.venue?.accept(facility: facility)
-            return facilities
-        }
+        Task {
+            await sharedGame.clock.synchronize(serverTick: status.tick)
         
-        self.droppedItems = status.droppedItems.reduce([DroppedItem.ID : DroppedItem]()) { accum, backendDroppedItem in
-            let droppedItem = DroppedItem(from: backendDroppedItem)
-            var droppedItems = accum
-            droppedItems[droppedItem.id] = droppedItem
-            return droppedItems
+            self.id = status.venueData.id.id
+            self.name = status.venueData.name
+            self.description = status.venueData.description_p
+            self.bounds = CGSize(status.venueData.bounds)
+            
+            self.charactersPresent = Set(status.charactersPresentList.map {
+                $0.characterID.id
+            })
+            
+            updateCharacters(fromStatus: status)
+            self.playerCharacterID = status.activeCharacter.id.id
+            
+            try? updateActiveCharacter(fromStatus: status)
+            
+            updateMovement()
+            
+            updateItems(from: status.activeCharacter.items)
+            
+            self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
+                let facility = Facility(from: backendFacility)
+                var facilities = accum
+                facilities[facility.id] = facility
+                Game.game.venue?.accept(facility: facility)
+                return facilities
+            }
+            
+            self.droppedItems = status.droppedItems.reduce([DroppedItem.ID : DroppedItem]()) { accum, backendDroppedItem in
+                let droppedItem = DroppedItem(from: backendDroppedItem)
+                var droppedItems = accum
+                droppedItems[droppedItem.id] = droppedItem
+                return droppedItems
+            }
         }
     }
     
@@ -281,13 +282,16 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
                 
                 let slice: Character.Slice = character.slice
                 
-                characterNode.character = slice
-                
-                characterNode.setFacing(to: slice.facing, for: scene.orientation)
-                
-                let position = GameClient.gameScene.hexagonMapNode.convert(position: slice.locality.position)
-                characterNode.position = position
-
+                Task {
+                    await MainActor.run {
+                        characterNode.character = slice
+                        
+                        characterNode.setFacing(to: slice.facing, for: scene.orientation)
+                        
+                        let position = GameClient.gameScene.hexagonMapNode.convert(position: slice.locality.position)
+                        characterNode.position = position
+                    }
+                }
             }
         }
     }

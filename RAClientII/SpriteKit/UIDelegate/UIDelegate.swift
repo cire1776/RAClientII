@@ -7,6 +7,7 @@
 
 import SpriteKit
 
+@MainActor
 class UIDelegate {
     let scene: GameScene
     var dialogueNode: DialogueNode?

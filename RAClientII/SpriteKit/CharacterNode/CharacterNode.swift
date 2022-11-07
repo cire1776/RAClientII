@@ -122,7 +122,9 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
         subscribe()
         
         GameScene.updaters.append(update(_:))
-        GameScene.updaters.append(movementUpdate(_:))
+        GameScene.updaters.append( { _ in
+            Task { self.movementUpdate(_:) }
+        })
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -140,18 +142,22 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
 //                            .debounce(for: 0.01, scheduler: RunLoop.main)
                             .receive(on: RunLoop.main)
                             .sink(receiveValue: { notification in
-            if self.scene != nil,
-               self.gameScene.playerNode != nil,
-               notification.isPositionAuthoritative {
-                print("received character.locality update:",self.character.id)
-                
-                guard self.locality.isMoving else { return }
-                
-                let wasAlreadyMoving = self.isMoving
-                self.moveAuthoritatively(notification)
-                
-                if !wasAlreadyMoving {
-                    self.movementStarted()
+                Task {
+                    if self.scene != nil,
+                       self.gameScene.playerNode != nil,
+                       notification.isPositionAuthoritative {
+                        print("received character.locality update:",self.character.id)
+                        
+                        guard self.locality.isMoving else { return }
+                        
+                        let wasAlreadyMoving = self.isMoving
+                        self.moveAuthoritatively(notification)
+                        
+                        let currentTick = await Game.game.clock.tick
+                        
+                        if !wasAlreadyMoving {
+                            await self.movementStarted(at: currentTick)
+                            }
                 }
             }
         })
