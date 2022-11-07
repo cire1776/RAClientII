@@ -50,6 +50,16 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
         self.mountingPoints = Equipping.MountingPoints()
     }
     
+    public init(_ source: RABackend_CharacterData) {
+        self.id = source.characterID.id
+        self.slice = Character.Slice(from: source)
+        
+        self.slice.operation = nil
+        
+        self.items = [:]
+        self.mountingPoints = Equipping.MountingPoints()
+    }
+    
     public init(_ activeCharacter: ActiveCharacter) {
         self.id = activeCharacter.id
         self.slice = activeCharacter.slice
