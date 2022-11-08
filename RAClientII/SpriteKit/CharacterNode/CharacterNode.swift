@@ -122,9 +122,11 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
         subscribe()
         
         GameScene.updaters.append(update(_:))
-        GameScene.updaters.append( { _ in
-            Task { self.movementUpdate(_:) }
-        })
+        GameScene.updaters.append { interval in
+            Task {
+                await self.movementUpdate(interval)
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
