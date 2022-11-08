@@ -134,7 +134,6 @@
 		63295F9A2912F2DB0027409A /* UIDelegate + MenuInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + MenuInteraction.swift"; sourceTree = "<group>"; };
 		63295F9C2912F2EC0027409A /* UIDelegate + InteractableAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDelegate + InteractableAccess.swift"; sourceTree = "<group>"; };
 		63295F9F2912F4170027409A /* PlayerRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerRenderer.swift; path = "../../../../../../RAClientII/RAClientII/SpriteKit/Menus/Individual Renderers/PlayerRenderer.swift"; sourceTree = "<group>"; };
-		63295FAB291325810027409A /* FruitTreeMenuRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitTreeMenuRenderer.swift; sourceTree = "<group>"; };
 		63295FAD291326EC0027409A /* CharacterRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterRenderer.swift; sourceTree = "<group>"; };
 		63295FAE291326EC0027409A /* NonPlayerCharacterRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonPlayerCharacterRenderer.swift; sourceTree = "<group>"; };
 		63295FB0291326EC0027409A /* FacilityMenuRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityMenuRenderer.swift; sourceTree = "<group>"; };
@@ -273,7 +272,6 @@
 				63295FB2291326ED0027409A /* DroppedItemPickupRenderer.swift */,
 				63295FB0291326EC0027409A /* FacilityMenuRenderer.swift */,
 				63295FAE291326EC0027409A /* NonPlayerCharacterRenderer.swift */,
-				63295FAB291325810027409A /* FruitTreeMenuRenderer.swift */,
 			);
 			name = "Individual Renderers";
 			path = "../../../../RoyalAmbition/OldRAClient/OldRAClient/SpriteKit/Menus/Individual Renderers";
@@ -663,7 +661,6 @@
 				639886CD2902B1B40007D8C0 /* DaylinSharpeningQuest.swift in Sources */,
 				63DFA90829031A5400C26F0E /* Move.swift in Sources */,
 				63295FA52912F4170027409A /* PlayerRenderer.swift in Sources */,
-				63295FBA291328A50027409A /* FacilityNode.swift in Sources */,
 				63295F9D2912F2EC0027409A /* UIDelegate + InteractableAccess.swift in Sources */,
 				636EDC632907FC3100BF2213 /* Communicator.swift in Sources */,
 				637F1B1A2901FA21008642A4 /* Facility.swift in Sources */,
