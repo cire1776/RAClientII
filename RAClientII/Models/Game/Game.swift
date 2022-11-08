@@ -58,9 +58,9 @@ public class Game: ObservableObject {
 //    var currentOperation: Game.Operation? = nil
 //    var cancelOperationAfterPerform = false
     
-    var clock = Game.Clock()
+    var clock = Clock()
     
-    @Published var ticks: UInt64 = 0
+    @Published var tick: UInt64 = 0
     
     var playerID: Character.ID
     
