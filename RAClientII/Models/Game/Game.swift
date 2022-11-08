@@ -60,6 +60,7 @@ public class Game: ObservableObject {
     
     var clock = Clock()
     
+    // This is a "shadow" of the actual game clock tick.
     @Published var tick: UInt64 = 0
     
     var playerID: Character.ID
