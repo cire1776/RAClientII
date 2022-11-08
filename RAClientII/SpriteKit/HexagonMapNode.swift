@@ -217,7 +217,6 @@ class HexagonMapNode: SKNode, EntityHolder {
         for (_, facility) in copiedFacilities {
             let node = SizedFacilityNode(for: facility, in: self)
             self.facilityNodes[facility.id] = node
-            self.addChild(node)
         }
     }
     
