@@ -33,7 +33,6 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
         
         let characterSlice = expression.slice
         
-        
         let characterNode: CharacterNode
         let updating: Bool
         if let node = scene.hexagonMapNode.childNode(withName: characterID) as? CharacterNode {

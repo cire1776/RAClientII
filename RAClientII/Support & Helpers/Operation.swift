@@ -42,7 +42,7 @@ public struct Operation {
    
     public func begin(for character: Character.Slice, actionRegistry: ActionRegisterable) {
         character.operation = self
-
+        
         Task {
             let currentTick = await Game.game.clock.tick
             
