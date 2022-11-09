@@ -18,7 +18,11 @@ extension UIDelegate {
     @objc
     private func taps(sender: UITapGestureRecognizer) {
         guard sender.numberOfTouches == 1,
-              let character = scene.playerNode?.character else { return }
+              let characterID = scene.playerNode?.character.id,
+              let expression = try? (scene.venue[.character, characterID] as? Character.Expression)
+        else { return }
+        
+        let slice = expression.slice
         
         if sender.state == .ended {
             var destination = sender.location(in: scene.view)
@@ -31,22 +35,22 @@ extension UIDelegate {
                 handleMenuClick(at: destination, for: self.displayedMenu)
             } else if self.debugMenu.isActive {
                 handleMenuClick(at: destination, for: self.debugMenu)
-            } else if isPlayer(near: destination) && character.occupied && character.operation != nil {
+            } else if isPlayer(near: destination) && slice.occupied && slice.operation != nil {
                     checkToCancelOperation(at: destination)
             } else if isPlayer(near: destination) &&
                       areInteractables(near: destination) {
                 let interactable = closestInteractable(to: destination,excludingPlayer: true)
                 
                 if let facility = interactable as? Facility {
-                    checkFacilityInteraction(facility, at: destination, by: character)
+                    checkFacilityInteraction(facility, at: destination, by: slice)
                 } else if let _ = interactable as? Character.Marker {
-//                    selectCharacter(at: destination, by: character)
+//                    selectCharacter(at: destination, by: slice)
                 } else if let _ = interactable as? DroppedItem {
 //                    checkForDroppedItemPickup(droppedItem,at: destination)
                 }
             } else {
                 // if the character is moving, it will be occupied but more movement can be specified.
-                guard !character.occupied || character.locality.isMoving else { return }
+                guard !slice.occupied || slice.locality.isMoving else { return }
                 movementClick(sender: sender)
             }
         }

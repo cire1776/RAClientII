@@ -18,7 +18,7 @@ extension Command {
     static public func CancelWork(character: Character.Slice) {
         Task {
             let command:(ClientCommand, ClientCommand?) = (.cancelOperation, nil)
-            await character.operation?.cancel(for: character, actionRegistry: Game.game.clock)
+            character.operation?.cancel(for: character, actionRegistry: Game.game.clock)
             
             await queue.push(command)
         }

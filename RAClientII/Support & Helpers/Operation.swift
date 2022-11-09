@@ -65,15 +65,15 @@ public struct Operation {
     }
     
     public func cancel(for character: Character.Slice, actionRegistry: ActionRegisterable) {
+        character.operation = nil
+
         Task {
             let hexCoordinates = character.locality.position.hex
             let hex = await GameClient.gameScene.hexagonMapNode.findHexNode(at: hexCoordinates)
 
+            await actionRegistry.clear(id: Constants.operationTag)
+
             await MainActor.run {
-                Task {
-                    await actionRegistry.clear(id: Constants.operationTag)
-                }
-                character.operation = nil
                 hex.setBackground(text: "")
             }
         }

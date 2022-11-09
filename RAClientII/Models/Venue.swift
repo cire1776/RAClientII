@@ -247,15 +247,22 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         let playerID = status.activeCharacter.id.id
         let expression = self.characters[playerID]
         
+        let slice = expression!.slice
         let player = ActiveCharacter(from: status.activeCharacter)
+        player.slice = slice
+       
+        player.update(from: status.activeCharacter.characterData)
+
         let playerExpression = Character.Expression.player(character: player)
         self.characters[playerID] = playerExpression
-        
+                
         self.playerCharacter = player
         
         if status.hasOperation {
-            player.slice.operation = Operation(from: status.operation)
-            player.slice.operation!.begin(for: playerCharacter.slice, actionRegistry: sharedGame.clock)
+            let operation = Operation(from: status.operation)!
+            player.slice.operation = operation
+            
+            operation.begin(for: player.slice, actionRegistry: sharedGame.clock)
         } else {
             player.slice.operation?.cancel(for: player.slice, actionRegistry: sharedGame.clock)
             player.slice.operation = nil
