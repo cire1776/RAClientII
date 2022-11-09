@@ -33,7 +33,6 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
         
         let characterSlice = expression.slice
         
-        guard case .player = expression else { return }
         
         let characterNode: CharacterNode
         let updating: Bool
