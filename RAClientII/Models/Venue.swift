@@ -243,18 +243,22 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
     }
     
     private func updateActiveCharacter(fromStatus status: RABackend_GameStatus) throws {
-        let character = try ActiveCharacter(status.activeCharacter.characterData)
         
-        self.playerCharacter = character
+        let playerID = status.activeCharacter.id.id
+        let expression = self.characters[playerID]
         
-        self.characters[character.id] = Character.Expression.player(character: character)
+        let player = ActiveCharacter(from: status.activeCharacter)
+        let playerExpression = Character.Expression.player(character: player)
+        self.characters[playerID] = playerExpression
+        
+        self.playerCharacter = player
         
         if status.hasOperation {
-            character.slice.operation = Operation(from: status.operation)
-            character.slice.operation!.begin(for: playerCharacter.slice, actionRegistry: sharedGame.clock)
+            player.slice.operation = Operation(from: status.operation)
+            player.slice.operation!.begin(for: playerCharacter.slice, actionRegistry: sharedGame.clock)
         } else {
-            character.slice.operation?.cancel(for: character.slice, actionRegistry: sharedGame.clock)
-            character.slice.operation = nil
+            player.slice.operation?.cancel(for: player.slice, actionRegistry: sharedGame.clock)
+            player.slice.operation = nil
         }
     }
         
