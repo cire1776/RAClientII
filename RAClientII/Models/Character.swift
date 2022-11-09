@@ -91,11 +91,16 @@ public class ActiveCharacter: Identifiable, ObservableObject, Hashable, MainItem
             }
     }
     
-    public init(from activeCharacter: RABackend_CharacterData) {
-        self.id = activeCharacter.characterID.id
-        self.slice = Character.Slice(from: activeCharacter)
+    public init(from characterData: RABackend_CharacterData) {
+        self.id = characterData.characterID.id
+        self.slice = Character.Slice(from: characterData)
         self.items = [:]
         self.mountingPoints = Equipping.MountingPoints()
+    }
+    
+    public func update(from characterData: RABackend_CharacterData) {
+        self.id = characterData.characterID.id
+        self.slice = Character.Slice(from: characterData)
     }
     
     public func hash(into hasher: inout Hasher) {
