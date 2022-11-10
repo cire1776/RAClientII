@@ -20,7 +20,6 @@
 		63295FB4291326ED0027409A /* NonPlayerCharacterRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FAE291326EC0027409A /* NonPlayerCharacterRenderer.swift */; };
 		63295FB6291326ED0027409A /* FacilityMenuRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FB0291326EC0027409A /* FacilityMenuRenderer.swift */; };
 		63295FB8291326ED0027409A /* DroppedItemPickupRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FB2291326ED0027409A /* DroppedItemPickupRenderer.swift */; };
-		63295FBA291328A50027409A /* FacilityNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63295FB9291328A50027409A /* FacilityNode.swift */; };
 		635B1910291550C70040011B /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635B190F291550C70040011B /* Operation.swift */; };
 		636EDC2D2906A6B700BF2213 /* SharedProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2C2906A6B700BF2213 /* SharedProtoBuff.swift */; };
 		636EDC2F2906B25700BF2213 /* ProtoBuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636EDC2E2906B25700BF2213 /* ProtoBuff.swift */; };
