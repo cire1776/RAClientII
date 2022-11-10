@@ -120,9 +120,9 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
         subscribe()
         
         GameScene.updaters.append(update(_:))
-        GameScene.updaters.append { interval in
+        GameScene.updaters.append { [weak self] interval in
             Task {
-                await self.movementUpdate(interval)
+                await self?.movementUpdate(interval)
             }
         }
     }
@@ -132,8 +132,8 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
     }
     
     func subscribe() {
-        var subscription = self.character.$facing.sink(receiveValue: { notification in
-            self.setFacing(to: notification, for: .point)
+        var subscription = self.character.$facing.sink(receiveValue: { [weak self] notification in
+            self?.setFacing(to: notification, for: .point)
         })
         
         allSubscriptions.insert(subscription)
@@ -141,7 +141,7 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
         subscription =  self.character.$locality
 //                            .debounce(for: 0.01, scheduler: RunLoop.main)
                             .receive(on: RunLoop.main)
-                            .sink(receiveValue: { notification in
+                            .sink(receiveValue: { [unowned self] notification in
                 Task {
                     if self.scene != nil,
                        self.gameScene.playerNode != nil,

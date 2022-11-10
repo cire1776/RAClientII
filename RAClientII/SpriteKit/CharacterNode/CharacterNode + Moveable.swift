@@ -72,10 +72,10 @@ extension CharacterNode {
             source = gameScene.playerNode.position
         }
 
-        let line = gameScene.markerLayer.drawDashedLine(from: source, to: destination, pattern: [10,5]) { line in
-            self.styleDashedLine(line)
+        let line = gameScene.markerLayer.drawDashedLine(from: source, to: destination, pattern: [10,5]) { [weak self] line in
+            self?.styleDashedLine(line)
             line.strokeColor = .red
-            line.name = self.gameScene.markerName(for: venuePosition, as: "line")
+            line.name = self?.gameScene.markerName(for: venuePosition, as: "line")
         }
         
         if previousWaypoint == nil {
@@ -101,7 +101,7 @@ extension CharacterNode {
 
                 self?.movementLine?.removeFromParent()
                 
-                let movementLine = self?.gameScene.markerLayer.drawDashedLine(from: self?.position ?? .zero, to: destination, pattern: [10, 5]) { line in
+                let movementLine = self?.gameScene.markerLayer.drawDashedLine(from: self?.position ?? .zero, to: destination, pattern: [10, 5]) { [weak self] line in
                     self?.styleDashedLine(line)
                     line.name = "movementLine"
                 }
@@ -208,8 +208,8 @@ extension CharacterNode {
         let lineName = gameScene.markerName(for: destinationWaypoint, as: "line")
         
         if gameScene.markerLayer.childNode(withName: lineName) == nil {
-            _ = gameScene.markerLayer.drawDashedLine(from: priorDestination, to: destination, pattern: [10,5]) { line in
-                self.styleDashedLine(line)
+            _ = gameScene.markerLayer.drawDashedLine(from: priorDestination, to: destination, pattern: [10,5]) { [weak self] line in
+                self?.styleDashedLine(line)
                 line.strokeColor = .blue
                 
                 line.name = lineName

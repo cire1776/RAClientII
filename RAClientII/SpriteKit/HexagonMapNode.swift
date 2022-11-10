@@ -89,9 +89,9 @@ class HexagonMapNode: SKNode, EntityHolder {
         
         allSubscriptions.insert(cancellable)
         
-        cancellable = self.venue.$facilities.sink(receiveValue:  { facilities in
+        cancellable = self.venue.$facilities.sink(receiveValue:  { [weak self] facilities in
             print("received subscription update for facilities")
-            self.createFacilityNodes(facilities: facilities)
+            self?.createFacilityNodes(facilities: facilities)
         })
         
         allSubscriptions.insert(cancellable)
@@ -140,9 +140,9 @@ class HexagonMapNode: SKNode, EntityHolder {
     }
     
     func createHexagonNodes() {
-        region.ForEach { specifier, coordinates in
+        region.ForEach { [weak self] specifier, coordinates in
             let hex = MappedHexagon(Hexagon(orientation: orientation, terrain: specifier.terrain!, modifier: specifier.modifier), at: coordinates, of: radius)
-            createHexagonNode(hex: hex, coordinates: coordinates)
+            self?.createHexagonNode(hex: hex, coordinates: coordinates)
         }
     }
     
