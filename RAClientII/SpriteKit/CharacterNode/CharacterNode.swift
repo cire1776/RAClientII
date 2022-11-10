@@ -157,7 +157,7 @@ public class CharacterNode: SKSpriteNode, FaceableNode, Moveable, Updating, Mark
                         
                         if !wasAlreadyMoving {
                             await self.movementStarted(at: currentTick)
-                            }
+                        }
                 }
             }
         })
