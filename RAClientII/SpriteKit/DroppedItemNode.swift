@@ -23,8 +23,12 @@ class DroppedItemNode : SKNode {
         sparkle.zRotation = 45.degreesToRadians
         sparkle.setScale(0.75)
         
-        holder.addChild(self)
-        self.animate(sparkle)
+        Task {
+            await MainActor.run {
+                holder.addChild(self)
+                self.animate(sparkle)
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
