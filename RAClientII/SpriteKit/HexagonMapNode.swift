@@ -9,7 +9,6 @@ import SpriteKit
 import OrderedCollections
 import Combine
 
-@MainActor
 class HexagonMapNode: SKNode, EntityHolder {
     static func setup(scene: GameScene, radius: CGFloat) {
         let hexagonMapNode = HexagonMapNode(in: scene.venue,of: radius, orientation: scene.orientation)
