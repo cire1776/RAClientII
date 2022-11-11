@@ -83,7 +83,7 @@ extension PhysicalVenue {
     }
     
     func accept(facility: Facility) {
-        guard self.facilities.contains(where: { $0.value.id == facility.id }) else { return }
+        guard self.facilities[facility.id] == nil else { return }
         
         self.facilities[facility.id] = facility
 
