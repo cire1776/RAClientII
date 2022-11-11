@@ -143,19 +143,24 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
             
             updateItems(from: status.activeCharacter.items)
             
-            self.facilities = status.facilities.reduce([String:Facility]()) { accum, backendFacility in
+            self.facilities = [:]
+            self.interactablesMap = GKQuadtree(boundingQuad: GKQuad(quadMin: vector_float2(x: -10_000, y: -10_000), quadMax: vector_float2(x: 10_000, y: 10_000)), minimumCellSize: 40)
+            
+            self.facilitiesMap = GKQuadtree(boundingQuad: GKQuad(quadMin: vector_float2(x: -10_000, y: -10_000), quadMax: vector_float2(x: 10_000, y: 10_000)), minimumCellSize: 40)
+            
+            self.droppedItemsMap = GKQuadtree(boundingQuad: GKQuad(quadMin: vector_float2(x: -10_000, y: -10_000), quadMax: vector_float2(x: 10_000, y: 10_000)), minimumCellSize: 40)
+            
+            status.facilities
+            .filter({ _ in !self.facilities.contains(where: { self.facilities[$0.value.id] != nil }) })
+            .forEach { backendFacility in
                 let facility = Facility(from: backendFacility)
-                var facilities = accum
-                facilities[facility.id] = facility
-                Game.game.venue?.accept(facility: facility)
-                return facilities
+                self.accept(facility: facility)
             }
             
-            self.droppedItems = status.droppedItems.reduce([DroppedItem.ID : DroppedItem]()) { accum, backendDroppedItem in
+            status.droppedItems
+            .forEach { backendDroppedItem in
                 let droppedItem = DroppedItem(from: backendDroppedItem)
-                var droppedItems = accum
-                droppedItems[droppedItem.id] = droppedItem
-                return droppedItems
+                self.add(droppedItem)
             }
         }
     }
