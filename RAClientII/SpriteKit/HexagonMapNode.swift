@@ -283,7 +283,7 @@ class HexagonMapNode: SKNode, EntityHolder {
         }
     }
     
-    func findHex(at position: CGPoint) -> (Coordinates,CGPoint)? {
+    public func findHex(at position: CGPoint) -> (Coordinates,CGPoint)? {
         var coordinates: Coordinates? = nil
         
         for child in self.children {
@@ -300,12 +300,12 @@ class HexagonMapNode: SKNode, EntityHolder {
         return nil
     }
     
-    func findHexNode(at hex: (Int, Int) ) -> HexagonNode {
+    public func findHexNode(at hex: (Int, Int) ) -> HexagonNode {
         let hexName = Hexagon.nameFrom(coordinates: hex)
         return self.safe_childNode(withName: hexName) as! HexagonNode
     }
     
-    func contains(point: CGPoint) -> Bool {
+    public func contains(point: CGPoint) -> Bool {
         findHex(at: point) != nil
     }
     
@@ -317,7 +317,7 @@ class HexagonMapNode: SKNode, EntityHolder {
         }
     }
     
-    func convert(position venuePosition: VenuePosition) -> CGPoint {
+    public func convert(position venuePosition: VenuePosition) -> CGPoint {
 
         let name = Hexagon.nameFrom(coordinates: venuePosition.hex)
         let possibleHex = self.safe_childNode(withName: name)
@@ -328,12 +328,12 @@ class HexagonMapNode: SKNode, EntityHolder {
         return result
     }
     
-    func convert(point: CGPoint) -> VenuePosition {
+    public func convert(point: CGPoint) -> VenuePosition {
         let (coordinates, position) = self.findHex(at: point)!
         return VenuePosition(coordinates, position)
     }
     
-    func randomPoint() -> CGPoint {
+    public func randomPoint() -> CGPoint {
         var point: CGPoint = .zero
         
         while true {
