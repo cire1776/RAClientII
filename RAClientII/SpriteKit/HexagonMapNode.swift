@@ -97,7 +97,7 @@ class HexagonMapNode: SKNode, EntityHolder {
         allSubscriptions.insert(cancellable)
     }
     
-    func drawDroppedItems(newDroppedItems: [String : DroppedItem]) {
+    fileprivate func drawDroppedItems(newDroppedItems: [String : DroppedItem]) {
         print("**** received droppedItems subscription update")
         let holder = self.droppedItemsLayer
         
@@ -139,14 +139,14 @@ class HexagonMapNode: SKNode, EntityHolder {
         }
     }
     
-    func createHexagonNodes() {
+    private func createHexagonNodes() {
         region.ForEach { [weak self] specifier, coordinates in
             let hex = MappedHexagon(Hexagon(orientation: orientation, terrain: specifier.terrain!, modifier: specifier.modifier), at: coordinates, of: radius)
             self?.createHexagonNode(hex: hex, coordinates: coordinates)
         }
     }
     
-    func createHexagonNode(hex: MappedHexagon, coordinates: (Int, Int)) {
+    private func createHexagonNode(hex: MappedHexagon, coordinates: (Int, Int)) {
         let radius = CGFloat(100)
         let node = HexagonNode(at: coordinates, hexagon: hex, radius: radius)
         
@@ -236,7 +236,7 @@ class HexagonMapNode: SKNode, EntityHolder {
         _ = DroppedItemNode(droppedItem: drop, holder: self)
     }
     
-    func createPath(from edges: OrderedSet<Hexagon.Edge>,closed: Bool = false) -> CGPath {
+    private func createPath(from edges: OrderedSet<Hexagon.Edge>,closed: Bool = false) -> CGPath {
         let radius: CGFloat = 100
         var points = edges.map {
             orientation.topology(radius: radius).plot(for: $0, of: radius)
@@ -253,7 +253,7 @@ class HexagonMapNode: SKNode, EntityHolder {
         return path
     }
     
-    func createShadow(from edges: OrderedSet<Hexagon.Edge>, styler: (SKShapeNode)->SKNode) {
+    private func createShadow(from edges: OrderedSet<Hexagon.Edge>, styler: (SKShapeNode)->SKNode) {
         let radius:CGFloat = 100
         let topology = orientation.topology(radius: radius)
         let points = edges.map { edge in
@@ -269,7 +269,7 @@ class HexagonMapNode: SKNode, EntityHolder {
         scene!.addChild(styledNode)
     }
     
-    func applyEdgeAdorners(from edges: [Hexagon.Edge], continous: Bool = false, applier: (HexagonMapNode, Int, CGPoint) -> Void) {
+    private func applyEdgeAdorners(from edges: [Hexagon.Edge], continous: Bool = false, applier: (HexagonMapNode, Int, CGPoint) -> Void) {
         let radius: CGFloat = 100
         
         let topology = orientation.topology(radius: radius)
@@ -309,7 +309,7 @@ class HexagonMapNode: SKNode, EntityHolder {
         findHex(at: point) != nil
     }
     
-    func safe_childNode(withName name: String) -> SKNode? {
+    private func safe_childNode(withName name: String) -> SKNode? {
         let children = self.children
         
         return children.first {
