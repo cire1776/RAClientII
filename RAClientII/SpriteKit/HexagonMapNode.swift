@@ -198,19 +198,26 @@ class HexagonMapNode: SKNode, EntityHolder {
 //        self.addChild(centerAdorner)
     }
     
-
     private func createFacilityNodes(facilities: [Facility.ID : Facility]? = nil) {
+        Task {
+            await self.removeAllFacilities(facilities)
+            self.createAllFacilityNodes(facilities)
+        }
+    }
+    
+    private func removeAllFacilities(_ facilities: [Facility.ID : Facility]? = nil) async {
         let copiedFacilityNodes = self.facilityNodes
-        for (_, node) in copiedFacilityNodes {
-            Task {
-                await MainActor.run {
-                    node.removeFromParent()
-                }
+
+        await MainActor.run {
+            for (_, node) in copiedFacilityNodes {
+                node.removeFromParent()
             }
         }
         
         self.facilityNodes.removeAll()
-        
+    }
+    
+    private func createAllFacilityNodes(_ facilities: [Facility.ID : Facility]? = nil) {
         let copiedFacilities = facilities ?? self.venue.facilities
         
         for (_, facility) in copiedFacilities {
