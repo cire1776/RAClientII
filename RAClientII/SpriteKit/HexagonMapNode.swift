@@ -226,16 +226,6 @@ class HexagonMapNode: SKNode, EntityHolder {
         }
     }
     
-    func updateFacilityNode(for facility: Facility) {
-        
-//        if let tree = facility as? Facilities.Tree {
-//            let facility = TreeNode(facility: tree, holder: self)
-//            self.facilityNodes[tree.id] = facility
-//        } else {
-//            print("Unknown facility type")
-//        }
-    }
-    
     func createDroppedItemNodes() {
         for (_, drop) in self.venue.droppedItems {
             createDroppedItemNode(for: drop)
