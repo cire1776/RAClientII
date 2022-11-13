@@ -26,7 +26,7 @@ class HexagonNode: SKShapeNode {
 
         super.init()
         
-        setupPath(at: coordinates)
+        setupHexagonPerimeterPath(at: coordinates)
         setupBackgroundAdorner()
     }
     
@@ -72,7 +72,7 @@ class HexagonNode: SKShapeNode {
         self.backgroundImage.isHidden = true
     }
     
-    func setupPath(at coordinates: (x:Int, y: Int)) {
+    private func setupHexagonPerimeterPath(at coordinates: (x:Int, y: Int)) {
         let path = CGMutablePath()
         
         var vertices = hexagon.topology.vertices(origin: CGPoint.zero, of: outerRadius)
