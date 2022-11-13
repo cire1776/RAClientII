@@ -303,9 +303,12 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
                         characterNode.character = slice
                         
                         characterNode.setFacing(to: slice.facing, for: scene.orientation)
-                        
-                        let position = GameClient.gameScene.hexagonMapNode.convert(position: slice.locality.position)
-                        characterNode.position = position
+                       
+                        if slice.locality.isMoving,
+                           slice.locality.waypoints.first!.startingTick >= status.tick {
+                            let position = GameClient.gameScene.hexagonMapNode.convert(position: slice.locality.position)
+                            characterNode.position = position
+                        }
                     }
                 }
             }
