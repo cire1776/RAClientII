@@ -123,7 +123,7 @@ public class Venue: ObservableObject, NSCopying, PhysicalVenue {
         print("@@@updating:",status)
 
         Task {
-            await sharedGame.clock.synchronize(serverTick: status.tick)
+            await sharedGame.clock.synchronize(serverTick: status.tick, foreignSystemTime: status.systemTime)
         
             self.id = status.venueData.id.id
             self.name = status.venueData.name
